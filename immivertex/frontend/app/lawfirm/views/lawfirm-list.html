@@ -1,0 +1,35 @@
+<div class="container-fluid intake-form" ng-init="lflCtrl.getLawfirmList()" >
+  <div class="row">
+    <div class="col-sm-12">
+      <panel panel-class="panel-sky" heading="Lawfirm List">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <ui-view></ui-view>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+            <div class="intake-forms-actions">
+              <div class="input-icon search m-r-10">
+                <i class="glyphicon glyphicon-search"></i>
+                <input search-for table-id="lflCtrl.gridName"
+                                type="search" class="form-control"
+                                aria-controls="lawfirmForms-grid"
+                                placeholder="Search lawfirm"
+                                tabindex="1"/>
+              </div>
+              <a ui-sref='home.lawfirmForm' class="btn btn-primary m-r-10" ui-sref-active="hide" >
+                <i class="icon fa fa-plus"></i> Create
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <table table-id="lflCtrl.gridName" class="table table-striped" datatable-grid>
+        </div>
+        <div class="panel-loading" ng-show="lflCtrl.isLoading">
+          <div class="panel-loader-dots"></div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="beneficiary-bg">
+  <fieldset>
+    <legend>Background</legend>
+    <form role="form" class="form-horizontal form-elements" ng-submit="bgCtrl.save($event)"  name="user_details">
+      <div class="row" ng-repeat="bgQuestion in bgCtrl.backgroundQns.questionAnsInfo">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">{{bgQuestion.text}}</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio" ng-model="bgQuestion.value"  ng-value ="true">Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="bgQuestion.value"  ng-value ="false" checked="checked">No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" placeholder="Add a comment" ng-model="bgQuestion.comment"  ng-hide="bgQuestion.value != true" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="text-center col-md-12">
+        <button class="btn btn-primary m-r-10">Save</button>
+        <a ui-sref="home.beneficiary.cases" class="btn btn-default">Next</a>
+      </div>
+  </form>
+</fieldset>
+</div>

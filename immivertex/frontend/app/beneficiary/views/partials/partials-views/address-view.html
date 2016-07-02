@@ -1,0 +1,265 @@
+<div role="tabpanel" class="tab-pane" id="address">
+  <div class="row">
+    <div class="col-md-12">
+      <!--Address Details-->
+      <form class="form-horizontal" role="form" name="addressForms">
+        <div class="am-border">
+          <fieldset>
+            <legend>US Residence/Foreign Address</legend>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="usAddressCheck" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">US Residence Address</label>
+                  <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                    <input type="checkbox" ng-model="addrCtrl.usAddressCheck" iCheck value="us" name="usAddressCheck" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="abroadAddressCheck" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">Foreign/Abroad Address</label>
+                  <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                    <input type="checkbox" ng-model="addrCtrl.abroadAddressCheck" iCheck value="abroad" name="abroadAddressCheck" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="am-border" ng-repeat="mailAddress in addrCtrl.mailingAddresses track by $index">
+          <ng-form name="addressForm">
+            <fieldset>
+              <legend>{{$index+1}}.Mailing Address</legend>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Applicable" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">US Residence Address same as Mailing Address</label>
+                    <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                      <input type="checkbox" class="default-address-checkbox" disabled ng-model="mailAddress.is_primary" iCheck value="1" name="defaultAddress" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{mailAddress.unit}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{mailAddress.street}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                        <label class="control-label">{{addrCtrl.mailingPlaces[$index].metaLocation.city}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.mailingPlaces[$index].metaLocation.state}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.mailingPlaces[$index].metaLocation.country}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{mailAddress.zip_code}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border residence-form" ng-repeat="residence in addrCtrl.usAddresses track by $index" ng-if="addrCtrl.usAddressCheck">
+          <ng-form name="residenceForm">
+            <fieldset>
+              <legend>{{$index+1}}.US Residence Address</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{residence.unit}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{residence.street}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usPlaces[$index].metaLocation.city}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usPlaces[$index].metaLocation.state}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usPlaces[$index].metaLocation.country}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{residence.zip_code}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border" ng-repeat="abroadAddress in addrCtrl.abroadAddresses track by $index" ng-if="addrCtrl.abroadAddressCheck">
+          <ng-form name="abroadForm">
+            <fieldset>
+              <legend>{{$index+1}}.Foreign/Abroad Address</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{abroadAddress.unit}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{abroadAddress.street}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                    <div class="input-group">
+                      <label class="control-label">{{addrCtrl.abroadPlaces[$index].metaLocation.city}}</label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.abroadPlaces[$index].metaLocation.state}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.abroadPlaces[$index].metaLocation.country}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{abroadAddress.zip_code}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border" ng-repeat="usEmbassyAddress in addrCtrl.usEmbassyAddress track by $index">
+          <ng-form name="usEmbassyForm">
+            <fieldset>
+              <legend>US Embassy</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usEmbassyPlaces[$index].metaLocation.city}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usEmbassyPlaces[$index].metaLocation.state}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{addrCtrl.usEmbassyPlaces[$index].metaLocation.country}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="col-md-12 text-center">
+          <a type="button" ui-sref="home.viewBeneficiary.documents" class="btn btn-default">Next</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

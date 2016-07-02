@@ -1,0 +1,144 @@
+<div class="container-fluid step-association">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Workflow Step Association">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="associationForm.$valid && stepAscCtrl.createAssociation(associationForm)" name="associationForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(associationForm.workflow.$error.required) &&
+                          (associationForm.workflow.$touched || associationForm.workflow.$dirty || associationForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Select Workflow</label>
+                          <div class="col-sm-8 col-md-8">
+                            <ui-select name="workflow" ng-model="stepAscCtrl.association.workflow_id" theme="select2" class="form-control" required ng-change="stepAscCtrl.getStepsAndTask(stepAscCtrl.association.workflow_id)">
+                              <ui-select-match>{{$select.selected.workflow_name}}</ui-select-match>
+                              <ui-select-choices repeat="workflow.id as workflow in stepAscCtrl.workflows | filter: $select.search">
+                                <div ng-bind-html="workflow.workflow_name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="associationForm.workflow.$error"
+                              ng-if='associationForm.workflow.$touched || associationForm.workflow.$dirty || associationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Workflow is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(associationForm.workflow_step.$error.required) &&
+                        (associationForm.workflow_step.$touched|| associationForm.workflow_step.$dirty || associationForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Select Workflow Step</label>
+                          <div class="col-sm-8 col-md-8">
+                            <ui-select name="workflow_step" ng-disabled="!stepAscCtrl.association.workflow_id" ng-model="stepAscCtrl.association.workflow_step_id" theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.workflow_step_name}}</ui-select-match>
+                              <ui-select-choices repeat="workflowStep.id as workflowStep in stepAscCtrl.workflowSteps | filter: $select.search">
+                                <div ng-bind-html="workflowStep.workflow_step_name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <from-date-requried from-date="stepAscCtrl.association.workflow_id" ng-if="!stepAscCtrl.association.workflow_id" class="help-block">
+                              Select Workflow first
+                            </from-date-requried>
+                            <ng-messages for="associationForm.workflow_step.$error"
+                              ng-if='associationForm.workflow_step.$touched || associationForm.workflow_step.$dirty || associationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Workflow step is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':associationForm.source_role.$error.required &&( associationForm.source_role.$dirty || associationForm.source_role.$touched || associationForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Source User Role</label>
+                          <div class="col-sm-8 col-md-8">
+                            <ui-select name="source_role" ng-model="stepAscCtrl.association.source_role_id" theme="select2" class="form-control" required ng-change="stepAscCtrl.filterRoles(stepAscCtrl.association.source_role_id)">
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="role.id as role in stepAscCtrl.sourceRole | filter: $select.search">
+                                <div ng-bind-html="role.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="associationForm.source_role.$error" ng-if=' associationForm.source_role.$dirty || associationForm.source_role.$touched || associationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Source role is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':associationForm.dest_role.$error.required && (associationForm.dest_role.$dirty || associationForm.dest_role.$touched || associationForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Destination User Role</label>
+                          <div class="col-sm-8 col-md-8">
+                            <ui-select ng-disabled="!stepAscCtrl.association.source_role_id" ng-model="stepAscCtrl.association.destination_role_id" name="dest_role" theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="role.id as role in stepAscCtrl.destRole | filter: $select.search">
+                                <div ng-bind-html="role.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <from-date-requried from-date="stepAscCtrl.association.source_role_id" ng-if="!stepAscCtrl.association.source_role_id" class="help-block">
+                              Select source user role first
+                            </from-date-requried>
+                            <ng-messages for="associationForm.dest_role.$error"
+                              ng-if='associationForm.dest_role.$dirty || associationForm.dest_role.$touched || associationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Destination role is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(associationForm.task.$error.required) &&
+                        (associationForm.task.$touched|| associationForm.task.$dirty || associationForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Task</label>
+                          <div class="col-sm-8 col-md-8">
+                            <ui-select name="task" ng-disabled="!stepAscCtrl.association.workflow_id" ng-model="stepAscCtrl.association.task_id"  theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.task_name}}</ui-select-match>
+                              <ui-select-choices repeat="task.id as task in stepAscCtrl.tasks | filter: $select.search">
+                                <div ng-bind-html="task.task_name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <from-date-requried from-date="stepAscCtrl.association.workflow_id" ng-if="!stepAscCtrl.association.workflow_id" class="help-block">
+                              Select Workflow first
+                            </from-date-requried>
+                            <ng-messages for="associationForm.task.$error"
+                              ng-if='associationForm.task.$touched || associationForm.task.$dirty || associationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Task is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center col-md-12">
+                      <input type="submit" value="Save" class="btn btn-primary m-r-10" />
+                      <a class="btn btn-default" ui-sref="home.steps">Cancel</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

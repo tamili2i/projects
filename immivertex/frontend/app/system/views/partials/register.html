@@ -1,0 +1,143 @@
+<div class="container">
+	<div class="register-form">
+		<div class="text-center immi-logo">
+			<span>IMMIVERTEX</span>
+		</div>
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<h3 class="text-center" style="margin-bottom: 25px;">Sign Up</h3>
+				<form class="form-horizontal" ng-submit="registerForm.$valid && regCtrl.registerUser(registerForm, $event)" name="registerForm" novalidate>
+	        <div class="row">
+	          <div class="col-xs-12 col-sm-12 col-md-12">
+	            <div class="form-group" ng-class="{'has-error':(registerForm.firstName.$error.required || registerForm.firstName.$error.minlength||registerForm.firstName.$error.maxlength) && (registerForm.firstName.$touched|| registerForm.firstName.$dirty || registerForm.$submitted)}">
+	              <label class="col-xs-3 col-sm-3 col-md-3 control-label">First Name</label>
+	              <div class="col-xs-7 col-sm-7 col-md-8">
+	                <input type="text" name="firstName" ng-model="regCtrl.user.person.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+	                <ng-messages for="registerForm.firstName.$error" ng-if='registerForm.firstName.$touched||registerForm.firstName.$error.minlength||registerForm.firstName.$error.maxlength ||registerForm.firstName.$dirty || registerForm.$submitted' class="help-block" role="alert">
+	                  <ng-message when="required">First Name is required</ng-message>
+	                  <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+	                  <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+	                </ng-messages>
+	              </div>
+	              <div class="col-xs-1 col-sm-1 col-md-1">
+	                <i class="fa fa-circle mandatory"></i>
+	              </div>
+	            </div>
+	          </div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group" ng-class="{'has-error':(registerForm.lastName.$error.required
+								|| registerForm.lastName.$error.minlength||registerForm.lastName.$error.maxlength) &&
+								(registerForm.lastName.$touched|| registerForm.lastName.$dirty || registerForm.$submitted)}">
+								<label class="col-xs-3 col-sm-3 col-md-3 control-label">Last Name</label>
+								<div class="col-xs-7 col-sm-7 col-md-8">
+									<input type="text" name="lastName" ng-model="regCtrl.user.person.last_name" class="form-control" ng-minlength="3" required/>
+
+									<ng-messages for="registerForm.lastName.$error" ng-if='registerForm.lastName.$touched||
+									 registerForm.lastName.$error.minlength || registerForm.lastName.$error.maxlength ||
+									 registerForm.lastName.$dirty || registerForm.$submitted' class="help-block" role="alert">
+										<ng-message when="required">Last Name is required</ng-message>
+	                  <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+	                  <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+									</ng-messages>
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1">
+									<i class="fa fa-circle mandatory"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group" ng-class="{'has-error': (registerForm.email.$error.required ||
+								registerForm.email.$error.pattern || registerForm.email.$error.availability) && (registerForm.email.$touched ||
+								registerForm.email.$dirty || registerForm.$submitted)}">
+								<label class="col-xs-3 col-sm-3 col-md-3 control-label">E-mail</label>
+								<div class="col-xs-7 col-sm-7 col-md-8">
+									<input type="text" name="email" ng-disabled="regCtrl.validEmail"
+									ng-change="regCtrl.setAvailability(registerForm.email)" ng-model="regCtrl.user.email.email" class="form-control"
+										ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
+									<ng-messages for="registerForm.email.$error"
+									ng-if='registerForm.email.$touched || registerForm.email.$dirty || registerForm.$submitted'
+									class="help-block" role="alert">
+										<ng-message when="required">E-mail is required</ng-message>
+										<ng-message when="pattern">Invalid E-mail</ng-message>
+										<ng-message when="availability">Email already registered</ng-message>
+									</ng-messages>
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1">
+									<i class="fa fa-circle mandatory"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group" ng-class="{'has-error': (registerForm.phone.$error.required || registerForm.phone.$error.pattern) &&
+							(registerForm.phone.$dirty || registerForm.$submitted)}">
+								<label class="col-xs-3 col-sm-3 col-md-3 control-label">Phone Number</label>
+								<div class="col-xs-7 col-sm-7 col-md-8">
+									<input type="text" ng-model="regCtrl.user.phone.number" maxlength="12" ng-pattern="/^[0-9]*$/" name="phone" class="form-control" required/>
+									<ng-messages for="registerForm.phone.$error" ng-if='registerForm.phone.$error.pattern || registerForm.phone.$dirty || registerForm.$submitted'
+									class="help-block" role="alert">
+										<ng-message when="required">Phone Number is required</ng-message>
+										<ng-message when="pattern">Phone Number must be a number</ng-message>
+									</ng-messages>
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1">
+									<i class="fa fa-circle mandatory"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group" ng-class="{'has-error':(registerForm.legalName.$error.required) &&
+								(registerForm.legalName.$touched|| registerForm.legalName.$dirty || registerForm.$submitted)}">
+								<label class="col-xs-3 col-sm-3 col-md-3 control-label">Legal Name of Entity</label>
+								<div class="col-xs-7 col-sm-7 col-md-8">
+									<input type="text" name="legalName" ng-model="regCtrl.user.person.Legal_Name_of_Entity" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+									<ng-messages for="registerForm.legalName.$error" ng-if='registerForm.legalName.$touched ||
+										registerForm.legalName.$dirty || registerForm.$submitted' class="help-block" role="alert">
+										<ng-message when="required">Legal Name is required</ng-message>
+									</ng-messages>
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1">
+									<i class="fa fa-circle mandatory"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="form-group" ng-class="{'has-error':(registerForm.subdomain.$error.required || registerForm.subdomain.$error.availability) &&
+								(registerForm.subdomain.$touched|| registerForm.subdomain.$dirty || registerForm.$submitted)}">
+								<label class="col-xs-3 col-sm-3 col-md-3 control-label">Subdomain</label>
+								<div class="col-xs-7 col-sm-7 col-md-8">
+									<input type="text" name="subdomain" ng-disabled="regCtrl.validSubdomain" ng-change="regCtrl.setAvailability(registerForm.subdomain)"
+									ng-model="regCtrl.user.person.subdomain" class="form-control" required/>
+									<ng-messages for="registerForm.subdomain.$error" ng-if='registerForm.subdomain.$touched ||
+									registerForm.subdomain.$dirty || registerForm.$submitted'
+									 class="help-block" role="alert">
+										<ng-message when="required">Subdomain is required</ng-message>
+										<ng-message when="availability">Subdomain already taken</ng-message>
+									</ng-messages>
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1">
+									<i class="fa fa-circle mandatory"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="text-center">
+						<!-- <a href="#" class="btn btn-default">Reset</a> -->
+						<button class="btn btn-primary" ng-disabled="regCtrl.validSubdomain || regCtrl.validEmail">Register</button>
+						<a ui-sref="landing.login" class="btn btn-default">Cancel</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

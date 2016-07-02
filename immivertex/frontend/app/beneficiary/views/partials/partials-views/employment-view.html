@@ -1,0 +1,174 @@
+<!--Employment Tab-->
+<div role="tabpanel" class="tab-pane" id="employment">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" name="employmentForms">
+        <fieldset>
+          <div class="am-border" ng-repeat="employment in empCtrl.employments">
+            <ng-form name="employmentForm">
+              <legend>{{$index+1}}. Employment Details</legend>
+              <div class="row" ng-if="employment.is_current">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Current</label>
+                    <div class="col-sm-6 col-md-6 p-t-8">
+                      <input type="radio" name="iscurrent" ng-value="true" iCheck ng-model="employment.is_current"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Employer Name <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.name}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Employment Type <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{empCtrl.employmentTypeName.name}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Supervisor's Name <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.supervisor_name}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Job Title <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.title}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Job Description <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.description}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">From Date <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.from_date}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">To Date <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.to_date}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Phone <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.phone}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">FAX <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.fax}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Supervisor's Email <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.email}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label word-break">{{employment.employment_information.address.unit}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label word-break">{{employment.employment_information.address.street}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                        <label class="control-label">{{empCtrl.places[$index].metaLocation.city}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{empCtrl.places[$index].metaLocation.state}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{empCtrl.places[$index].metaLocation.country}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">{{employment.employment_information.address.zip_code}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-form>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 text-center">
+              <a ui-sref="home.viewBeneficiary.history" class="btn btn-default">Next</a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>

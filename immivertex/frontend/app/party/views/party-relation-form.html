@@ -1,0 +1,81 @@
+<div class="container-fluid party-relationship-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Create Party Relationship">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-elements" ng-submit="partyRelationForm.$valid && prfCtrl.save($event)" name="partyRelationForm" novalidate>
+                  <fieldset>
+                    <legend>Create Party Relationship</legend>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-4 col-md-4">
+                        <div class="form-group" ng-class="{'has-error':partyRelationForm.party_one.$error.required && (partyRelationForm.party_one.$dirty||partyRelationForm.party_one.$touched || partyRelationForm.$submitted)}">
+                          <label class="col-sm-12 col-md-12 control-label">Party 1</label>
+                          <div class="col-sm-10 col-md-10">
+                            <input type="text" placeholder="Search parties" name="party_one" ng-model="prfCtrl.party_one" ng-change="prfCtrl.getParties(prfCtrl.party_one);" ng-click="prfCtrl.getParties(prfCtrl.party_one)" class="form-control" required>
+                            <div auto-complete items="prfCtrl.parties" id="party_one" watch-for="prfCtrl.party_one" items-id="party_one" item-callback="prfCtrl.partyRelationCallback" class="custom-autocomplete"></div>
+                            <ng-messages for="partyRelationForm.party_one.$error" ng-if='partyRelationForm.party_one.$dirty|| partyRelationForm.party_one.$touched || partyRelationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Party is required</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-2 col-md-2">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="form-group" ng-class="{'has-error':partyRelationForm.relation.$error.required && (partyRelationForm.relation.$dirty||partyRelationForm.relation.$touched || partyRelationForm.$submitted)}">
+                          <label class="col-sm-12 col-md-12 control-label">Relation</label>
+                          <div class="col-sm-10 col-md-10">
+                            <ui-select theme="select2" class="form-control" name="relation" ng-model="prfCtrl.partRelation.type_id" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat=" relation.id as relation in prfCtrl.relations | filter: $select.search">
+                                <div ng-bind-html="relation.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="partyRelationForm.relation.$error" ng-if='partyRelationForm.relation.$dirty|| partyRelationForm.relation.$touched || partyRelationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Relation is required</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-2 col-md-2">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-4 col-md-4">
+                        <div class="form-group" ng-class="{'has-error':partyRelationForm.party_two.$error.required && (partyRelationForm.party_two.$dirty||partyRelationForm.party_two.$touched || partyRelationForm.$submitted)}">
+                          <label class="col-sm-12 col-md-12 control-label">Party 2</label>
+                          <div class="col-sm-10 col-md-10">
+                            <input type="text" placeholder="Search parties" name="party_two" ng-model="prfCtrl.party_two" ng-change="prfCtrl.getParties(prfCtrl.party_two)" ng-click="prfCtrl.getParties(prfCtrl.party_two)" class="form-control" required>
+                            <div auto-complete items="prfCtrl.parties" id="party_two" watch-for="prfCtrl.party_two" items-id="party_two" item-callback="prfCtrl.partyRelationCallback" class="custom-autocomplete"></div>
+                            <ng-messages for="partyRelationForm.party_two.$error" ng-if='partyRelationForm.party_two.$dirty|| partyRelationForm.party_two.$touched || partyRelationForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Party is required</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-2 col-md-2">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="text-center col-md-12">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a class="btn btn-default">
+                         Cancel
+                        </a>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </panel>
+      </div>
+    </div>
+</div> <!-- container-fluid -->

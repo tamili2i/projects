@@ -1,0 +1,95 @@
+<div class="beneficiary-bg">
+  <fieldset>
+    <legend>Questionnaire</legend>
+    <form role="form" class="form-horizontal form-elements" name="user_details">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">This appearance relates to immigration matters before</label>
+          <div class="col-sm-6 col-md-6 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox" value="Yes"> USCIS
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox" value="No"> ICE
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox" value="No"> CBP
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox" value="No"> Free Text-List form number/Specific matter
+            </label>
+          </div>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <input type="text" ng-model="claimed.name"  ng-hide="citizen!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">You are entering appearance as attorney accrediated representative at the request of</label>
+          <div class="col-sm-6 col-md-6 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox"   value="Yes"> Applicant
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox"   value="No"> Petitioner
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox"   value="No"> Resquestor
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="checkbox"   value="No"> Respondent(ICE, CBP)
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="election.name" ng-hide="registered!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">USCIS ELIS account number</label>
+          <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">Alien Registration number</label>
+          <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">Daytime phone number</label>
+          <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">Mobile phone number</label>
+          <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">Email Address</label>
+          <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="text-center col-md-12">
+        <button class="btn btn-primary">Save</button>
+        <a ui-sref="home.beneficiaryFamily.general" class="btn btn-default">Next</a>
+      </div>
+  </form>
+</fieldset>
+</div>

@@ -1,0 +1,59 @@
+<div class="container-fluid workflow-list">
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-9">
+            <panel id="workflow-grid" panel-class="panel-sky" heading="Workflow List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <ui-view></ui-view>
+                    <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                        <div class="workflow-list-actions">
+                            <div class="input-icon search m-r-10">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input search-for table-id="wflCtrl.gridName"
+                                type="search" class="form-control"
+                                aria-controls="intakeforms-grid"
+                                placeholder="Search workflow"
+                                tabindex="1"/>
+                            </div>
+                                <a ui-sref="home.workflows.form"  ng-if="wflCtrl.access_type" class="btn btn-primary m-r-10" ui-sref-active="hide" >
+                                <i class="icon fa fa-plus"></i> Create
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <table table-id="wflCtrl.gridName" class="table table-striped" datatable-grid></table>
+
+                <div class="panel-loading" ng-show="wflCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-3">
+          <panel id="todo-list" panel-class="panel-sky" heading="TODO List">
+              <panel-controls>
+                  <panel-control-collapse></panel-control-collapse>
+              </panel-controls>
+              <div class="workflow-notification">
+          <legend>Notification</legend>
+          <li ng-repeat="notification in wflCtrl.notifications">
+            <i class="fa fa-envelope-o message-icon"></i>
+            <div class="workflow-head"><a>{{notification.WorkflowTodolist.taskdet.task_name}}</a></div>
+            <div class="message-caption">
+              Description
+            </div>
+            <div class="message-caption">
+              <i class="fa fa-clock-o"></i>
+              {{notification.date}}
+            </div>
+          </li>
+          <li class="no-notification" ng-show="!wflCtrl.notifications.length && !wflCtrl.isLoadingNotification"> No notifications found</li>
+        </div>
+        <div class="panel-loading" ng-show="wflCtrl.isLoadingNotification">
+            <div class="panel-loader-dots"></div>
+        </div>
+        </panel>
+        </div>
+    </div>
+</div>

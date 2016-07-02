@@ -1,0 +1,34 @@
+<div ui-view class="container-fluid pc-admin">
+    <div class="row">
+        <div class="col-sm-12">
+            <panel panel-class="panel-sky" heading="Program Case List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                        <div class="intake-forms-actions">
+                            <div class="input-icon search m-r-10">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input search-for table-id="pcCtrl.gridName"
+                                type="search" class="form-control"
+                                aria-controls="intakeforms-grid"
+                                placeholder="Search Program Case"
+                                tabindex="1"/>
+                            </div>
+                                <a ui-sref="home.programsForm" class="btn btn-primary m-r-10" ui-sref-active="hide" >
+                                <i class="icon fa fa-plus"></i> Create
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <table table-id="pcCtrl.gridName" class="table table-striped" datatable-grid>
+                </div>
+                <div class="panel-loading" ng-show="pcCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>

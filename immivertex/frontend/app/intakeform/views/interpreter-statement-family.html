@@ -1,0 +1,128 @@
+<div class="container-fluid interpreter-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Interpreter Statement">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" name="interpreterForm" class="form-horizontal form-elements" novalidate>
+                  <h5>Below questions are applicable only in case of petition for permenent residence or adjust of status (I 485)</h5>
+                  <legend>Interpreters details</legend>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Language Used</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Law Firm Name</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text"  class="form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group" ng-class="{'has-error': (interpreterForm.phone.$error.pattern) &&
+                      (interpreterForm.phone.$dirty || interpreterForm.$submitted)}">
+                        <label class="col-sm-3 col-md-3 control-label">Day Phone Number</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="lfCtrl.lawfirm.phone.number"/>
+                          <ng-messages for="interpreterForm.phone.$error" ng-if='interpreterForm.phone.$error.pattern || interpreterForm.phone.$dirty || interpreterForm.$submitted'
+                          class="help-block" role="alert">
+                            <ng-message when="pattern">Day Phone Number must be a number</ng-message>
+                          </ng-messages>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Have you prepared the form</label>
+                        <div class="col-sm-7 col-md-8">
+                          <label class="radio-inline control-label">
+                            <input iCheck type="radio" name="adoption" value="yes" checked="checked"/> Yes
+                          </label>
+                          <label class="radio-inline control-label">
+                            <input iCheck type="radio" name="adoption" value="no" /> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h5>Signature of person preparing the form (if different from interpreter)</h5>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Full Name</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group" ng-class="{'has-error': (interpreterForm.dayPhone.$error.pattern) &&
+                      (interpreterForm.dayPhone.$dirty || interpreterForm.$submitted)}">
+                        <label class="col-sm-3 col-md-3 control-label">Day Phone Number</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control" maxlength="12" name="dayPhone" ng-pattern="/^[0-9]*$/" ng-model="lfCtrl.lawfirm.dayPhone.number"/>
+                          <ng-messages for="interpreterForm.dayPhone.$error" ng-if='interpreterForm.dayPhone.$error.pattern || interpreterForm.dayPhone.$dirty || interpreterForm.$submitted'
+                          class="help-block" role="alert">
+                            <ng-message when="pattern">Day Phone Number must be a number</ng-message>
+                          </ng-messages>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Firm Name</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label">Firm Address</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="text" class="form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group" ng-class="{'has-error': (interpreterForm.email.$error.required || interpreterForm.email.$error.pattern || interpreterForm.email.$error.availability) && (interpreterForm.email.$touched || interpreterForm.email.$dirty || interpreterForm.$submitted)}">
+                        <label class="col-sm-3 col-md-3 control-label">Firm Email Address</label>
+                        <div class="col-sm-7 col-md-8">
+                          <input type="email" name="email" ng-model="lfCtrl.lawfirm.email.email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" />
+                          <ng-messages for="interpreterForm.email.$error" ng-if='interpreterForm.email.$touched || interpreterForm.email.$dirty || interpreterForm.$submitted' class="help-block" role="alert">
+                            <ng-message when="pattern">Invalid Email</ng-message>
+                          </ng-messages>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center col-md-12">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a class="btn btn-default">Cancel</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

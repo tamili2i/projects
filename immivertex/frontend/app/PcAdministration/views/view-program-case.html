@@ -1,0 +1,99 @@
+<div class="container-fluid program-case-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="View Program Case">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="pcForm" novalidate>
+                  <fieldset>
+                    <legend>View Program Case</legend>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{prmCsViCtrl.programCase.name}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Description</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{prmCsViCtrl.programCase.description}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <legend>Associations</legend>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Intake Form</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">
+                            <span class="doc-list" ng-repeat="intakeform in prmCsViCtrl.programCase.intake_form_id">{{intakeform}}</span>
+                          </label>
+                          <!-- <div class="col-sm-8 col-md-8">
+                            <ui-select ng-disabled="true" multi-select-required name="intakeForm" ng-model="prmCsViCtrl.programCase.intake_form_id" multiple="multiple" theme="select2" class="form-control">
+                              <ui-select-match>{{$item.name}}</ui-select-match>
+                              <ui-select-choices repeat="intakeForm.id as intakeForm in prmCsViCtrl.intakeForms | filter: $select.search">
+                                <div ng-bind-html="intakeForm.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                          </div> -->
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Form Template</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">
+                            <span class="doc-list" ng-repeat="formTemplate in prmCsViCtrl.programCase.form_template_id">{{formTemplate}}</span>
+                          </label>
+                          <!-- <div class="col-sm-8 col-md-8">
+                            <ui-select ng-disabled="true" multi-select-required name="formTemplate" ng-model="prmCsViCtrl.programCase.form_template_id" multiple="multiple" theme="select2" class="form-control">
+                              <ui-select-match>{{$item.name}}</ui-select-match>
+                              <ui-select-choices repeat="formTemplate.id as formTemplate in prmCsViCtrl.formTemplates | filter: $select.search">
+                                <div ng-bind-html="formTemplate.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Check List</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">
+                            <span class="doc-list" ng-repeat="document in prmCsViCtrl.programCase.document_checklist_id">{{document}}</span>
+                          </label>
+                          <!-- <div class="col-sm-8 col-md-8">
+                            <ui-select ng-disabled="true" multi-select-required name="checklist" ng-model="prmCsViCtrl.programCase.document_checklist_id" multiple="multiple" theme="select2" class="form-control">
+                              <ui-select-match>{{$item.name}}</ui-select-match>
+                              <ui-select-choices repeat="checkList.id as checkList in prmCsViCtrl.checkLists | filter: $select.search">
+                                <div ng-bind-html="checkList.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center col-md-12">
+                      <a class="btn btn-default" ui-sref="home.programs">Cancel</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

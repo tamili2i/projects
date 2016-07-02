@@ -1,0 +1,42 @@
+<div class="container-fluid beneficiary">
+    <div class="row">
+        <div class="col-sm-12">
+            <panel panel-class="panel-sky" heading="Beneficiary List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="beneficiary-actions text-right">
+                            <!-- <div class="input-icon search">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input search-for="beneficiaries-grid"
+                                type="search" class="form-control"
+                                aria-controls="beneficiaries-grid"
+                                placeholder="Search Beneficiaries"
+                                tabindex="1"/>
+                            </div> -->
+                            <a ui-sref="home.beneficiaries.search" class="btn btn-default m-r-10" ui-sref-active="hide">
+                              <i class="glyphicon glyphicon-search"></i>
+                              Search
+                            </a>
+                            <a ui-sref="home.beneficiaryForm" ng-if="blistCtrl.access_type" class="btn btn-primary m-r-10">
+                                <i class="icon fa fa-plus"></i> Create
+                            </a>
+                            <button class="help-button btn btn-default ">
+                                <i class="glyphicon glyphicon-question-sign"></i>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <ui-view></ui-view>
+                    <table table-id="blistCtrl.gridName" class="table table-striped" datatable-grid>
+                    </table>
+                </div>
+                <div class="panel-loading" ng-show="blistCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>

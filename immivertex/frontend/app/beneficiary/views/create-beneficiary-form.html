@@ -1,0 +1,157 @@
+<div class="container-fluid create-beneficiary-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Create Beneficiary">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="beneficiaryForm.$valid && bCrtCtrl.save($event,beneficiaryForm)" name="beneficiaryForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(beneficiaryForm.FirstName.$error.required || beneficiaryForm.FirstName.$error.minlength||beneficiaryForm.FirstName.$error.maxlength || beneficiaryForm.FirstName.$error.pattern) && (beneficiaryForm.FirstName.$touched|| beneficiaryForm.FirstName.$dirty || beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="FirstName" ng-model="bCrtCtrl.beneficiary.person.first_name" ng-pattern="/^[A-Za-z]+$/" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="beneficiaryForm.FirstName.$error" ng-if='beneficiaryForm.FirstName.$touched||beneficiaryForm.FirstName.$error.minlength||beneficiaryForm.FirstName.$error.maxlength ||beneficiaryForm.FirstName.$dirty || beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">First Name is required</ng-message>
+                             <ng-message when="pattern">First Name may contain only letters</ng-message>
+                             <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                             <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(beneficiaryForm.LastName.$error.required || beneficiaryForm.LastName.$error.pattern || beneficiaryForm.LastName.$error.minlength||beneficiaryForm.LastName.$error.maxlength) && (beneficiaryForm.LastName.$touched || beneficiaryForm.LastName.$dirty || beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="LastName" ng-model="bCrtCtrl.beneficiary.person.last_name" ng-pattern="/^[A-Za-z]+$/" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="beneficiaryForm.LastName.$error" ng-if='beneficiaryForm.LastName.$touched || form.validateDemo.LastName.$dirty || beneficiaryForm.LastName.$error.minlength||beneficiaryForm.LastName.$error.maxlength || beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Last Name is required</ng-message>
+                             <ng-message when="pattern">Last Name may contain only letters</ng-message>
+                             <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                             <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(beneficiaryForm.date.$error.required ) && (beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">DOB</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input custom-datepicker type="text" name="date" class="form-control" format="mm/dd/yyyy" end-date="0y" ng-model="bCrtCtrl.beneficiary.person.date_of_birth" required readonly/>
+                           <ng-messages for="beneficiaryForm.date.$error" ng-if='beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">DOB is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (beneficiaryForm.email.$error.required || beneficiaryForm.email.$error.pattern || beneficiaryForm.email.$error.availability) && (beneficiaryForm.email.$touched || beneficiaryForm.email.$dirty || beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Email</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="email" name="email" ng-model="bCrtCtrl.beneficiary.email.email" ng-change="bCrtCtrl.setAvailability(beneficiaryForm.email)" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"required/>
+                            <ng-messages for="beneficiaryForm.email.$error" ng-if='beneficiaryForm.email.$touched || beneficiaryForm.email.$dirty || beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Email is required</ng-message>
+                             <ng-message when="pattern">Invalid Email</ng-message>
+                             <ng-message when="availability">Email already registered</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':beneficiaryForm.issuingCountry.$error.required && (beneficiaryForm.issuingCountry.$dirty||beneficiaryForm.issuingCountry.$touched || beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Issuing Country</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <select ng-model="bCrtCtrl.beneficiary.passport.issuing_country_id" ng-options="country.id as country.name for country in bCrtCtrl.countries"
+                             theme="select2" name="issuingCountry" class="form-control" required></select>
+                            <!-- <ui-select ng-model="bCrtCtrl.beneficiary.passport.issuing_country_id" theme="select2" name="issuingCountry" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="country.id as country in bCrtCtrl.countries | filter: $select.search">
+                                <div ng-bind-html="country.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select> -->
+                            <ng-messages for="beneficiaryForm.issuingCountry.$error" ng-if='beneficiaryForm.issuingCountry.$dirty||beneficiaryForm.issuingCountry.$touched || beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Select Issuing Country</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(beneficiaryForm.passportNo.$error.required || beneficiaryForm.passportNo.$error.minlength || beneficiaryForm.passportNo.$error.availability) && (beneficiaryForm.passportNo.$touched|| beneficiaryForm.passportNo.$dirty || beneficiaryForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Passport No</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="passportNo" ng-model="bCrtCtrl.beneficiary.passport.number" minlength="8" ng-change="bCrtCtrl.setAvailability(beneficiaryForm.passportNo)" class="form-control" required/>
+                            <ng-messages for="beneficiaryForm.passportNo.$error" ng-if='beneficiaryForm.passportNo.$touched || beneficiaryForm.passportNo.$dirty || beneficiaryForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Passport No is required</ng-message>
+                             <ng-message when="minlength">The passport number must be at least 8 characters</ng-message>
+                             <ng-message when="availability">Passport number already registered</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center col-md-12">
+                      <input type="submit" value="Save" class="btn btn-primary m-r-10" />
+                      <a ng-click="bCrtCtrl.getNextPage()" class="btn btn-default">Cancel</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="availability-container" ng-if="bCrtCtrl.availableBeneficiary.length">
+              <legend> Available Beneficiary Info</legend>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Passport No</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat ="beneficiary in bCrtCtrl.availableBeneficiary">
+                    <td><a href="/#/beneficiary/{{beneficiary.party_id}}/">{{beneficiary.party_id}}</a></td>
+                    <td>{{beneficiary.person_det.person.first_name}}</td>
+                    <td>{{beneficiary.person_det.person.last_name}}</td>
+                    <td>{{beneficiary.email.email}}</td>
+                    <td>{{beneficiary.passport.number}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="beneficiary-bg">
+  <fieldset>
+    <legend>Background</legend>
+    <form role="form" class="form-horizontal form-elements" name="user_details">
+      <div class="row" ng-repeat="bgQuestion in bgCtrl.backgroundQns.questionAnsInfo">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+          <label class="col-sm-7 col-md-7 control-label text-left font-bold">{{bgQuestion.text}} <span class="p-l-8"> :</span></label>
+          <div class="col-sm-1 col-md-1">
+            <label class="control-label" ng-if="bgQuestion.value">Yes </label>
+            <label class="control-label" ng-if="!bgQuestion.value">No</label>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <label class="control-label">{{bgQuestion.comment}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="text-center col-md-12">
+        <a ui-sref="home.viewBeneficiary.cases" class="btn btn-default">Next</a>
+      </div>
+  </form>
+</fieldset>
+</div>

@@ -1,0 +1,212 @@
+<div class="container-fluid add-beneficiary derivative-family-container">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Create Derivative Beneficiary Family">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" class="form-horizontal form-elements" ng-submit="derivativeForm.$valid && dfCtrl.save($event)" name="derivativeForm" novalidate>
+                    <fieldset>
+                      <legend>General Info</legend>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':derivativeForm.title.$error.required && (derivativeForm.title.$dirty||derivativeForm.title.$touched || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Title</label>
+                            <div class="col-sm-7 col-md-8">
+                              <ui-select ng-model="dfCtrl.derivativeFamily.title" name="title" theme="select2" class="form-control" required>
+                                <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="title.id as title in dfCtrl.titles | filter: $select.search">
+                                  <div ng-bind-html="title.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                              </ui-select>
+                              <ng-messages for="derivativeForm.title.$error" ng-if='derivativeForm.title.$dirty|| derivativeForm.title.$touched || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Title is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(derivativeForm.FirstName.$error.required || derivativeForm.FirstName.$error.minlength||derivativeForm.FirstName.$error.maxlength) && (derivativeForm.FirstName.$touched|| derivativeForm.FirstName.$dirty || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" name="FirstName" ng-model="dfCtrl.derivativeFamily.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+
+                              <ng-messages for="derivativeForm.FirstName.$error" ng-if='derivativeForm.FirstName.$touched||derivativeForm.FirstName.$error.minlength||derivativeForm.FirstName.$error.maxlength ||derivativeForm.FirstName.$dirty || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">First Name is required</ng-message>
+                                <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                                <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group ">
+                            <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" class="form-control" ng-model="dfCtrl.derivativeFamily.middle_name"/>
+                            </div>
+                            <div class="col-sm-1 col-md-1"></div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(derivativeForm.LastName.$error.required || derivativeForm.LastName.$error.minlength||derivativeForm.LastName.$error.maxlength) && (derivativeForm.LastName.$touched || derivativeForm.LastName.$dirty || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" name="LastName" ng-model="dfCtrl.derivativeFamily.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                              <ng-messages for="derivativeForm.LastName.$error" ng-if='derivativeForm.LastName.$touched || derivativeForm.LastName.$dirty || derivativeForm.LastName.$error.minlength||derivativeForm.LastName.$error.maxlength || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Last Name is required</ng-message>
+                                <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                                <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':derivativeForm.gender.$error.required && (derivativeForm.gender.$dirty ||derivativeForm.gender.$touched|| derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Gender</label>
+                            <div class="col-sm-7 col-md-8 p-t-8">
+                              <label class="radio-inline control-label" ng-repeat="gender in dfCtrl.genders | orderBy: 'id'">
+                                <input iCheck type="radio" name="gender" ng-model="dfCtrl.derivativeFamily.gender" id="inlineradio1" ng-value="gender.id" ng-required="!dfCtrl.derivativeFamily.gender"/>
+                                {{gender.name}}
+                              </label>
+                              <ng-messages for="derivativeForm.gender.$error" ng-if='derivativeForm.gender.$dirty ||derivativeForm.gender.$touched|| derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Select Gender</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(derivativeForm.date.$error.required ) && (derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">DOB</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input custom-datepicker type="text" name="date" class="form-control" format="yyyy-mm-dd" end-date="0y" ng-model="dfCtrl.derivativeFamily.date_of_birth" required readonly/>
+                              <ng-messages for="derivativeForm.date.$error" ng-if='derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">DOB is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(derivativeForm.city.$error.required ) && (derivativeForm.city.$dirty || derivativeForm.city.$touched || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">City of Birth</label>
+                            <div class="col-sm-7 col-md-8">
+                            <div class="input-group">
+                              <input type="text" name="city" location-finder location-callback="dfCtrl.locationCallback" ng-model="dfCtrl.places.metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                            <ng-messages for="derivativeForm.city.$error" ng-if='derivativeForm.city.$dirty || derivativeForm.city.$touched || derivativeForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">City is required</ng-message>
+                            </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(derivativeForm.state.$error.required ) && (derivativeForm.state.$dirty || derivativeForm.state.$touched || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">State/Province of Birth</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input readonly="true" type="text" name="state" ng-model="dfCtrl.places.metaLocation.state" class="form-control" required/>
+                              <city-required city="dfCtrl.places.metaLocation.city" class="help-block">
+                                To fill the state, fillup the city.
+                              </city-required>
+                              <ng-messages for="derivativeForm.state.$error" ng-if='derivativeForm.state.$dirty || derivativeForm.state.$touched || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">State is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':derivativeForm.countryName.$error.required && (derivativeForm.countryName.$dirty||derivativeForm.countryName.$touched || derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Country of Birth</label>
+                            <div class="col-sm-7 col-md-8 p-t-8">
+                              <input type="text" name="countryName" ng-model="dfCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                              <ng-messages for="derivativeForm.countryName.$error" ng-if='derivativeForm.countryName.$dirty||derivativeForm.countryName.$touched || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Select Country</ng-message>
+                              </ng-messages>
+                              <city-required city="dfCtrl.places.metaLocation.city" class="help-block">
+                                To fill the country, fillup the city.
+                              </city-required>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':derivativeForm.citizen.$error.required && (derivativeForm.citizen.$dirty|| derivativeForm.citizen.$touched|| derivativeForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Nationality/ Citizenship</label>
+                            <div class="col-sm-7 col-md-8 p-t-8">
+                              <select ng-model="dfCtrl.derivativeFamily.nationality" ng-options="citizenship.id as citizenship.name for citizenship in dfCtrl.citizenship_countries"
+                               name="citizen" class="form-control" required></select>
+                              <ng-messages for="derivativeForm.citizen.$error" ng-if='derivativeForm.citizen.$dirty||derivativeForm.citizen.$touched || derivativeForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Select Nationality</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-3 col-md-3 control-label">Relationship with petitioner</label>
+                            <div class="col-sm-7 col-md-8">
+                              <ui-select ng-model="dfCtrl.derivativeFamily.relation" name="relation" theme="select2" class="form-control" required>
+                                <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="relation.id as relation in dfCtrl.relations | filter: $select.search">
+                                  <div ng-bind-html="relation.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                              </ui-select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center col-md-12">
+                        <input type="submit" value="Save" class="btn btn-primary"/>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </panel>
+    </div>
+  </div>
+</div> <!-- container-fluid -->

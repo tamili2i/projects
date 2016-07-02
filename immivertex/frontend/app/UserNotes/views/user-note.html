@@ -1,0 +1,64 @@
+<div id="myPopover" class="user-note-popup">
+  <span class="pull-right close-icon" ng-click="userNoteCtrl.closeUserNote()"><i class="fa fa-times"></i></span>
+  <div class="text-center show-more-link"><a ng-show = "userNoteCtrl.total_record > 20" ng-click = "userNoteCtrl.showMoreUserNotes();"> Show More
+  </a></div>
+  <div class="popover_container" ng-hide = "userNoteCtrl.user_note_list.length > 0">
+    <div class="user_notes_container">
+      <div class="user_notes_head">
+        <table>
+          <tbody>
+            <tr>
+              <td class="user_notes_avatar">
+                <div class="contact-icon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </div>
+              </td>
+              <td class="user-id">
+                <span ng-show="userNoteCtrl.userName">{{userNoteCtrl.userName}}</span>
+                <span ng-hide="userNoteCtrl.userName">Anonymous Name</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="popover_list_container comment-scroll-section" ng-style="userNoteCtrl.user_note_list.length > 2 && {'max-height' : '250px', 'overflow-y' : 'scroll', 'overflow-x' : 'hidden'}" ng-show = "userNoteCtrl.user_note_list.length > 0">
+    <div class="user_notes_container" ng-repeat="usernote in userNoteCtrl.user_note_list | orderBy : userNoteCtrl.user_note_list.created_at : true">
+      <div class="user_note_list">
+        <div class="user_notes_head">
+          <table>
+            <tbody>
+              <tr>
+                <td class="user_notes_avatar">
+                  <div class="contact-icon">
+                    <span class="glyphicon glyphicon-user"></span>
+                  </div>
+                </td>
+                <td class="user-id">
+                  <span ng-show="userNoteCtrl.userName">{{userNoteCtrl.userName}}</span>
+                  <span ng-hide="userNoteCtrl.userName">Anonymous Name</span>
+                  <div class="time_stamp">{{usernote.created_at | date : 'MMM dd, yyyy'}}  <span> {{usernote.created_at | date : 'hh:mm a'}}</span></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="user_notes_body" title="{{usernote.note}}">{{usernote.note | limitTo : 70 }} {{usernote.note.length > 70 ? '...' : ''}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user_notes_form">
+    <form>
+      <textarea class="form-control user-note-textarea" id="userNoteTextarea" maxlength="250" autoheight placeholder="Add comment here..." ng-focus="userNoteCtrl.showButtons()" ng-model="userNoteCtrl.userNotes.label"></textarea>
+      <div class="user_note_buttons">
+        <!-- <button class="btn btn-primary btn-sm mr10 comment-button" type="button" ng-disabled="!userNoteCtrl.userNotes.label" ng-click="userNoteCtrl.addComment()">Comment</button> -->
+        <button class="btn btn-default btn-sm mr10 cancel-button" type="button" ng-click="userNoteCtrl.cancel()">Cancel</button>
+        <a class="btn btn-info btn-sm mr10 comment-button pull-right" ng-disabled="!userNoteCtrl.userNotes.label" ng-click="userNoteCtrl.addComment()">
+          <span class="glyphicon glyphicon-comment"></span> Comment
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

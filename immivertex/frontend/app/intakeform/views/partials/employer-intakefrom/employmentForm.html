@@ -1,0 +1,220 @@
+<div class="row">
+  <div class="col-md-12">
+    <form role="form" class="form-horizontal form-elements" name="EmployerForm" novalidate>
+      <fieldset>
+        <legend>Employer</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Legal Name of Business/ Doing Business As</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group" ng-class="{'has-error':(EmployerForm.feinNo.$error.feinpattern || EmployerForm.feinNo.$error.availability) &&
+             (EmployerForm.feinNo.$touched || EmployerForm.feinNo.$dirty || EmployerForm.$submitted)}">
+              <label class="col-sm-3 col-md-3 control-label">Federal Employer Id Number (FEIN)
+              </label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" name="feinNo" ng-model="employer.federal_employer_id" class="form-control" validate-fein data-inputmask="'mask':'99-9999999'"/>
+                <ng-messages for="EmployerForm.feinNo.$error"
+                  ng-if='EmployerForm.feinNo.$touched ||EmployerForm.feinNo.$dirty || EmployerForm.$submitted'
+                  class="help-block" role="alert">
+                  <ng-message when="feinpattern">FEIN is not valid</ng-message>
+                </ng-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Established Year</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Address</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">City</label>
+              <div class="col-sm-7 col-md-8">
+                <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="emplErCtrl.locationCallback" ng-model="emplErCtrl.places.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+              <div class="col-sm-7 col-md-8">
+                <input readonly="true" type="text" name="state" ng-model="emplErCtrl.places.metaLocation.state" class="form-control"/>
+                <city-required city="emplErCtrl.employer.metaLocation.city" class="help-block">
+                  To fill the state, fillup the city.
+                </city-required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Country</label>
+              <div class="col-sm-7 col-md-8 p-t-8">
+                <input type="text" name="countryName" ng-model="emplErCtrl.places.metaLocation.country" class="form-control" readonly="true"/>
+                <city-required city="emplErCtrl.employer.metaLocation.city" class="help-block">
+                  To fill the country, fillup the city.
+                </city-required>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group" ng-class="{'has-error':(EmployerForm.zipCode.$error.required || EmployerForm.zipCode.$error.minlength ) && (EmployerForm.zipCode.$touched || EmployerForm.zipCode.$dirty || EmployerForm.$submitted )}">
+              <label class="col-sm-3 col-md-3 control-label">Zip Code</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text"  ng-minlength="6" ng-model="atrnyCtrl.attorney.address.zip_code" name="zipCode" class="form-control"/>
+                <ng-messages for="EmployerForm.zipCode.$error" ng-if='EmployerForm.zipCode.$dirty || EmployerForm.zipCode.$touched || EmployerForm.$submitted' class="help-block" role="alert">
+                  <ng-message when="required">Zip Code is requried</ng-message>
+                  <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                </ng-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group" ng-class="{'has-error': (EmployerForm.phone.$error.pattern) &&
+            (EmployerForm.phone.$dirty || EmployerForm.$submitted)}">
+              <label class="col-sm-3 col-md-3 control-label">Phone Number</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="atrnyCtrl.attorney.phone.number"/>
+                <ng-messages for="EmployerForm.phone.$error" ng-if='EmployerForm.phone.$error.pattern || EmployerForm.phone.$dirty || EmployerForm.$submitted'
+                class="help-block" role="alert">
+                  <ng-message when="pattern">Phone Number must be a number</ng-message>
+                </ng-messages>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group" ng-class="{'has-error': (EmployerForm.fax.$error.pattern) &&
+            (EmployerForm.fax.$dirty || EmployerForm.$submitted)}">
+              <label class="col-sm-3 col-md-3 control-label">Fax</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control" maxlength="12" name="fax" ng-pattern="/^[0-9]*$/" ng-model="atrnyCtrl.attorney.fax.number"/>
+                <ng-messages for="EmployerForm.fax.$error" ng-if='EmployerForm.fax.$error.pattern || EmployerForm.fax.$dirty || EmployerForm.$submitted'
+                class="help-block" role="alert">
+                  <ng-message when="pattern">Fax Number must be a number</ng-message>
+                </ng-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Web URL</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Signatory Name</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group" ng-class="{'has-error':EmployerForm.email.$error.pattern  && (EmployerForm.email.$dirty || EmployerForm.$submitted)}">
+              <label class="col-sm-3 col-md-3 control-label">Signatory Email</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" ng-model="email" class="form-control"/>
+                <ng-messages for="EmployerForm.email.$error" ng-if='EmployerForm.email.$dirty' class="help-block" role="alert">
+                  <ng-message when="pattern">Invalid Email</ng-message>
+                </ng-messages>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Signatory Title</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Gross Annual Income</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Net Annual Income</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">No. of Employees in USA</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">What Type of Business</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-6">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">NAICS Code</label>
+              <div class="col-sm-7 col-md-8">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary m-r-10">Save</button>
+          <a type="button" class="btn btn-default">Next</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,284 @@
+<div class="container-fluid lawfirm-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="{{lfCtrl.title}} Law firm">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="lawFirmForm.$valid && lfCtrl.save($event, lawFirmForm)" name="lawFirmForm" novalidate>
+                  <fieldset>
+                    <!-- <legend>Create Law firm</legend> -->
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':lawFirmForm.title.$error.required && (lawFirmForm.title.$dirty||lawFirmForm.title.$touched || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Title</label>
+                          <div class="col-sm-7 col-md-8">
+                            <ui-select name="title" ng-model="lfCtrl.lawfirm.attorney.person.title" theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="title.id as title in lfCtrl.titles | filter: $select.search">
+                                <div ng-bind-html="title.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="lawFirmForm.title.$error" ng-if='lawFirmForm.title.$dirty|| lawFirmForm.title.$touched || lawFirmForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Title is required</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.barId.$error.required || lawFirmForm.barId.$error.availability) && (lawFirmForm.barId.$touched|| lawFirmForm.barId.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Attorney Bar ID</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="barId" ng-model="lfCtrl.lawfirm.attorney.bar_id" class="form-control" ng-change="lfCtrl.setAvailability(lawFirmForm.barId)" required/>
+                            <ng-messages for="lawFirmForm.barId.$error" ng-if='lawFirmForm.barId.$touched || lawFirmForm.barId.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Bar ID is required</ng-message>
+                              <ng-message when="availability">Bar ID already registered</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.firstName.$error.required || lawFirmForm.firstName.$error.minlength||lawFirmForm.firstName.$error.maxlength) && (lawFirmForm.firstName.$touched|| lawFirmForm.firstName.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="firstName" ng-model="lfCtrl.lawfirm.attorney.person.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="lawFirmForm.firstName.$error" ng-if='lawFirmForm.firstName.$touched||lawFirmForm.firstName.$error.minlength||lawFirmForm.firstName.$error.maxlength ||lawFirmForm.firstName.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">First Name is required</ng-message>
+                              <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                              <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.lastName.$error.required || lawFirmForm.lastName.$error.minlength||lawFirmForm.lastName.$error.maxlength) && (lawFirmForm.lastName.$touched|| lawFirmForm.lastName.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="lastName" ng-model="lfCtrl.lawfirm.attorney.person.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="lawFirmForm.lastName.$error" ng-if='lawFirmForm.lastName.$touched||lawFirmForm.lastName.$error.minlength||lawFirmForm.lastName.$error.maxlength ||lawFirmForm.lastName.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Last Name is required</ng-message>
+                              <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                              <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.lawFirmName.$error.required || lawFirmForm.lawFirmName.$error.minlength) && (lawFirmForm.lawFirmName.$touched|| lawFirmForm.lawFirmName.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Law Firm Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="lawFirmName" ng-model="lfCtrl.lawfirm.name" class="form-control" ng-minlength="3" required/>
+                            <ng-messages for="lawFirmForm.lawFirmName.$error" ng-if='lawFirmForm.lawFirmName.$touched||lawFirmForm.lawFirmName.$error.minlength || lawFirmForm.lawFirmName.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Law Firm Name is required</ng-message>
+                              <ng-message when="minlength">Law Firm Name must contain atleast 3 characters</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.federalEmployerId.$error.required || lawFirmForm.federalEmployerId.$error.minlength || lawFirmForm.federalEmployerId.$error.availability) && (lawFirmForm.federalEmployerId.$touched || lawFirmForm.federalEmployerId.$dirty || lawFirmForm.$submitted)}">
+                          <label for="federalEmployerId" class="col-sm-3 col-md-3 control-label">Bar/ID (State & Number)</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="federalEmployerId" ng-model="lfCtrl.lawfirm.federal_employer_id" ng-change="lfCtrl.setAvailability(lawFirmForm.federalEmployerId)" class="form-control" ng-minlength="9" required/>
+                            <ng-messages for="lawFirmForm.federalEmployerId.$error" ng-if='lawFirmForm.federalEmployerId.$touched || lawFirmForm.federalEmployerId.$dirty || lawFirmForm.federalEmployerId.$error.minlength || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Bar/ID Number is required</ng-message>
+                              <ng-message when="minlength">Bar/ID Number must contain at least 9 digits</ng-message>
+                              <ng-message when="availability">Bar/ID is already taken</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.City.$error.required) && (lawFirmForm.City.$touched || lawFirmForm.City.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">City</label>
+                          <div class="col-sm-7 col-md-8">
+                            <div class="input-group">
+                              <input type="text" name="City" location-finder location-callback="lfCtrl.locationCallback" ng-model="lfCtrl.places.metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                            <ng-messages for="lawFirmForm.City.$error" ng-if='lawFirmForm.City.$touched || lawFirmForm.City.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">City is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.state.$error.required) && (lawFirmForm.state.$touched || lawFirmForm.state.$dirty || lawFirmForm.$submitted )}">
+                          <label class="col-sm-3 col-md-3 control-label">State</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="state" ng-model="lfCtrl.places.metaLocation.state" class="form-control" required/>
+                            <city-required city="lfCtrl.places.metaLocation.city" class="help-block">
+                              To fill the state, fillup the city.
+                            </city-required>
+                            <ng-messages for="lawFirmForm.state.$error" ng-if='lawFirmForm.state.$dirty || lawFirmForm.state.$touched || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">State is requried</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':lawFirmForm.countryName.$error.required && (lawFirmForm.countryName.$dirty||lawFirmForm.countryName.$touched || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Country</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="countryName" ng-model="lfCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                            <city-required city="lfCtrl.places.metaLocation.city" class="help-block">
+                              To fill the country, fillup the city.
+                            </city-required>
+                            <!-- <ui-select ng-model="lfCtrl.lawfirm.address.location.country_id" ng-change="lfCtrl.places.getStates($select.selected.id);lfCtrl.resetAddressModel($index)" theme="select2" name="countryName" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="country.id as country in lfCtrl.places.countries | filter: $select.search">
+                                <div ng-bind-html="country.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select> -->
+                            <ng-messages for="lawFirmForm.countryName.$error" ng-if='lawFirmForm.countryName.$dirty||lawFirmForm.countryName.$touched || lawFirmForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Select Country</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.mailAdd_zipCode.$error.required || lawFirmForm.mailAdd_zipCode.$error.minlength ) && (lawFirmForm.mailAdd_zipCode.$touched || lawFirmForm.mailAdd_zipCode.$dirty || lawFirmForm.$submitted )}">
+                          <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text"  ng-minlength="6" ng-model="lfCtrl.lawfirm.address.zip_code" name="mailAdd_zipCode" class="form-control" required />
+                            <ng-messages for="lawFirmForm.mailAdd_zipCode.$error" ng-if='lawFirmForm.mailAdd_zipCode.$dirty || lawFirmForm.mailAdd_zipCode.$touched || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Zip Code is requried</ng-message>
+                              <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.Address1.$error.required) && (lawFirmForm.Address1.$touched || lawFirmForm.Address1.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Address Line 1</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="Address1" ng-model="lfCtrl.lawfirm.address.address_one" class="form-control" required/>
+                            <ng-messages for="lawFirmForm.Address1.$error" ng-if='lawFirmForm.Address1.$touched || lawFirmForm.Address1.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Address Line 1 is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Address Line 2</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="Address2" class="form-control" ng-model="lfCtrl.lawfirm.address.address_two">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (lawFirmForm.phone.$error.pattern) &&
+            						(lawFirmForm.phone.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Telephone Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="lfCtrl.lawfirm.phone.number"/>
+                            <ng-messages for="lawFirmForm.phone.$error" ng-if='lawFirmForm.phone.$error.pattern || lawFirmForm.phone.$dirty || lawFirmForm.$submitted'
+            								class="help-block" role="alert">
+            									<ng-message when="pattern">Telephone Number must be a number</ng-message>
+            								</ng-messages>
+            							</div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(lawFirmForm.fax.$error.pattern) &&
+                          (lawFirmForm.fax.$touched|| lawFirmForm.fax.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Fax Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" name="fax" ng-pattern="/^[0-9]*$/" ng-model="lfCtrl.lawfirm.fax.number"/>
+                            <ng-messages for="lawFirmForm.fax.$error" ng-if='lawFirmForm.fax.$touched ||
+                            lawFirmForm.fax.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="pattern">Fax Number must be a number</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (lawFirmForm.email.$error.required || lawFirmForm.email.$error.pattern || lawFirmForm.email.$error.availability) && (lawFirmForm.email.$touched || lawFirmForm.email.$dirty || lawFirmForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Email</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="email" name="email" ng-model="lfCtrl.lawfirm.email.email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" ng-change="lfCtrl.setAvailability(lawFirmForm.email)" required/>
+                            <ng-messages for="lawFirmForm.email.$error" ng-if='lawFirmForm.email.$touched || lawFirmForm.email.$dirty || lawFirmForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Email is required</ng-message>
+                              <ng-message when="pattern">Invalid Email</ng-message>
+                              <ng-message when="availability">Email already registered</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="text-center col-md-12">
+                        <input type="submit" value="Save" class="btn btn-primary m-r-10"/>
+                        <a class="btn btn-default" ui-sref="home.lawfirms">
+                           Cancel
+                        </a>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

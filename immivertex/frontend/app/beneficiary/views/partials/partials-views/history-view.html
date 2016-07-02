@@ -1,0 +1,270 @@
+<!-- History Tab-->
+<div role="tabpanel" class="tab-pane" id="history">
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form" class="form-horizontal form-elements"  name="historyForms">
+              <div class="am-border">
+                <fieldset>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label for="marriageCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">Are you married?</label>
+                        <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                          <input type="checkbox" ng-model="hisCtrl.marriageCheck" iCheck value="us" name="marriageCheck" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label for="abroadTripCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">Did you go to abroad trip?</label>
+                        <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                          <input type="checkbox" ng-model="hisCtrl.abroadTripCheck" iCheck value="abroad" name="abroadTripCheck" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="am-border" ng-repeat="marriagehistory in hisCtrl.marriageHistories track by $index" ng-if="hisCtrl.marriageCheck">
+                <ng-form name="marriageForm">
+                  <fieldset>
+                    <legend>{{$index+1}}.  Marriage</legend>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Date of Marriage <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                  <label class="control-label">{{marriagehistory.marriage.date_of_marriage}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{hisCtrl.marriagePlaces[$index].metaLocation.city}}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">State <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{hisCtrl.marriagePlaces[$index].metaLocation.state}}</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{hisCtrl.marriagePlaces[$index].metaLocation.country}}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Date of Termination <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                  <label class="control-label">{{marriagehistory.marriage.date_of_termination}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">Type of Termination <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{marriagehistory.marriage.termination_type.name}}</label>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">Termination City <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{hisCtrl.terminationPlaces[$index].metaLocation.city}}</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">Termination State <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{hisCtrl.terminationPlaces[$index].metaLocation.state}}</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Termination Country <span class="p-l-8"> :</span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">{{hisCtrl.terminationPlaces[$index].metaLocation.country}}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <legend>Spouse Information</legend>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">First Name <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.first_name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Middle Name <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.middle_name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Last Name <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.last_name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Maiden Name <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.maiden_name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">DOB <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.date_of_birth}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Gender <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{marriagehistory.person.gender_name.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+                </ng-form>
+              </div>
+              <div class="am-border" ng-repeat="tripHistory in hisCtrl.trips track by $index" ng-if="hisCtrl.abroadTripCheck">
+                <ng-form name="tripForm">
+                  <fieldset>
+                    <legend>{{$index+1}}.  Trips Abroad</legend>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-6 col-md-6 control-label font-bold">Country Visited <span class="p-l-8"> :</span></label>
+                            <div class="col-sm-6 col-md-6">
+                              <label class="control-label">{{tripHistory.visited_country.name}}</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Purpose Of Your Trip <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                  <label class="control-label">{{tripHistory.visitinformation.purpose}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Date You Left US <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.date_of_departure}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Departure Port / City <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.visitinformation.place_of_departure}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Date You Returned To US <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.date_of_arrival}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Arrival Port / City <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.visitinformation.place_of_arrival}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Total no. of days outside US <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.visitinformation.days_outside}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Entry Status <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label">{{tripHistory.visitinformation.entry_status}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 col-md-6 control-label font-bold">Did trip last more than 6 months? <span class="p-l-8"> :</span></label>
+                                <div class="col-sm-6 col-md-6">
+                                    <label class="control-label" ng-if="tripHistory.is_stay_more_than_six_month">Yes</label>
+                                    <label class="control-label" ng-if="!tripHistory.is_stay_more_than_six_month">No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+                </ng-form>
+              </div>
+              <div class="text-center col-md-12">
+                  <a ui-sref="home.viewBeneficiary.background" class="btn btn-default">Next</a>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container-fluid intake-form">
+  <div class="row">
+    <div class="col-sm-12">
+      <panel panel-class="panel-sky" heading="Beneficiary Report">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <ui-view></ui-view>
+        <fieldset>
+        <form role="form" class="form-horizontal form-elements" name="beneficiaryFilter" ng-submit="brCtrl.fetch($event)" novalidate>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-4">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">Start Date</label>
+              <div class="col-sm-7 col-md-8">
+                <input custom-datepicker format="yyyy-mm-dd" type="text" class="form-control" ng-model="brCtrl.beneficiaryReport.start_date" name="start_date" />
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-4">
+            <div class="form-group">
+              <label class="col-sm-3 col-md-3 control-label">End Date</label>
+              <div class="col-sm-7 col-md-8">
+                <input custom-datepicker  format="yyyy-mm-dd" type="text" class="form-control" ng-model="brCtrl.beneficiaryReport.end_date" name="end_date" />
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-4">
+            <div class="form-group">
+             <button class="btn btn-primary m-r-10">Submit</button>
+
+            </div>
+          </div>
+        </div>
+
+        </form>
+        </fieldset>
+        <div class="row">
+          <table table-id="brCtrl.gridName" class="table table-striped" datatable-grid>
+        </div>
+        <div class="panel-loading" ng-show="brCtrl.isLoading">
+          <div class="panel-loader-dots"></div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

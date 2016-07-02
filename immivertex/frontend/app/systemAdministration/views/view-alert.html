@@ -1,0 +1,71 @@
+<div class="container-fluid subscriber-alert">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Alerts">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-sky">
+          <div class="tab-content">
+            <!-- <div class="row">
+              <div class="col-md-12">
+                <div id="search-inline" class="nav navbar-nav navbar-form">
+              		<div class="input-icon">
+                    <button><i class="fa fa-check send"></i> Send</button>
+                    <input class="alert-input" name="subject" placeholder="Enter subject"/>
+              			<textarea type="textarea" placeholder="Enter your message" class="alert-input"></textarea>
+              		</div>
+              	</div>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="pull-left">
+                <div class="form-group" dropdown>
+                  <button type="button" class="btn btn-default dropdown-toggle alt-border" dropdown-toggle>
+                    Filter Communications <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a ng-repeat="action in altCtrl.actions" ng-click="altCtrl.getFilteredAlerts(action.id)">{{action.name}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <form role="form" class="form-horizontal form-elements" name="">
+               <fieldset>
+                 <div compute-height param-height="350" id="infinite-scroll">
+                 <ul
+                 infinite-scroll="altCtrl.nextPage()"
+                 infinite-scroll-container="'#infinite-scroll'"
+                 infinite-scroll-disabled='altCtrl.scroll.busy'
+                 infinite-scroll-distance='0'
+                  class="timeline">
+
+                  <li class="timeline-inverse" ng-repeat="alert in altCtrl.alerts">
+                    <div class="timeline-icon"><i class="fa fa-envelope"></i></div>
+                    <div class="timeline-body">
+                      <div class="pull-right">
+                        <span class="date">{{alert.created_at | date:'EEEE, MMM-dd-yyyy'}}</span>
+                      </div>
+                      <div class="timeline-content">
+                        <h3 ng-if="alert.partydet.legal_name_of_entity">{{alert.partydet.legal_name_of_entity}}</h3>
+                        <h3 ng-if="!alert.partydet.legal_name_of_entity">Legal Name</h3>
+                        <p>{{alert.communicationtypesdet.name}}</p>
+                      </div>
+                    </div>
+                  </li>
+                    <li class="timeline-inverse" ng-show = "altCtrl.alerts.length < 1">
+        							<h3 class="text-center">No alerts found</h3>
+        						</li>
+        					</ul>
+                </div>
+               </fieldset>
+             </form>
+            <div class="panel-loading" ng-show="altCtrl.isLoading">
+                <div class="panel-loader-dots"></div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

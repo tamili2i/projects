@@ -1,0 +1,23 @@
+<div class="container-fluid add-beneficiary">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Edit Beneficiary">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+          <button class="btn btn-primary btn-sm mr10" style="margin-top: -5px;" data-placement="left" user-note ng-show="bfCtrl.access_type">Add User Notes</button>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat = "tab in bfCtrl.tabs" role="presentation" ui-sref-active="active">
+              <a ui-sref="{{tab.state}}" aria-controls="{{refName}}" role="tab">{{tab.name}}</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <ui-view></ui-view>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div> <!-- container-fluid -->

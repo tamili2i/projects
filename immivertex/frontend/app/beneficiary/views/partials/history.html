@@ -1,0 +1,433 @@
+<!-- History Tab-->
+<div role="tabpanel" class="tab-pane" id="history">
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form" class="form-horizontal form-elements"  name="historyForms" ng-submit="historyForms.$valid && hisCtrl.save($event)" novalidate>
+              <div class="am-border">
+                <fieldset>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label for="marriageCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">Are you married?</label>
+                        <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                          <input type="checkbox" ng-model="hisCtrl.marriageCheck" iCheck value="us" name="marriageCheck" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                      <div class="form-group">
+                        <label for="abroadTripCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">Did you go to abroad trip?</label>
+                        <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                          <input type="checkbox" ng-model="hisCtrl.abroadTripCheck" iCheck value="abroad" name="abroadTripCheck" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="am-border" ng-repeat="marriagehistory in hisCtrl.marriageHistories track by $index" ng-if="hisCtrl.marriageCheck">
+                <ng-form name="marriageForm">
+                  <fieldset>
+                    <legend>{{$index+1}}.  Marriage</legend>
+                    <div class="addmore">
+                        <button type="button" ng-click="hisCtrl.addMarriage(historyForms)" class="add-btn btn btn-social btn-apple-alt" ng-if="$index == (hisCtrl.marriageHistories.length-1)">
+                        <i class="fa fa-plus"></i>  Add
+                        </button>
+                        <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-click="hisCtrl.removeMarriage($index, marriagehistory.id)">
+                        <i class="fa fa-trash-o"></i>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':marriageForm.marriageDate.$error.required && (marriageForm.marriageDate.$touched || historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Date of Marriage</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input custom-datepicker type="text" name="marriageDate" ng-model="marriagehistory.marriage.date_of_marriage" class="form-control" format="mm/dd/yyyy" readonly required/>
+                                    <ng-messages for="marriageForm.marriageDate.$error" ng-if='marriageForm.marriageDate.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                        <ng-message when="required">The date of Marriage is required.</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':marriageForm.city.$error.required && (marriageForm.city.$dirty || marriageForm.city.$touched || historyForms.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">City</label>
+                            <div class="col-sm-7 col-md-8">
+                              <div class="input-group">
+                              <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="hisCtrl.locationCallbackMarriage" ng-model="hisCtrl.marriagePlaces[$index].metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                              <ng-messages for="marriageForm.city.$error" ng-if='marriageForm.city.$dirty || marriageForm.city.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">City is requried</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':marriageForm.state.$error.required && (marriageForm.state.$dirty || marriageForm.state.$touched || historyForms.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">State</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input readonly="true" type="text" name="state" ng-model="hisCtrl.marriagePlaces[$index].metaLocation.state" class="form-control" required/>
+                              <city-required city="hisCtrl.marriagePlaces[$index].metaLocation.city" class="help-block">
+                                To fill the state, fillup the city
+                              </city-required>
+                              <ng-messages for="marriageForm.state.$error" ng-if='marriageForm.state.$dirty || marriageForm.state.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">State is requried</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':marriageForm.country.$error.required && (marriageForm.country.$dirty || marriageForm.country.$touched || historyForms.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Country</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input readonly="true" type="text" name="country" ng-model="hisCtrl.marriagePlaces[$index].metaLocation.country" class="form-control" required/>
+                              <city-required city="hisCtrl.marriagePlaces[$index].metaLocation.city" class="help-block">
+                                To fill the country, fillup the city
+                              </city-required>
+                              <ng-messages for="marriageForm.country.$error" ng-if='marriageForm.country.$dirty || marriageForm.country.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Country is requried</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 col-md-3 control-label">Date of Termination</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input custom-datepicker type="text" ng-model="marriagehistory.marriage.date_of_termination" name="terDate" class="form-control" format="mm/dd/yyyy" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-3 col-md-3 control-label">Type of Termination</label>
+                            <div class="col-sm-7 col-md-8">
+                              <ui-select ng-model="marriagehistory.marriage.type_of_termination" name="terminationType" theme="select2" class="form-control">
+                                <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="type.id as type in hisCtrl.terminationTypes | filter: $select.search">
+                                  <div ng-bind-html="type.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                              </ui-select>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-3 col-md-3 control-label">Termination City</label>
+                            <div class="col-sm-7 col-md-8">
+                              <div class="input-group">
+                              <input type="text" name="terCity" location-finder is-in-repeat = "$index" location-callback="hisCtrl.locationCallbackTermination" ng-model="hisCtrl.terminationPlaces[$index].metaLocation.city" class="form-control"/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-sm-3 col-md-3 control-label">Termination State</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input readonly="true" type="text" name="terState" ng-model="hisCtrl.terminationPlaces[$index].metaLocation.state" class="form-control"/>
+                              <city-required city="hisCtrl.terminationPlaces[$index].metaLocation.city" class="help-block">
+                                To fill the state, fillup the city
+                              </city-required>
+                            </div>
+                            <div class="col-sm-1 col-md-1"></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Termination Country</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="terCountry" ng-model="hisCtrl.terminationPlaces[$index].metaLocation.country" class="form-control"/>
+                            <city-required city="hisCtrl.terminationPlaces[$index].metaLocation.city" class="help-block">
+                              To fill the country, fillup the city
+                            </city-required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <legend>Spouse Information</legend>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(marriageForm.firstName.$error.required || marriageForm.firstName.$error.minlength || marriageForm.firstName.$error.maxlength) && (marriageForm.firstName.$touched|| marriageForm.firstName.$dirty || historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" name="firstName" ng-model="marriagehistory.person.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                                    <ng-messages for="marriageForm.firstName.$error" ng-if='marriageForm.firstName.$touched || marriageForm.firstName.$error.minlength || marriageForm.firstName.$error.maxlength || marriageForm.firstName.$dirty || historyForms.$submitted' class="help-block" role="alert">
+                                      <ng-message when="required">First Name is required</ng-message>
+                                      <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                                      <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(marriageForm.middileName.$error.minlength || marriageForm.middileName.$error.maxlength)}">
+                                <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" name="middileName" class="form-control" ng-model="marriagehistory.person.middle_name" ng-minlength="3" ng-maxlength="16"/>
+                                    <ng-messages for="marriageForm.middileName.$error" ng-if='marriageForm.middileName.$error.minlength || marriageForm.middileName.$error.maxlength' class="help-block" role="alert">
+                                      <ng-message when="minlength">Middle Name must contain atleast 3 characters</ng-message>
+                                      <ng-message when="maxlength">Middle Name can not contain more than 16 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(marriageForm.lastName.$error.required || marriageForm.lastName.$error.minlength || marriageForm.lastName.$error.maxlength) && (marriageForm.lastName.$touched || marriageForm.lastName.$dirty || historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" name="lastName" ng-model="marriagehistory.person.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                                    <ng-messages for="marriageForm.lastName.$error" ng-if='marriageForm.lastName.$touched || marriageForm.lastName.$error.minlength || marriageForm.lastName.$error.maxlength || marriageForm.lastName.$dirty || historyForms.$submitted' class="help-block" role="alert">
+                                      <ng-message when="required">Last Name is required</ng-message>
+                                      <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                                      <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(marriageForm.maidenName.$error.minlength || marriageForm.maidenName.$error.maxlength)}">
+                                <label class="col-sm-3 col-md-3 control-label">Maiden Name</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" name="maidenName" class="form-control" ng-model="marriagehistory.person.maiden_name" ng-minlength="3" ng-maxlength="16"/>
+                                    <ng-messages for="marriageForm.maidenName.$error" ng-if='marriageForm.maidenName.$error.minlength || marriageForm.maidenName.$error.maxlength' class="help-block" role="alert">
+                                      <ng-message when="minlength">Maiden Name must contain atleast 3 characters</ng-message>
+                                      <ng-message when="maxlength">Maiden Name can not contain more than 16 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(marriageForm.birthDate.$error.required ) && (marriageForm.birthDate.$touched || historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">DOB</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input custom-datepicker type="text" name="birthDate" class="form-control" format="yyyy-mm-dd" end-date="0y" ng-model="marriagehistory.person.date_of_birth" required readonly/>
+                                    <ng-messages for="marriageForm.birthDate.$error" ng-if='marriageForm.birthDate.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                      <ng-message when="required">DOB is required</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':marriageForm['gender_' + gender.id].$error.required && (marriageForm['gender_' + gender.id].$dirty || marriageForm['gender_' + gender.id].$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Gender</label>
+                                <div class="col-sm-7 col-md-8 p-t-8">
+                                    <label class="radio-inline control-label" ng-repeat="gender in hisCtrl.genders | orderBy: 'id'">
+                                      <input iCheck type="radio" name="gender_{{gender.id}}" ng-model="marriagehistory.person.gender" id="inlineradio_{{gender.id}}" ng-value="gender.id" required/>
+                                      {{gender.name}}
+                                    </label>
+                                    <ng-messages for="marriageForm['gender_' + gender.id].$error" ng-if="marriageForm['gender_' + gender.id].$dirty || marriageForm['gender_' + gender.id].$touched || historyForms.$submitted" class="help-block" role="alert">
+                                      <ng-message when="required">Select Gender</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+                </ng-form>
+              </div>
+              <div class="am-border" ng-repeat="tripHistory in hisCtrl.trips track by $index" ng-if="hisCtrl.abroadTripCheck">
+                <ng-form name="tripForm">
+                  <fieldset>
+                    <legend>{{$index+1}}.  Trips Abroad</legend>
+                    <div class="addmore">
+                        <button type="button" class="add-btn btn btn-social btn-apple-alt" ng-click="hisCtrl.addTravel(historyForms)" ng-if="$index == (hisCtrl.trips.length-1)">
+                        <i class="fa fa-plus"></i>  Add
+                        </button>
+                        <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-click="hisCtrl.removeTravel($index, tripHistory.id)">
+                        <i class="fa fa-trash-o"></i>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':tripForm.visitedCountry.$error.required && (tripForm.visitedCountry.$dirty|| tripForm.visitedCountry.$touched|| historyForms.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Country Visited</label>
+                            <div class="col-sm-7 col-md-8 p-t-8">
+                              <select ng-model="tripHistory.country_id" ng-options="country.id as country.name for country in hisCtrl.countries"
+                               name="visitedCountry" class="form-control" required></select>
+                            <ng-messages for="tripForm.visitedCountry.$error" ng-if='tripForm.visitedCountry.$dirty || tripForm.visitedCountry.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Country is required</ng-message>
+                            </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':tripForm.tripPurpose.$error.required && (tripForm.tripPurpose.$dirty|| tripForm.tripPurpose.$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Purpose Of Your Trip</label>
+                                <div class="col-sm-7 col-md-8">
+                                  <select ng-model="tripHistory.visitinformation.purpose" ng-options="triType.name as triType.name for triType in hisCtrl.tripTypes"
+                                   name="tripPurpose" class="form-control" required></select>
+                                  <ng-messages for="tripForm.tripPurpose.$error" ng-if='tripForm.tripPurpose.$dirty || tripForm.tripPurpose.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                      <ng-message when="required">Trip purpose is required</ng-message>
+                                  </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':tripForm.departureDate.$error.required && (tripForm.departureDate.$touched || historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Date You Left US</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input custom-datepicker type="text" name="departureDate" ng-model="tripHistory.date_of_departure" class="form-control" format="mm/dd/yyyy" readonly required/>
+                                    <ng-messages for="tripForm.departureDate.$error" ng-if='tripForm.departureDate.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                        <ng-message when="required">The date of departure is required.</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(tripForm.departureCity.$error.required || tripForm.departureCity.$error.minlength) && (tripForm.departureCity.$dirty || tripForm.departureCity.$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Departure Port / City</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" class="form-control" name="departureCity" ng-model="tripHistory.visitinformation.place_of_departure" ng-minlength="3" ng-maxlength="16" required/>
+                                    <ng-messages for="tripForm.departureCity.$error" ng-if='tripForm.departureCity.$error.minlength || tripForm.departureCity.$dirty || tripForm.departureCity.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                        <ng-message when="required">The departure city is required.</ng-message>
+                                        <ng-message when="minlength">The departure city must contain atleast 3 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':tripForm.arrivalDate.$error.required && (tripForm.arrivalDate.$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Date You Returned To US</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input custom-datepicker type="text" name="arrivalDate" class="form-control" format="mm/dd/yyyy" ng-model="tripHistory.date_of_arrival" readonly required/>
+                                    <ng-messages for="tripForm.arrivalDate.$error" ng-if='tripForm.arrivalDate.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                        <ng-message when="required">The date of arrival is required.</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(tripForm.arrivalCity.$error.required || tripForm.arrivalCity.$error.minlength) && (tripForm.arrivalCity.$dirty || tripForm.arrivalCity.$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Arrival Port / City</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" class="form-control" name="arrivalCity" ng-model="tripHistory.visitinformation.place_of_arrival" ng-minlength="3" required/>
+                                    <ng-messages for="tripForm.arrivalCity.$error" ng-if='tripForm.arrivalCity.$dirty || tripForm.arrivalCity.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                        <ng-message when="required">The arrival city is required.</ng-message>
+                                        <ng-message when="minlength">The arrival city must contain atleast 3 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(tripForm.daysOutside.$error.required || tripForm.daysOutside.$error.pattern) && (tripForm.daysOutside.$dirty || tripForm.daysOutside.$touched|| historyForms.$submitted)}">
+                                <label class="col-sm-3 col-md-3 control-label">Total no. of days outside US</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" class="form-control" ng-pattern="/^[0-9]*$/" name="daysOutside" ng-model="tripHistory.visitinformation.days_outside" required/>
+                                    <ng-messages for="tripForm.daysOutside.$error" ng-if='tripForm.daysOutside.$dirty || tripForm.daysOutside.$touched || historyForms.$submitted' class="help-block" role="alert">
+                                      <ng-message when="required">Total no. of days is required.</ng-message>
+                                      <ng-message when="pattern">Total no. of days must be number.</ng-message>
+                                    </ng-messages>
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+                                  <i class="fa fa-circle mandatory"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group" ng-class="{'has-error':(tripForm.entryStatus.$error.minlength || tripForm.entryStatus.$error.maxlength)}">
+                                <label class="col-sm-3 col-md-3 control-label">Entry Status</label>
+                                <div class="col-sm-7 col-md-8">
+                                    <input type="text" name="entryStatus" class="form-control" ng-model="tripHistory.visitinformation.entry_status" ng-minlength="3" ng-maxlength="16"/>
+                                    <ng-messages for="tripForm.entryStatus.$error" ng-if='tripForm.entryStatus.$error.minlength || tripForm.entryStatus.$error.maxlength' class="help-block" role="alert">
+                                      <ng-message when="minlength">Entry Status must contain atleast 3 characters</ng-message>
+                                      <ng-message when="maxlength">Entry Status can not contain more than 16 characters</ng-message>
+                                    </ng-messages>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 col-md-3 control-label">Did trip last more than 6 months?</label>
+                                <div class="col-sm-7 col-md-8 p-t-8">
+                                    <label class="radio-inline control-label">
+                                    <input iCheck type="radio" name="trip"  ng-model="tripHistory.is_stay_more_than_six_month" ng-value="true"> Yes
+                                    </label>
+                                    <label class="radio-inline control-label">
+                                    <input iCheck type="radio" name="trip" ng-model="tripHistory.is_stay_more_than_six_month" ng-value="false"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+                </ng-form>
+              </div>
+              <div class="text-center col-md-12">
+                  <button type="submit" class="btn btn-primary m-r-10">Save</button>
+                  <a ui-sref="home.beneficiary.background" class="btn btn-default">Next</a>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>

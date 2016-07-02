@@ -1,0 +1,210 @@
+<div role="tabpanel" class="tab-pane">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" ng-submit="atfGeneralForm.$valid && atfGenCtrl.save($event)" name="atfGeneralForm" novalidate>
+        <fieldset>
+          <legend>General Info</legend>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(atfGeneralForm.FirstName.$error.required || atfGeneralForm.FirstName.$error.minlength||atfGeneralForm.FirstName.$error.maxlength) && (atfGeneralForm.FirstName.$touched|| atfGeneralForm.FirstName.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" name="FirstName" ng-model="atfGenCtrl.general.FirstName" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                  <ng-messages for="atfGeneralForm.FirstName.$error" ng-if='atfGeneralForm.FirstName.$touched||atfGeneralForm.FirstName.$error.minlength||atfGeneralForm.FirstName.$error.maxlength ||atfGeneralForm.FirstName.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                   <ng-message when="required">First Name is required</ng-message>
+                   <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                   <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                 </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(atfGeneralForm.LastName.$error.required || atfGeneralForm.LastName.$error.minlength||atfGeneralForm.LastName.$error.maxlength) && (atfGeneralForm.LastName.$touched || atfGeneralForm.LastName.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" name="LastName" ng-model="atfGenCtrl.general.LastName" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                  <ng-messages for="atfGeneralForm.LastName.$error" ng-if='atfGeneralForm.LastName.$touched || atfGeneralForm.LastName.$dirty || atfGeneralForm.LastName.$error.minlength||atfGeneralForm.LastName.$error.maxlength || atfGeneralForm.$submitted' class="help-block" role="alert">
+                   <ng-message when="required">Last Name is required</ng-message>
+                   <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                   <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                 </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group ">
+                <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group ">
+                <label class="col-sm-3 col-md-3 control-label">Law Firm Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(atfGeneralForm.Address1.$error.required) && (atfGeneralForm.Address1.$touched || atfGeneralForm.Address1.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Address</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" name="Address1" ng-model="atfGenCtrl.general.Address1" class="form-control" required/>
+                  <ng-messages for="atfGeneralForm.Address1.$error" ng-if='atfGeneralForm.Address1.$touched || atfGeneralForm.Address1.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Address is required</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group" ng-class="{'has-error':(atfGeneralForm.City.$error.required) && (atfGeneralForm.City.$touched || atfGeneralForm.City.$dirty || atfGeneralForm.$submitted)}">
+                  <label class="col-sm-3 col-md-3 control-label">City</label>
+                  <div class="col-sm-7 col-md-8">
+                    <div class="input-group">
+                      <input type="text" name="City" location-finder location-callback="atfGenCtrl.locationCallback" ng-model="atfGenCtrl.places.metaLocation.city" class="form-control" required/>
+                      <span class="input-group-btn">
+                        <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                      </span>
+                    </div>
+                    <ng-messages for="atfGeneralForm.City.$error" ng-if='atfGeneralForm.City.$touched || atfGeneralForm.City.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">City is required</ng-message>
+                    </ng-messages>
+                  </div>
+                  <div class="col-sm-1 col-md-1">
+                    <i class="fa fa-circle mandatory"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group" ng-class="{'has-error':(atfGeneralForm.state.$error.required) && (atfGeneralForm.state.$touched || atfGeneralForm.state.$dirty || atfGeneralForm.$submitted )}">
+                  <label class="col-sm-3 col-md-3 control-label">State</label>
+                  <div class="col-sm-7 col-md-8">
+                    <input readonly="true" type="text" name="state" ng-model="atfGenCtrl.places.metaLocation.state" class="form-control" required/>
+                    <city-required city="atfGenCtrl.places.metaLocation.city" class="help-block">
+                      To fill the state, fillup the city.
+                    </city-required>
+                    <ng-messages for="atfGeneralForm.state.$error" ng-if='atfGeneralForm.state.$dirty || atfGeneralForm.state.$touched || atfGeneralForm.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">State is requried</ng-message>
+                    </ng-messages>
+                  </div>
+                  <div class="col-sm-1 col-md-1">
+                    <i class="fa fa-circle mandatory"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group" ng-class="{'has-error':atfGeneralForm.countryName.$error.required && (atfGeneralForm.countryName.$dirty||atfGeneralForm.countryName.$touched || atfGeneralForm.$submitted)}">
+                  <label class="col-sm-3 col-md-3 control-label">Country</label>
+                  <div class="col-sm-7 col-md-8">
+                    <input type="text" name="countryName" ng-model="atfGenCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                    <city-required city="atfGenCtrl.places.metaLocation.city" class="help-block">
+                      To fill the country, fillup the city.
+                    </city-required>
+                    <ng-messages for="atfGeneralForm.countryName.$error" ng-if='atfGeneralForm.countryName.$dirty||atfGeneralForm.countryName.$touched || atfGeneralForm.$submitted' class="help-block" role="alert">
+                     <ng-message when="required">Select Country</ng-message>
+                   </ng-messages>
+                  </div>
+                  <div class="col-sm-1 col-md-1">
+                    <i class="fa fa-circle mandatory"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group" ng-class="{'has-error':(atfGeneralForm.mailAdd_zipCode.$error.required || atfGeneralForm.mailAdd_zipCode.$error.minlength ) && (atfGeneralForm.mailAdd_zipCode.$touched || atfGeneralForm.mailAdd_zipCode.$dirty || atfGeneralForm.$submitted )}">
+                  <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                  <div class="col-sm-7 col-md-8">
+                    <input type="text"  ng-minlength="6" ng-model="atfGenCtrl.general.address.zip_code" name="mailAdd_zipCode" class="form-control" required />
+                    <ng-messages for="atfGeneralForm.mailAdd_zipCode.$error" ng-if='atfGeneralForm.mailAdd_zipCode.$dirty || atfGeneralForm.mailAdd_zipCode.$touched || atfGeneralForm.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">Zip Code is requried</ng-message>
+                      <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                    </ng-messages>
+                  </div>
+                  <div class="col-sm-1 col-md-1">
+                    <i class="fa fa-circle mandatory"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group" s>
+                  <label class="col-sm-3 col-md-3 control-label">Bar Number</label>
+                  <div class="col-sm-7 col-md-8">
+                    <input type="text" class="form-control"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (atfGeneralForm.phone.$error.pattern) &&
+  						(atfGeneralForm.phone.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Phone Number</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="atfGenCtrl.general.phone.number"/>
+                  <ng-messages for="atfGeneralForm.phone.$error" ng-if='atfGeneralForm.phone.$error.pattern || atfGeneralForm.phone.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">Phone must be a number</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(atfGeneralForm.fax.$error.pattern) &&
+                (atfGeneralForm.fax.$touched|| atfGeneralForm.fax.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Fax Number</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" name="fax" ng-pattern="/^[0-9]*$/" ng-model="atfGenCtrl.general.fax.number"/>
+                  <ng-messages for="atfGeneralForm.fax.$error" ng-if='atfGeneralForm.fax.$touched ||
+                  atfGeneralForm.fax.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">Fax Number must be a number</ng-message>
+                  </ng-messages>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (atfGeneralForm.email.$error.required || atfGeneralForm.email.$error.pattern) && (atfGeneralForm.email.$touched || atfGeneralForm.email.$dirty || atfGeneralForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">E-mail</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="email" name="email" ng-model="atfGenCtrl.general.email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"required/>
+                  <ng-messages for="atfGeneralForm.email.$error" ng-if='atfGeneralForm.email.$touched || atfGeneralForm.email.$dirty || atfGeneralForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">E-mail Address is required</ng-message>
+                    <ng-message when="pattern">Invalid E-mail Address</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center col-md-12">
+            <input type="submit" value="Save" class="btn btn-primary"/>
+            <a ui-sref="home.attorneyFamily.questionnaire" class="btn btn-default">Next</a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

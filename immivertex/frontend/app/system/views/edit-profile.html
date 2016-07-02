@@ -1,0 +1,240 @@
+<div class="container-fluid profile-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Profile">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="profileForm.$valid && edProCtrl.updateProfile()" name="profileForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+          	          <div class="col-xs-12 col-sm-12 col-md-6">
+          	            <div class="form-group" ng-class="{'has-error':(profileForm.firstName.$error.required || profileForm.firstName.$error.minlength||profileForm.firstName.$error.maxlength) && (profileForm.firstName.$touched|| profileForm.firstName.$dirty || profileForm.$submitted)}">
+          	              <label class="col-sm-3 col-md-3 control-label">First Name</label>
+          	              <div class="col-sm-7 col-md-8">
+          	                <input type="text" name="firstName" ng-model="edProCtrl.user_profile.person.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+          	                <ng-messages for="profileForm.firstName.$error" ng-if='profileForm.firstName.$touched||profileForm.firstName.$error.minlength||profileForm.firstName.$error.maxlength ||profileForm.firstName.$dirty || profileForm.$submitted' class="help-block" role="alert">
+          	                  <ng-message when="required">First Name is required</ng-message>
+          	                  <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+          	                  <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+          	                </ng-messages>
+          	              </div>
+          	              <div class="col-sm-1 col-md-1">
+          	                <i class="fa fa-circle mandatory"></i>
+          	              </div>
+          	            </div>
+          	          </div>
+          						<div class="col-sm-12 col-md-6">
+          							<div class="form-group" ng-class="{'has-error':(profileForm.lastName.$error.required
+          								|| profileForm.lastName.$error.minlength||profileForm.lastName.$error.maxlength) &&
+          								(profileForm.lastName.$touched|| profileForm.lastName.$dirty || profileForm.$submitted)}">
+          								<label class="col-sm-3 col-md-3 control-label">Last Name</label>
+          								<div class="col-sm-7 col-md-8">
+          									<input type="text" name="lastName" ng-model="edProCtrl.user_profile.person.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+
+          									<ng-messages for="profileForm.lastName.$error" ng-if='profileForm.lastName.$touched||
+          									 profileForm.lastName.$error.minlength || profileForm.lastName.$error.maxlength ||
+          									 profileForm.lastName.$dirty || profileForm.$submitted' class="help-block" role="alert">
+          										<ng-message when="required">Last Name is required</ng-message>
+          	                  <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+          	                  <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+          									</ng-messages>
+          								</div>
+          								<div class="col-sm-1 col-md-1">
+          									<i class="fa fa-circle mandatory"></i>
+          								</div>
+          							</div>
+          						</div>
+          					</div>
+                    <div class="row">
+          						<div class="col-xs-12 col-sm-12 col-md-6">
+          							<div class="form-group">
+          								<label class="col-sm-3 col-md-3 control-label">E-mail</label>
+          								<div class="col-sm-7 col-md-8">
+          									<label class="control-label">{{edProCtrl.user_profile.email.email}}</label>
+          								</div>
+          							</div>
+          						</div>
+          						<div class="col-xs-12 col-sm-12 col-md-6">
+          							<div class="form-group" ng-class="{'has-error': (profileForm.phone.$error.required || profileForm.phone.$error.pattern) &&
+          							(profileForm.phone.$dirty || profileForm.$submitted)}">
+          								<label class="col-sm-3 col-md-3 control-label">Phone Number</label>
+          								<div class="col-sm-7 col-md-8">
+          									<input type="text" ng-model="edProCtrl.user_profile.phone[0].number" maxlength="12" ng-pattern="/^[0-9]*$/" name="phone" class="form-control" required/>
+          									<ng-messages for="profileForm.phone.$error" ng-if='profileForm.phone.$error.pattern || profileForm.phone.$dirty || profileForm.$submitted'
+          									class="help-block" role="alert">
+          										<ng-message when="required">Phone number is required</ng-message>
+          										<ng-message when="pattern">Phone number must be a number</ng-message>
+          									</ng-messages>
+          								</div>
+          								<div class="col-sm-1 col-md-1">
+          									<i class="fa fa-circle mandatory"></i>
+          								</div>
+          							</div>
+          						</div>
+          					</div>
+                    <div class="row">
+          						<div class="col-xs-12 col-sm-12 col-md-6">
+          							<div class="form-group" ng-class="{'has-error':(profileForm.legalName.$error.required) &&
+          								(profileForm.legalName.$touched|| profileForm.legalName.$dirty || profileForm.$submitted)}">
+          								<label class="col-sm-3 col-md-3 control-label">Legal Name of Entity</label>
+          								<div class="col-sm-7 col-md-8">
+          									<input type="text" name="legalName" ng-model="edProCtrl.user_profile.person.legal_name_of_entity" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+          									<ng-messages for="profileForm.legalName.$error" ng-if='profileForm.legalName.$touched ||
+          										profileForm.legalName.$dirty || profileForm.$submitted' class="help-block" role="alert">
+          										<ng-message when="required">Legal Name is required</ng-message>
+          									</ng-messages>
+          								</div>
+          								<div class="col-sm-1 col-md-1">
+          									<i class="fa fa-circle mandatory"></i>
+          								</div>
+          							</div>
+          						</div>
+          						<div class="col-xs-12 col-sm-12 col-md-6">
+          							<div class="form-group">
+          								<label class="col-sm-3 col-md-3 control-label">Subdomain</label>
+          								<div class="col-sm-7 col-md-8">
+          									<label class="control-label">{{edProCtrl.user_profile.person.subdomain}}</label>
+          								</div>
+          							</div>
+          						</div>
+          					</div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(profileForm.address.$error.required) &&
+                          (profileForm.address.$touched|| profileForm.address.$dirty || profileForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Address Line 1</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="address" ng-model="edProCtrl.user_profile.address.address_one" class="form-control" required/>
+                            <ng-messages for="profileForm.address.$error" ng-if='profileForm.address.$touched ||
+                             profileForm.address.$dirty || profileForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Address Line 1 is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Address Line 2</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="address2" ng-model="edProCtrl.user_profile.address.address_two" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(profileForm.city.$error.required ) && (profileForm.city.$dirty || profileForm.city.$touched || profileForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">City</label>
+                          <div class="col-sm-7 col-md-8">
+                          <div class="input-group">
+                            <input type="text" name="city" location-finder location-callback="edProCtrl.locationCallback" ng-model="edProCtrl.places.metaLocation.city" class="form-control" required/>
+                            <span class="input-group-btn">
+                              <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                            </span>
+                          </div>
+                          <ng-messages for="profileForm.city.$error" ng-if='profileForm.city.$dirty || profileForm.city.$touched || profileForm.$submitted' class="help-block" role="alert">
+                            <ng-message when="required">City is required</ng-message>
+                          </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(profileForm.state.$error.required ) && (profileForm.state.$dirty || profileForm.state.$touched || profileForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">State</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="state" ng-model="edProCtrl.places.metaLocation.state" class="form-control" required/>
+                            <city-required city="edProCtrl.places.metaLocation.city" class="help-block">
+                              To fill the state, fillup the city.
+                            </city-required>
+                            <ng-messages for="profileForm.state.$error" ng-if='profileForm.state.$dirty || profileForm.state.$touched || profileForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">State is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':profileForm.countryName.$error.required && (profileForm.countryName.$dirty||profileForm.countryName.$touched || profileForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Country</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <input type="text" name="countryName" ng-model="edProCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                            <ng-messages for="profileForm.countryName.$error" ng-if='profileForm.countryName.$dirty||profileForm.countryName.$touched || profileForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Select Country</ng-message>
+                            </ng-messages>
+                            <city-required city="edProCtrl.places.metaLocation.city" class="help-block">
+                              To fill the country, fillup the city.
+                            </city-required>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(profileForm.zipCode.$error.required ||
+                        profileForm.zipCode.$error.minlength || profileForm.zipCode.$error.pattern ) && (profileForm.zipCode.$touched ||
+                         profileForm.zipCode.$dirty || profileForm.$submitted )}">
+                          <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" ng-pattern="/^[0-9]*$/" ng-minlength="6" ng-model="edProCtrl.user_profile.address.zip_code" name="zipCode" class="form-control" required />
+                            <ng-messages for="profileForm.zipCode.$error"
+                            ng-if='profileForm.zipCode.$dirty || profileForm.zipCode.$touched ||
+                            profileForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Zip Code is required</ng-message>
+                              <ng-message when="pattern">Zip code must be number</ng-message>
+                              <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':( profileForm.fax.$error.pattern) &&
+                          (profileForm.fax.$touched|| profileForm.fax.$dirty)}">
+                          <label class="col-sm-3 col-md-3 control-label">Fax Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="fax" ng-model="edProCtrl.user_profile.fax.number" ng-pattern="/^[0-9]*$/" class="form-control"/>
+                            <ng-messages for="profileForm.fax.$error" ng-if='profileForm.fax.$touched ||
+                            profileForm.fax.$dirty' class="help-block" role="alert">
+                              <ng-message when="pattern">Fax Number must be a Number</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="text-center col-md-12">
+                      <input type="submit" value="Save" class="btn btn-primary m-r-10" />
+                      <a class="btn btn-default" ng-click="edProCtrl.getDashboard()">Cancel</a>
+                    </div>
+                  </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

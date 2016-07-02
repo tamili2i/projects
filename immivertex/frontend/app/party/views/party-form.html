@@ -1,0 +1,249 @@
+<div class="container-fluid add-beneficiary create-party-container">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Create Party">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="partyForm.$valid && pfCtrl.save($event, partyForm)" name="partyForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(partyForm.FirstName.$error.required || partyForm.FirstName.$error.minlength||partyForm.FirstName.$error.maxlength) && (partyForm.FirstName.$touched|| partyForm.FirstName.$dirty || partyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="FirstName" ng-model="pfCtrl.party.person.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="partyForm.FirstName.$error" ng-if='partyForm.FirstName.$touched||partyForm.FirstName.$error.minlength||partyForm.FirstName.$error.maxlength ||partyForm.FirstName.$dirty || partyForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">First Name is required</ng-message>
+                             <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                             <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(partyForm.LastName.$error.required || partyForm.LastName.$error.minlength||partyForm.LastName.$error.maxlength) && (partyForm.LastName.$touched || partyForm.LastName.$dirty || partyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="LastName" ng-model="pfCtrl.party.person.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="partyForm.LastName.$error" ng-if='partyForm.LastName.$touched || form.validateDemo.LastName.$dirty || partyForm.LastName.$error.minlength||partyForm.LastName.$error.maxlength || partyForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Last Name is required</ng-message>
+                             <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                             <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(partyForm.Position.$error.required) && (partyForm.Position.$touched || partyForm.Position.$dirty || partyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Position</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <ui-select ng-model="pfCtrl.party.role_id" ng-change="pfCtrl.party.code = $select.selected.code" theme="select2" class="form-control" name="Position" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="role.id as role in pfCtrl.userRoles | filter: $select.search">
+                                <div ng-bind-html="role.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="partyForm.Position.$error" ng-if='partyForm.Position.$touched || partyForm.Position.$dirty || partyForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Position is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(pfCtrl.party.code == 'attorney') && (partyForm.BarIdNumber.$error.required) && (partyForm.BarIdNumber.$touched || partyForm.BarIdNumber.$dirty || partyForm.$submitted)}">
+                          <label for="BarIdNumber" class="col-sm-3 col-md-3 control-label">Bar/ID Number (State & Number)
+                          </label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="BarIdNumber" ng-model="pfCtrl.party.person.bar_id" class="form-control" ng-required="pfCtrl.party.code == 'attorney'"/>
+                            <ng-messages for="partyForm.BarIdNumber.$error" ng-if='(pfCtrl.party.code == "attorney") && (partyForm.BarIdNumber.$error.required) && (partyForm.BarIdNumber.$touched || partyForm.BarIdNumber.$dirty || partyForm.$submitted)' class="help-block" role="alert">
+                              <ng-message when="required">Bar/ID Number is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1" ng-show="pfCtrl.party.code == 'attorney'">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (partyForm.FederalEmpIdNumber.$error.pattern) ||
+                        (pfCtrl.party.code == 'corporation_business_unit' || pfCtrl.party.code == 'law_firm_branch_office') && (partyForm.FederalEmpIdNumber.$error.required || partyForm.FederalEmpIdNumber.$error.minlength) && (partyForm.FederalEmpIdNumber.$touched || partyForm.FederalEmpIdNumber.$dirty || partyForm.$submitted)}">
+                          <label for="FederalEmpIdNumber" class="col-sm-3 col-md-3 control-label">Federal Employer Id Number (FEIN)
+                          </label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="FederalEmpIdNumber" ng-model="pfCtrl.party.person.federal_employer_id" class="form-control"  ng-pattern="/^[1-9]{2}\d?-\d{7}$/" ng-minlength="9" ng-required="pfCtrl.party.code == 'corporation_business_unit' || pfCtrl.party.code == 'law_firm_branch_office'" validate-fein data-inputmask="'mask':'99-9999999'"/>
+                            <ng-messages for="partyForm.FederalEmpIdNumber.$error" ng-if='(partyForm.FederalEmpIdNumber.$error.pattern) || (pfCtrl.party.code == "corporation_business_unit" || pfCtrl.party.code == "law_firm_branch_office") && (partyForm.FederalEmpIdNumber.$touched || partyForm.FederalEmpIdNumber.$dirty || partyForm.FederalEmpIdNumber.$error.minlength || partyForm.$submitted)' class="help-block" role="alert">
+                              <ng-message when="required">FEIN is required</ng-message>
+                              <ng-message when="pattern">FEIN is not valid number</ng-message>
+                              <!-- <ng-message when="minlength">FEIN must contain at least 9 digits</ng-message> -->
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1" ng-show="pfCtrl.party.code == 'corporation_business_unit' || pfCtrl.party.code == 'law_firm_branch_office'">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error': (partyForm.phone.$error.pattern) &&
+              						(partyForm.phone.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Work phone</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" class="form-control" maxlength="12" ng-pattern="/^[0-9]*$/" ng-model="pfCtrl.party.phone.number" name="phone"/>
+                              <ng-messages for="partyForm.phone.$error" ng-if='partyForm.phone.$error.pattern || partyForm.phone.$dirty || registerForm.$submitted'
+              								class="help-block" role="alert">
+              									<ng-message when="pattern">Phone Number must be a number</ng-message>
+              								</ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error': (partyForm.email.$error.required || partyForm.email.$error.pattern || partyForm.email.$error.availability) && (partyForm.email.$touched || partyForm.email.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Email</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="email" name="email" ng-model="pfCtrl.party.email.email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" ng-change="pfCtrl.setAvailability(partyForm.email)" required/>
+                              <ng-messages for="partyForm.email.$error" ng-if='partyForm.email.$touched || partyForm.email.$dirty || partyForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Email is required</ng-message>
+                                <ng-message when="pattern">Invalid Email</ng-message>
+                                <ng-message when="availability">Email already registered</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(partyForm.Designation.$error.required) && (partyForm.Designation.$touched || partyForm.Designation.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Designation</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" name="Designation" ng-model="pfCtrl.party.person.designation" class="form-control" required/>
+                              <ng-messages for="partyForm.Designation.$error" ng-if='partyForm.Designation.$touched || partyForm.Designation.$dirty || partyForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Designation is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error':(partyForm.addressOne.$error.required) && (partyForm.addressOne.$touched || partyForm.addressOne.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Address Line 1</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" name="addressOne" ng-model="pfCtrl.party.address.address_one" class="form-control" required/>
+                              <ng-messages for="partyForm.addressOne.$error" ng-if='partyForm.addressOne.$touched || partyForm.addressOne.$dirty || partyForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">Address Line 1 is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group ">
+                            <label class="col-sm-3 col-md-3 control-label">Address Line 2</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" class="form-control" name="address_two" ng-model="pfCtrl.party.address.address_two"/>
+                            </div>
+                            <div class="col-sm-1 col-md-1"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error': (partyForm.city.$error.required) && (partyForm.city.$touched || partyForm.city.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">City</label>
+                            <div class="col-sm-7 col-md-8">
+                              <div class="input-group">
+                                <input type="text" name="city" location-finder location-callback="pfCtrl.locationCallback" ng-model="pfCtrl.places.metaLocation.city" class="form-control" required/>
+                                <span class="input-group-btn">
+                                  <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                                </span>
+                              </div>
+                              <ng-messages for="partyForm.city.$error" ng-if='partyForm.city.$dirty || partyForm.city.$touched || partyForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">City is required</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error': (partyForm.state.$error.required) && (partyForm.state.$touched || partyForm.state.$dirty || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">State</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input readonly="true" type="text" name="state" ng-model="pfCtrl.places.metaLocation.state" class="form-control" required/>
+                              <city-required city="pfCtrl.places.metaLocation.city" class="help-block">
+                                To fill the state, fillup the city.
+                              </city-required>
+                              <ng-messages for="partyForm.state.$error" ng-if='partyForm.state.$dirty || partyForm.state.$touched || partyForm.$submitted' class="help-block" role="alert">
+                                <ng-message when="required">State is requried</ng-message>
+                              </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group" ng-class="{'has-error': (partyForm.country.$error.required) && (partyForm.country.$dirty  || partyForm.country.$touched || partyForm.$submitted)}">
+                            <label class="col-sm-3 col-md-3 control-label">Country</label>
+                            <div class="col-sm-7 col-md-8">
+                              <input type="text" name="country" ng-model="pfCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                              <city-required city="pfCtrl.places.metaLocation.city" class="help-block">
+                                To fill the country, fillup the city.
+                              </city-required>
+                              <ng-messages for="partyForm.country.$error" ng-if='partyForm.country.$dirty || partyForm.country.$touched || partyForm.$submitted' class="help-block" role="alert">
+                               <ng-message when="required">Select Country</ng-message>
+                             </ng-messages>
+                            </div>
+                            <div class="col-sm-1 col-md-1">
+                              <i class="fa fa-circle mandatory"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center col-md-12">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a class="btn btn-default" ui-sref="home.partyForm">
+                         Cancel
+                        </a>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </panel>
+      </div>
+    </div>
+</div> <!-- container-fluid -->

@@ -1,0 +1,215 @@
+<div class="container-fluid dependent-intake-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Dependent Derivative IntakeForm">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="dependentForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Title</label>
+                          <div class="col-sm-7 col-md-8">
+                            <select name="title" class="form-control" ng-model="title" required>
+                              <option value=""></option>
+                              <option value="Mr">Mr</option>
+                              <option value="Mrs">Mrs</option>
+                              <option value="Miss">Miss</option>
+                              <option value="Ms">Ms</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.FirstName.$error.required || dependentForm.FirstName.$error.minlength||dependentForm.FirstName.$error.maxlength) && (dependentForm.FirstName.$touched|| dependentForm.FirstName.$dirty || dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="FirstName" ng-model="firstName" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="dependentForm.FirstName.$error" ng-if='dependentForm.FirstName.$touched||dependentForm.FirstName.$error.minlength||dependentForm.FirstName.$error.maxlength ||dependentForm.FirstName.$dirty || dependentForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">First Name is required</ng-message>
+                             <ng-message when="minlength">First Name is too short</ng-message>
+                             <ng-message when="maxlength">First Name is too big</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" />
+                          </div>
+                          <div class="col-sm-1 col-md-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.LastName.$error.required || dependentForm.LastName.$error.minlength||dependentForm.LastName.$error.maxlength) && (dependentForm.LastName.$touched || dependentForm.LastName.$dirty || dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="LastName" ng-model="lastName" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                            <ng-messages for="dependentForm.LastName.$error" ng-if='dependentForm.LastName.$touched || form.validateDemo.LastName.$dirty || dependentForm.LastName.$error.minlength||dependentForm.LastName.$error.maxlength || dependentForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Last Name is required</ng-message>
+                             <ng-message when="minlength">Last Name is too short</ng-message>
+                             <ng-message when="maxlength">Last Name is too big</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Gender</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <label class="radio-inline control-label">
+                              <input iCheck type="radio" name="gender" value="Male" checked="checked"/> Male
+                            </label>
+                            <label class="radio-inline control-label">
+                              <input iCheck type="radio" name="gender" ng-model="gender" value="Female" /> Female
+                            </label>
+                            <label class="radio-inline control-label">
+                              <input iCheck type="radio" name="gender" ng-model="gender" value="Other" /> Other
+                            </label>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.date.$error.required ) && (dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">DOB</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input custom-datepicker type="text" name="date" class="form-control" format="mm/dd/yyyy" end-date="0y" ng-model="dob" required readonly/>
+                           <ng-messages for="dependentForm.date.$error" ng-if='dependentForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">DOB is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.city.$error.required ) && (dependentForm.city.$dirty || dependentForm.city.$touched || dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">City of Birth</label>
+                          <div class="col-sm-7 col-md-8">
+                            <div class="input-group">
+                              <input type="text" name="city" location-finder location-callback="depnCtrl.locationCallback" ng-model="depnCtrl.places.metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                            <ng-messages for="dependentForm.city.$error" ng-if='dependentForm.city.$dirty || dependentForm.city.$touched || dependentForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">City is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.state.$error.required ) && (dependentForm.state.$dirty || dependentForm.state.$touched || dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">State of Birth</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="state" ng-model="depnCtrl.places.metaLocation.state" class="form-control" required/>
+                            <city-required city="depnCtrl.dependentDerivative.metaLocation.city" class="help-block">
+                              To fill the state, fillup the city.
+                            </city-required>
+                            <ng-messages for="dependentForm.state.$error" ng-if='dependentForm.state.$dirty || dependentForm.state.$touched || dependentForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">State is required</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':dependentForm.countryName.$error.required && (dependentForm.countryName.$dirty || dependentForm.countryName.$touched || dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Country of Birth</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <input type="text" name="countryName" ng-model="depnCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                            <city-required city="depnCtrl.dependentDerivative.metaLocation.city" class="help-block">
+                              To fill the country, fillup the city.
+                            </city-required>
+                            <ng-messages for="dependentForm.countryName.$error" ng-if='dependentForm.countryName.$dirty || dependentForm.countryName.$touched || dependentForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Select Country</ng-message>
+                            </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':dependentForm.citizen.$error.required && (dependentForm.citizen.$dirty|| dependentForm.citizen.$touched|| dependentForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Nationality/ Citizenship</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <ui-select ng-model="citizenship" name="citizen" theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="citizenship in citizen | filter: $select.search">
+                                <div ng-bind-html="citizenship.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="dependentForm.citizen.$error" ng-if='dependentForm.citizen.$dirty||dependentForm.citizen.$touched || dependentForm.$submitted' class="help-block" role="alert">
+                             <ng-message when="required">Select Country</ng-message>
+                           </ng-messages>
+                          </div>
+                          <div class="col-sm-1 col-md-1">
+                            <i class="fa fa-circle mandatory"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Relationship to Beneficiary</label>
+                          <div class="col-sm-7 col-md-8">
+                            <select name="relation" class="form-control" ng-model="relation" required>
+                              <option value=""></option>
+                              <option value="Spouse">Spouse</option>
+                              <option value="Son">Son</option>
+                              <option value="Daughter">Daughter</option>
+                              <option value="Parent">Parent</option>
+                              <option value="Brother">Brother</option>
+                              <option value="Sister">Sister</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-primary m-r-10">Save</button>
+                      <a type="button" class="btn btn-default">Next</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

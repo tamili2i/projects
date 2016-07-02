@@ -1,0 +1,35 @@
+<div class="container-fluid form-template-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <panel panel-class="panel-sky" heading="Form Template List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <ui-view></ui-view>
+                    <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                        <div class="form-template-actions">
+                            <div class="input-icon search m-r-10">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input search-for table-id="formTemplateListCtrl.gridName"
+                                type="search" class="form-control"
+                                aria-controls="intakeforms-grid"
+                                placeholder="Search FormTemplates"
+                                tabindex="1"/>
+                            </div>
+                                <a ui-sref="home.formtemplate.form" class="btn btn-primary m-r-10" ui-sref-active="hide" >
+                                <i class="icon fa fa-plus"></i> Create
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <table table-id="formTemplateListCtrl.gridName" class="table table-striped" datatable-grid>
+                </div>
+                <div class="panel-loading" ng-show="formTemplateListCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="container-fluid corporation-view">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="View Corporation">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="corporationForm" novalidate>
+                  <fieldset>
+                    <!-- <legend>{{crViCtrl.title}} Corporation</legend> -->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Corporation Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.name}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label for="FederalEmpIdNumber" class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Federal Employer Id Number (FEIN)</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label for="FederalEmpIdNumber" class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.federal_employer_id}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Social Security Number (SSN)</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.social_security_number}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">City</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.places.metaLocation.city}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">State/Province</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.places.metaLocation.state}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Country</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.places.metaLocation.country}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 1</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.address.address_one}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group ">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 2</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.address.address_two}}</label>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Zip Code</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.address.zip_code}}</label>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Fax Number</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.fax.number}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12  col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Email</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{crViCtrl.corporation.email.email}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center col-md-12">
+                        <a class="btn btn-default" ui-sref="home.corporations">Cancel</a>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </panel>
+      </div>
+    </div>
+</div> <!-- container-fluid -->

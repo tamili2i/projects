@@ -1,0 +1,44 @@
+<div class="container-fluid subscriber-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <panel panel-class="panel-sky" heading="Subscriber List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="pull-left email-actions" ng-if="arr.length>0">
+                          <div class="btn-group" dropdown>
+                            <button type="button" class="btn btn-default dropdown-toggle alt-border" dropdown-toggle>
+                              Action to Perform <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                              <!-- <li><a ng-click="subsCtrl.sendCommunication(0)">System Updates</a></li>
+                              <li><a ng-click="subsCtrl.sendCommunication(2)">System Downtimes</a></li>
+                              <li><a ng-click="subsCtrl.sendCommunication(3)">Payment Dues</a></li>
+                              <li><a ng-click="subsCtrl.sendCommunication(4)">Impending Subscription</a></li> -->
+                              <li><a ng-repeat="action in subsCtrl.actions"  ng-click="subsCtrl.sendCommunication(action.id)">{{action.name}}</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="intake-forms-actions">
+                            <div class="input-icon search m-r-10">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input search-for table-id="subsCtrl.gridName"
+                                type="search" class="form-control"
+                                aria-controls="subscriber-grid"
+                                placeholder="Search Subscriber"
+                                tabindex="1"/>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+                <table table-id="subsCtrl.gridName" class="table table-striped" datatable-grid>
+                </table>
+                <div class="panel-loading" ng-show="subsCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>

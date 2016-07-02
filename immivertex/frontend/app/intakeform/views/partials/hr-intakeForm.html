@@ -1,0 +1,146 @@
+
+<div class="container-fluid hr-intake-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="HR Intake Form">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="hrForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Title</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Address</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">City</label>
+                          <div class="col-sm-7 col-md-8">
+                            <div class="input-group">
+                              <input type="text" name="city" location-finder location-callback="hrCtrl.locationCallback" ng-model="hrCtrl.places.metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="state" ng-model="hrCtrl.places.metaLocation.state" class="form-control"/>
+                            <city-required city="hrCtrl.hr.metaLocation.city" class="help-block">
+                              To fill the state, fillup the city.
+                            </city-required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Country</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <input type="text" name="countryName" ng-model="hrCtrl.places.metaLocation.country" class="form-control" readonly="true"/>
+                            <city-required city="hrCtrl.hr.metaLocation.city" class="help-block">
+                              To fill the country, fillup the city.
+                            </city-required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(hrForm.zipCode.$error.required || hrForm.zipCode.$error.minlength ) && (hrForm.zipCode.$touched || hrForm.zipCode.$dirty || hrForm.$submitted )}">
+                          <label class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text"  ng-minlength="6" ng-model="hrCtrl.hr.address.zip_code" name="zipCode" class="form-control"/>
+                            <ng-messages for="hrForm.zipCode.$error" ng-if='hrForm.zipCode.$dirty || hrForm.zipCode.$touched || hrForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Zip Code is requried</ng-message>
+                              <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (hrForm.phone.$error.pattern) &&
+            						(hrForm.phone.$dirty || hrForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Phone Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="hrCtrl.hr.phone.number"/>
+                            <ng-messages for="hrForm.phone.$error" ng-if='hrForm.phone.$error.pattern || hrForm.phone.$dirty || hrForm.$submitted'
+            								class="help-block" role="alert">
+            									<ng-message when="pattern">Phone Number must be a number</ng-message>
+            								</ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (hrForm.fax.$error.pattern) &&
+            						(hrForm.fax.$dirty || hrForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Fax</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" maxlength="12" name="fax" ng-pattern="/^[0-9]*$/" ng-model="hrCtrl.hr.fax.number"/>
+                            <ng-messages for="hrForm.fax.$error" ng-if='hrForm.fax.$error.pattern || hrForm.fax.$dirty || hrForm.$submitted'
+                            class="help-block" role="alert">
+                              <ng-message when="pattern">Fax Number must be a number</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':hrForm.email.$error.pattern  && (hrForm.email.$dirty || hrForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Email</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" ng-model="email" class="form-control"/>
+                            <ng-messages for="hrForm.email.$error" ng-if='hrForm.email.$dirty' class="help-block" role="alert">
+                              <ng-message when="pattern">Invalid Email</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-primary m-r-10">Save</button>
+                      <a type="button" class="btn btn-default">Cancel</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

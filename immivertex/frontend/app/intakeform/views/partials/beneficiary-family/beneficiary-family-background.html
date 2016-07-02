@@ -1,0 +1,313 @@
+<div class="beneficiary-bg">
+  <fieldset>
+    <legend>Background</legend>
+    <form role="form" class="form-horizontal form-elements" name="user_details">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">Have you ever claimed to be a U.S. citizen (in writing or any other way)?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio" ng-model="citizen"  value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="citizen"  value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="claimed.name"  ng-hide="citizen!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">Have you ever registered to vote in any Federal, state, or local election in the United States?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="registered" value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="registered" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="election.name "  ng-hide="registered!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label  class="col-sm-6 col-md-6 control-label text-left">Have you ever voted in any Federal, State, or local election in the United States?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="voted" value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="voted" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="local.name"  ng-hide="voted!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label text-left">Since becoming a lawful permanent resident, have you ever failed to file a required Federal, State, or local tax return?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="required" value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="required" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="return.name"  ng-hide="required!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label">Do you owe any Federal, State, or local taxes that are overdue?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="Federal" value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="Federal" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="taxes.name"  ng-hide="Federal!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label">Do you have any title of nobility in any foreign country?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="foreign" value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="foreign" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="title.name"  ng-hide="foreign!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+          <label class="col-sm-6 col-md-6 control-label">Have you ever been declared legally incompetent or been confined to a mental institution within the last five years?
+</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="incompetent"  value="Yes"> Yes
+            </label>
+            <label class="radio-inline control-label">
+              <input iCheck type="radio"  ng-model="incompetent" value="No"> No
+            </label>
+          </div>
+          <div class="col-sm-4 col-md-4 p-t-8">
+            <input type="text" ng-model="legally.name"  ng-hide="incompetent!= 'Yes'" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Since becoming a Lawful Permanent Resident of the United States have you ever called yourself a "nonresident" on a Federal, State, or local tax return?
+</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="nonresident" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="nonresident" value="No"> No
+              </label>
+            </div>
+             <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="Lawful.name"  ng-hide="nonresident!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+         <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label  class="col-sm-6 col-md-6 control-label">Since becoming a Lawful Permanent Resident of the United States have you ever failed to file a Federal, State, or local tax return because you considered yourself to be a "nonresident"?
+</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="Resident" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="Resident" value="No"> No
+              </label>
+                 </div>
+                 <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="failed.name"  ng-hide="Resident!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Have you ever been a habitual drunkard?</label>
+             <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="habitual" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="habitual" value="No"> No
+              </label>
+            </div>
+            <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="drunkard.name"  ng-hide="habitual!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label  class="col-sm-6 col-md-6 control-label">Have you ever been a prostitute, or procured anyone for prostitution?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="procured" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="procured" value="No"> No
+              </label>
+            </div>
+             <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="proc.name"  ng-hide="procured!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Have you ever sold or smuggled controlled substances, illegal drugs or narcotics?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"   ng-model="smuggled"  value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"   ng-model="smuggled" value="No"> No
+              </label>
+            </div>
+             <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="smuggle.name"  ng-hide="smuggled!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label  class="col-sm-6 col-md-6 control-label">Have you ever been married to more than one person at the same time?</label>
+         <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="person"  value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="person" value="No"> No
+              </label>
+            </div>
+                <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="married.name"  ng-hide="person!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Have you ever helped anyone enter or try to enter the United States illegally?</label>
+          <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="helped" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="helped" value="No"> No
+              </label>
+            </div>
+               <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="anyone.name"  ng-hide="helped!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label  class="col-sm-6 col-md-6 control-label">Have you ever gambled illegally or received income from illegal gambling?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="gambling"  value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="gambling" value="No"> No
+              </label>
+            </div>
+              <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="gambled.name"  ng-hide="gambling!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Have you ever failed to support your dependents or to pay alimony?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="alimony"  value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="alimony" value="No"> No
+              </label>
+            </div>
+              <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="support.name"  ng-hide="alimony!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label  class="col-sm-6 col-md-6 control-label">Have you ever given false or misleading information to any U.S. Government official while applying for any immigration benefit or to prevent deportation, exclusion, or removal?</label>
+           <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="immigration" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="immigration" value="No"> No
+              </label>
+            </div>
+            <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="removal.name"  ng-hide="immigration!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-12  col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label">Have you ever lied to any U.S. Government official to gain entry or admission into the United States?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="admission"  value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio"  ng-model="admission" value="No"> No
+              </label>
+            </div>
+            <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-model="entry.name"  ng-hide="admission!= 'Yes'" class="form-control"/>
+            </div>
+          </div>
+        </div>
+
+      <div class="text-center col-md-12">
+        <button class="btn btn-primary">Save</button>
+        <a ui-sref="home.beneficiaryFamily.history" class="btn btn-default">Next</a>
+      </div>
+  </form>
+</fieldset>
+</div>

@@ -1,0 +1,296 @@
+<!--Employment Tab-->
+<div role="tabpanel" class="tab-pane" id="employment">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" name="employmentForms" ng-submit="employmentForms.$valid && empCtrl.save($event)" novalidate>
+        <fieldset>
+          <div class="am-border" ng-repeat="employment in empCtrl.employments">
+            <ng-form name="employmentForm">
+              <legend>{{$index+1}}. Employment Details</legend>
+              <div class="addmore">
+                <button type="button" class="add-btn btn btn-social btn-apple-alt" ng-click="empCtrl.addEmployment(employmentForms)" ng-if="$index == (empCtrl.employments.length-1)">
+                  <i class="fa fa-plus"></i> Add
+                </button>
+                <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-click="empCtrl.removeEmployment($index, employment.id)" ng-if="empCtrl.employments.length > 1">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-md-3 control-label">Current</label>
+                    <div class="col-sm-7 col-md-8 p-t-8">
+                      <input type="radio" name="iscurrent" ng-value="true" ng-change="empCtrl.changeValue($index)" iCheck ng-model="employment.is_current"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.name.$error.required && (employmentForm.name.$dirty || employmentForm.name.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Employer Name</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" ng-model="employment.employment_information.name" name="name" required/>
+                      <ng-messages for="employmentForm.name.$error" ng-if='employmentForm.name.$dirty || employmentForm.name.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Employer Name is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.emp_type.$error.required && (employmentForm.emp_type.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Employment Type</label>
+                    <div class="col-sm-7 col-md-8">
+                      <ui-select ng-model="employment.type_id" theme="select2" name="emp_type" class="form-control" required>
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="type.id as type in empCtrl.employmentTypes | filter: $select.search">
+                          <div ng-bind-html="type.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                      </ui-select>
+                      <ng-messages for="employmentForm.emp_type.$error" ng-if='employmentForm.emp_type.$dirty || employmentForm.emp_type.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Employment Type is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.supervisor_name.$error.required && (employmentForm.supervisor_name.$dirty || employmentForm.supervisor_name.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Supervisor's Name</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" ng-model="employment.employment_information.supervisor_name" name="supervisor_name" required/>
+                      <ng-messages for="employmentForm.supervisor_name.$error" ng-if='employmentForm.supervisor_name.$dirty || employmentForm.supervisor_name.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Supervisor's Name is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(employmentForm.title.$error.required || employmentForm.title.$error.minlength) && (employmentForm.title.$dirty || employmentForm.title.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Job Title</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" ng-model="employment.title" ng-minlength="3" name="title" required/>
+                      <ng-messages for="employmentForm.title.$error" ng-if='employmentForm.title.$error.minlength || employmentForm.title.$dirty || employmentForm.title.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Job Title is requried</ng-message>
+                        <ng-message when="minlength">Job Title must contain atleast 3 characters</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(employmentForm.description.$error.required || employmentForm.description.$error.minlength) && (employmentForm.description.$dirty || employmentForm.description.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Job Description</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" ng-model="employment.description" ng-minlength="3" name="description" required/>
+                      <ng-messages for="employmentForm.description.$error" ng-if='employmentForm.description.$dirty || employmentForm.description.$touched || employmentForm.description.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Job Description is requried</ng-message>
+                        <ng-message when="minlength">Job Description must contain atleast 3 characters</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.fromDate.$error.required && (employmentForm.fromDate.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">From Date</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input custom-datepicker type="text" name="fromDate" ng-change="empCtrl.checkDate(employment)" end-date="0d" class="form-control" format="yyyy-mm-dd" ng-model="employment.from_date" readonly required/>
+                      <ng-messages for="employmentForm.fromDate.$error" ng-if='employmentForm.fromDate.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">From Date is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.endDate.$error.required && (employmentForm.endDate.$touched || employmentForms.$submitted) && !employment.is_current}">
+                    <label class="col-sm-3 col-md-3 control-label">To Date</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input custom-datepicker type="text" start-date="employment.from_date" ng-disabled="!employment.from_date || employment.is_current" name="endDate" class="form-control" format="yyyy-mm-dd" ng-model="employment.to_date" readonly ng-required="!employment.is_current"/>
+                      <from-date-requried from-date="education.from_date" ng-if="!employment.from_date && !employment.is_current" class="help-block">
+                        Select from date first
+                      </from-date-requried>
+                      <ng-messages for="employmentForm.endDate.$error" ng-if='(employmentForm.endDate.$touched || employmentForms.$submitted) && !employment.is_current' class="help-block" role="alert">
+                        <ng-message when="required">To Date is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div ng-if="!employment.is_current" class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(employmentForm.phone.$error.required || employmentForm.phone.$error.pattern)&& (employmentForm.phone.$dirty || employmentForm.phone.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Phone</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" maxlength="12" ng-pattern="/^[0-9]*$/" ng-model="employment.employment_information.phone" name="phone" required/>
+                      <ng-messages for="employmentForm.phone.$error" ng-if='employmentForm.phone.$touched || employmentForm.phone.$dirty || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Phone number is requried</ng-message>
+                        <ng-message when="pattern">Phone number must be number</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(employmentForm.fax.$error.pattern) &&
+                    (employmentForm.fax.$touched|| employmentForm.fax.$dirty || employmentForm.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">FAX</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" class="form-control" name="fax" ng-pattern="/^[0-9]*$/" ng-model="employment.employment_information.fax"/>
+                      <ng-messages for="employmentForm.fax.$error" ng-if='employmentForm.fax.$touched ||
+                      employmentForm.fax.$dirty || employmentForm.$submitted' class="help-block" role="alert">
+                        <ng-message when="pattern">Fax Number must be a Number</ng-message>
+                      </ng-messages>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error': (employmentForm.supervisorEmail.$error.required || employmentForm.supervisorEmail.$error.pattern) && (employmentForm.supervisorEmail.$touched || employmentForm.supervisorEmail.$dirty || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Supervisor's Email</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" name="supervisorEmail" ng-model-options="{ 'updateOn': 'blur'}" ng-model="employment.employment_information.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" class="form-control" required/>
+                      <ng-messages for="employmentForm.supervisorEmail.$error" ng-if='employmentForm.supervisorEmail.$touched || employmentForm.supervisorEmail.$dirty || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Supervisor's Email is required</ng-message>
+                        <ng-message when="pattern">Invalid supervisor's Email</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-md-3 control-label">Unit/ Apt. No</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="employment.employment_information.address.unit" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.street.$error.required && (employmentForm.street.$dirty || employmentForm.street.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Street</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="employment.employment_information.address.street" class="form-control" name="street" required/>
+                      <ng-messages for="employmentForm.street.$error" ng-if='employmentForm.street.$dirty || employmentForm.street.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Street is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.city.$error.required && (employmentForm.city.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">City</label>
+                    <div class="col-sm-7 col-md-8">
+                      <div class="input-group">
+                        <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="empCtrl.locationCallback" ng-model="empCtrl.places[$index].metaLocation.city" class="form-control"/>
+                        <span class="input-group-btn">
+                          <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                        </span>
+                      </div>
+                      <ng-messages for="employmentForm.city.$error" ng-if='employmentForm.city.$dirty || employmentForm.city.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">City is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.state.$error.required && (employmentForm.state.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">State</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="state" ng-model="empCtrl.places[$index].metaLocation.state" class="form-control" required/>
+                      <city-required city="empCtrl.places[$index].metaLocation.city" class="help-block">
+                        To fill the state, fillup the city
+                      </city-required>
+                      <ng-messages for="employmentForm.state.$error" ng-if='employmentForm.state.$dirty || employmentForm.state.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">State is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':employmentForm.country.$error.required && (employmentForm.country.$touched || employmentForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Country</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="country" ng-model="empCtrl.places[$index].metaLocation.country" class="form-control" required/>
+                      <city-required city="empCtrl.places[$index].metaLocation.city" class="help-block">
+                        To fill the country, fillup the city
+                      </city-required>
+                      <ng-messages for="employmentForm.country.$error" ng-if='employmentForm.country.$dirty || employmentForm.country.$touched || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Country is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(employmentForm.zipCode.$error.required || employmentForm.zipCode.$error.minlength) && (employmentForm.zipCode.$touched || employmentForm.zipCode.$dirty || employmentForms.$submitted)}">
+                    <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="employment.employment_information.address.zip_code" ng-minlength="6" name="zipCode" class="form-control" required/>
+                      <ng-messages for="employmentForm.zipCode.$error" ng-if='employmentForm.zipCode.$touched || employmentForm.zipCode.$dirty || employmentForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Zip Code is requried</ng-message>
+                        <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-form>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 text-center">
+              <button type="submit" class="btn btn-primary m-r-10">Save</button>
+              <a ui-sref="home.beneficiary.history" class="btn btn-default">Next</a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>

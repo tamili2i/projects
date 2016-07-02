@@ -1,0 +1,75 @@
+<div class="create-container">
+  <i class="fa fa-close c-r" ui-sref="home.formtemplate"></i>
+  <legend>{{formTemplateCtrl.title}} Form Template</legend>
+  <form role="form" class="form-horizontal" ng-submit= "formtemplate.$valid && formTemplateCtrl.saveFormTemplate(formtemplate)" name="formtemplate" novalidate>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(formtemplate.name.$error.required || formtemplate.name.$error.availability) && (formtemplate.name.$touched|| formtemplate.name.$dirty || formtemplate.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Name</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" ng-disabled="formTemplateCtrl.edit" name="name" ng-model="formTemplateCtrl.formTemplate.name" class="form-control" ng-change="formTemplateCtrl.setAvailability(formtemplate.name)" required/>
+            <ng-messages for="formtemplate.name.$error" ng-if='formtemplate.name.$touched ||formtemplate.name.$dirty || formtemplate.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Name is required</ng-message>
+              <ng-message when="availability">Name already taken</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(formtemplate.description.$error.required) && (formtemplate.description.$touched|| formtemplate.description.$dirty || formtemplate.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Description</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" name="description" ng-disabled="formTemplateCtrl.edit" ng-model="formTemplateCtrl.formTemplate.description" class="form-control" required/>
+            <ng-messages for="formtemplate.description.$error" ng-if='formtemplate.description.$touched ||formtemplate.description.$dirty || formtemplate.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Description is required</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-xs-12  col-sm-12 col-md-6" >
+        <div class="form-group" ng-class="{'has-error':((formtemplate.file.$error.required)&& formtemplate.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label" ng-class="{'danger':formTemplateCtrl.valid}">File </label>
+          <div class="col-sm-7 col-md-7" ng-if ="!formTemplateCtrl.file">
+            <a type="file" class="btn btn-default" ng-model="formTemplateCtrl.file" name="file" ngf-select="formTemplateCtrl.uploadFiles($file, $invalidFiles, formtemplate)"
+          accept="image/jpg,image/jpeg,image/png,application/pdf" ngf-max-height="1000" ngf-max-size="3MB" required>
+      Choose File</a>
+            <ng-messages for="formtemplate.file.$error" ng-if="formtemplate.$submitted && !formTemplateCtrl.valid" class="help-block" role="alert">
+              <ng-message when="required">Select file</ng-message>
+            </ng-messages>
+            <div ng-class="{'danger':formTemplateCtrl.valid}" ng-if="formTemplateCtrl.valid">Invalid file(.jpeg, .jpg, .png and .pdf only)</div>
+          </div>
+
+          <div ng-if ="formTemplateCtrl.file">
+            <div class="col-xs-7 col-sm-7 col-md-7 p-t-8 truncating" data-tooltip="{{formTemplateCtrl.file.name}}">
+            {{formTemplateCtrl.file.name}} {{formTemplateCtrl.errFile.name}} {{formTemplateCtrl.errFile.$error}} {{formTemplateCtrl.errFile.$errorParam}}
+            </div>
+            <a type="button" ng-hide="formTemplateCtrl.edit" ng-click="formTemplateCtrl.removePdf()">
+              <i class="glyphicon glyphicon-trash text-danger p-t-8"></i>
+            </a>
+          </div>
+          <div class="col-sm-1 col-md-1" ng-if ="!formTemplateCtrl.file">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-if="!formTemplateCtrl.edit">
+    <div class="text-center">
+      <button class="btn btn-primary m-r-10" value="Save">
+             Save
+      </button>
+      <a class="btn btn-default" ui-sref="home.formtemplate">
+             Cancel
+          </a>
+        </div>
+      </div>
+  </form>
+ </div>

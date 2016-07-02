@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="immiApp">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Immivertex</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Immivertex">
+    <meta name="author" content="Immigration Management System">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
+    <!--[if lte IE 9]> <link rel="stylesheet" href="assets/css/ie8.css"> <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script> <script type="text/javascript" src="bower_components/flot/excanvas.min.js"></script> <script type='text/javascript' src='assets/plugins/misc/placeholdr.js'></script> <script type="text/javascript" src="assets/plugins/misc/media.match.min.js"></script> <![endif]-->
+
+    <!-- The following CSS are included as plugins and can be removed if unused-->
+
+    <!-- build:css assets/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css"/>
+
+    <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/iCheck/skins/all.css"/>
+
+    <link rel="stylesheet" href="bower_components/ui-select/dist/select.min.css"/>
+    <link rel="stylesheet" href="bower_components/select2/select2.css"/>
+    <link rel="stylesheet" href="bower_components/select2/select2-bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css"/>
+
+    <link rel="stylesheet" href="assets/css/glyphicons/css/glyphicons.min.css"/>
+    <link rel="stylesheet" href="assets/css/styles.css"/>
+
+  </head>
+
+  <body
+    window-dimension
+    ng-controller="ThemeController"
+    class="{{getLayoutOption('sidebarThemeClass')}} {{getLayoutOption('topNavThemeClass')}}"
+    ng-class="{
+			  'static-header': !getLayoutOption('fixedHeader'),
+			  'focusedform': getLayoutOption('fullscreen'),
+			  'layout-horizontal': getLayoutOption('layoutHorizontal'),
+			  'fixed-layout': getLayoutOption('layoutBoxed'),
+			  'sidebar-collapsed': getLayoutOption('leftbarCollapsed') && !getLayoutOption('leftbarShown'),
+			  'show-infobar': getLayoutOption('rightbarCollapsed'),
+			  'show-sidebar': getLayoutOption('leftbarShown')
+			}"
+    faux-offcanvas>
+    <ui-view ng-animate="'view'"></ui-view>
+
+    <!--[if lt IE 9]> <script src="bower_components/es5-shim/es5-shim.js"></script> <script src="bower_components/json3/lib/json3.min.js"></script> <![endif]-->
+
+    <!-- Commented by Dinakaran - Instead added below library
+  <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script> -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+  <!-- inject:js -->
+  <script src="/bower_components/modernizr/modernizr.js"></script>
+  <script src="/bower_components/enquire/dist/enquire.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="/bower_components/datatables/media/js/dataTables.bootstrap.min.js"></script>
+  <script src="/bower_components/jquery.inputmask/dist/min/jquery.inputmask.js"></script>
+  <script src="/bower_components/underscore/underscore-min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="/bower_components/iCheck/icheck.min.js"></script>
+  <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="/bower_components/ng-pattern-restrict/src/ng-pattern-restrict.min.js"></script>
+  <script src="/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script src="/bower_components/ui-select/dist/select.min.js"></script>
+  <script src="/bower_components/toastr/toastr.js"></script>
+  <script src="/bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
+  <script src="/bower_components/autoheight/src/angular-autoheight.js"></script>
+  <script src="/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+  <script src="/app/PcAdministration/PcAdministration.js"></script>
+  <script src="/app/UserNotes/usernotes.js"></script>
+  <script src="/app/beneficiary/beneficiary.js"></script>
+  <script src="/app/caseManagement/casemanagement.js"></script>
+  <script src="/app/components/components.js"></script>
+  <script src="/app/corporation/corporation.js"></script>
+  <script src="/app/grid/grid.js"></script>
+  <script src="/app/intakeform/intakeform.js"></script>
+  <script src="/app/system/system.js"></script>
+  <script src="/app/systemAdministration/SystemAdministration.js"></script>
+  <script src="/app/theme/pagination.js"></script>
+  <script src="/app/theme/theme.js"></script>
+  <script src="/app/userManagement/UserManagement.js"></script>
+  <script src="/app/workflow/workflow.js"></script>
+  <script src="/app/lawfirm/lawfirm.js"></script>
+  <script src="/app/party/party.js"></script>
+  <script src="/app/PcAdministration/controllers/DocumentCheckListController.js"></script>
+  <script src="/app/PcAdministration/controllers/DocumentCheckListFormController.js"></script>
+  <script src="/app/PcAdministration/controllers/DocumentCheckListViewController.js"></script>
+  <script src="/app/PcAdministration/controllers/FormTemplateController.js"></script>
+  <script src="/app/PcAdministration/controllers/FormTemplateListController.js"></script>
+  <script src="/app/PcAdministration/controllers/FormTemplateViewController.js"></script>
+  <script src="/app/PcAdministration/controllers/ProgramCaseFormController.js"></script>
+  <script src="/app/PcAdministration/controllers/ProgramCaseListController.js"></script>
+  <script src="/app/PcAdministration/controllers/ProgramCaseViewController.js"></script>
+  <script src="/app/PcAdministration/routes/routes.js"></script>
+  <script src="/app/PcAdministration/services/DocumentCheckListGridConfig.js"></script>
+  <script src="/app/PcAdministration/services/FormTemplateGridConfig.js"></script>
+  <script src="/app/PcAdministration/services/ProgramCaseDataService.js"></script>
+  <script src="/app/PcAdministration/services/ProgramCaseGridConfig.js"></script>
+  <script src="/app/PcAdministration/services/ProgramCaseService.js"></script>
+  <script src="/app/UserNotes/controllers/UsernoteController.js"></script>
+  <script src="/app/UserNotes/directives/UserNote.js"></script>
+  <script src="/app/UserNotes/services/UsernoteDataService.js"></script>
+  <script src="/app/UserNotes/services/UsernoteService.js"></script>
+  <script src="/app/beneficiary/controllers/AddressController.js"></script>
+  <script src="/app/beneficiary/controllers/BackgroundController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiaryCaseController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiaryCreateController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiaryFormController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiaryGeneralController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiaryListController.js"></script>
+  <script src="/app/beneficiary/controllers/BeneficiarySearchController.js"></script>
+  <script src="/app/beneficiary/controllers/ChangeHistoryController.js"></script>
+  <script src="/app/beneficiary/controllers/DocumentController.js"></script>
+  <script src="/app/beneficiary/controllers/EducationController.js"></script>
+  <script src="/app/beneficiary/controllers/EmploymentController.js"></script>
+  <script src="/app/beneficiary/controllers/HistoryController.js"></script>
+  <script src="/app/beneficiary/routes/routes.js"></script>
+  <script src="/app/beneficiary/services/BeneficiaryDataService.js"></script>
+  <script src="/app/beneficiary/services/BeneficiaryGridConfig.js"></script>
+  <script src="/app/beneficiary/services/BeneficiaryService.js"></script>
+  <script src="/app/caseManagement/controllers/CaseListController.js"></script>
+  <script src="/app/caseManagement/controllers/CaseSearchController.js"></script>
+  <script src="/app/caseManagement/controllers/CreateCaseController.js"></script>
+  <script src="/app/caseManagement/routes/routes.js"></script>
+  <script src="/app/caseManagement/services/CaseDataService.js"></script>
+  <script src="/app/caseManagement/services/CaseGridConfig.js"></script>
+  <script src="/app/caseManagement/services/CaseService.js"></script>
+  <script src="/app/components/directives/ComputeHeight.js"></script>
+  <script src="/app/components/directives/CustomDatepicker.js"></script>
+  <script src="/app/components/directives/CustomTooltip.js"></script>
+  <script src="/app/components/directives/LocationFinder.js"></script>
+  <script src="/app/components/directives/autoComplete.js"></script>
+  <script src="/app/components/directives/cityRequired.js"></script>
+  <script src="/app/components/directives/fromDateRequried.js"></script>
+  <script src="/app/components/directives/multiSelectRequired.js"></script>
+  <script src="/app/components/services/AutoCompleteUtils.js"></script>
+  <script src="/app/components/services/HTTPFactory.js"></script>
+  <script src="/app/components/services/InfiniteScroll.js"></script>
+  <script src="/app/components/services/PlacesFactory.js"></script>
+  <script src="/app/components/services/ToasterService.js"></script>
+  <script src="/app/corporation/controllers/CorporationController.js"></script>
+  <script src="/app/corporation/controllers/CorporationFormController.js"></script>
+  <script src="/app/corporation/controllers/CorporationListController.js"></script>
+  <script src="/app/corporation/controllers/CorporationViewController.js"></script>
+  <script src="/app/corporation/directives/ValidateSsnFein.js"></script>
+  <script src="/app/corporation/routes/routes.js"></script>
+  <script src="/app/corporation/services/CorporationDataService.js"></script>
+  <script src="/app/corporation/services/CorporationGridConfig.js"></script>
+  <script src="/app/corporation/services/CorporationService.js"></script>
+  <script src="/app/grid/constants/GridConstants.js"></script>
+  <script src="/app/grid/directives/GridDirectives.js"></script>
+  <script src="/app/grid/services/GridDynamics.js"></script>
+  <script src="/app/grid/services/GridService.js"></script>
+  <script src="/app/intakeform/controllers/AttorneyController.js"></script>
+  <script src="/app/intakeform/controllers/DependentDerivativeController.js"></script>
+  <script src="/app/intakeform/controllers/HrController.js"></script>
+  <script src="/app/intakeform/controllers/IntakeListController.js"></script>
+  <script src="/app/intakeform/controllers/IntakeformController.js"></script>
+  <script src="/app/intakeform/controllers/InterpreterController.js"></script>
+  <script src="/app/intakeform/routes/routes.js"></script>
+  <script src="/app/intakeform/services/IntakeFormGridConfig.js"></script>
+  <script src="/app/intakeform/services/IntakeFormService.js"></script>
+  <script src="/app/intakeform/services/IntakeformDataService.js"></script>
+  <script src="/app/system/controllers/ChangePasswordController.js"></script>
+  <script src="/app/system/controllers/EditProfileController.js"></script>
+  <script src="/app/system/controllers/ForgotPasswordController.js"></script>
+  <script src="/app/system/controllers/HeaderController.js"></script>
+  <script src="/app/system/controllers/LoginController.js"></script>
+  <script src="/app/system/controllers/NavigationController.js"></script>
+  <script src="/app/system/controllers/NotificationController.js"></script>
+  <script src="/app/system/controllers/RegistrationController.js"></script>
+  <script src="/app/system/controllers/ResetPasswordController.js"></script>
+  <script src="/app/system/controllers/SystemController.js"></script>
+  <script src="/app/system/controllers/UserProfileController.js"></script>
+  <script src="/app/system/directives/DashboardBox.js"></script>
+  <script src="/app/system/directives/RoleElement.js"></script>
+  <script src="/app/system/directives/SystemDirective.js"></script>
+  <script src="/app/system/routes/SystemRoute.js"></script>
+  <script src="/app/system/services/DashboardDataService.js"></script>
+  <script src="/app/system/services/DashboardService.js"></script>
+  <script src="/app/system/services/MasterDataService.js"></script>
+  <script src="/app/system/services/NavigationService.js"></script>
+  <script src="/app/system/services/Session.js"></script>
+  <script src="/app/system/services/UserDataService.js"></script>
+  <script src="/app/system/services/UserService.js"></script>
+  <script src="/app/system/services/Utils.js"></script>
+  <script src="/app/systemAdministration/controllers/SubscriberAlertController.js"></script>
+  <script src="/app/systemAdministration/controllers/SubscriberListController.js"></script>
+  <script src="/app/systemAdministration/controllers/SubscriberProfileController.js"></script>
+  <script src="/app/systemAdministration/routes/routes.js"></script>
+  <script src="/app/systemAdministration/services/SubscriberDataService.js"></script>
+  <script src="/app/systemAdministration/services/SubscriberGridConfig.js"></script>
+  <script src="/app/systemAdministration/services/SubscriberService.js"></script>
+  <script src="/app/report/report.js"></script>
+  <script src="/app/theme/controllers/ThemeController.js"></script>
+  <script src="/app/theme/directives/ThemeDirectives.js"></script>
+  <script src="/app/theme/services/ThemeServices.js"></script>
+  <script src="/app/userManagement/controllers/CreateUserRoleController.js"></script>
+  <script src="/app/userManagement/controllers/UserAccessController.js"></script>
+  <script src="/app/userManagement/controllers/UserRoleListController.js"></script>
+  <script src="/app/userManagement/directives/CheckedEdit.js"></script>
+  <script src="/app/userManagement/routes/routes.js"></script>
+  <script src="/app/userManagement/services/RoleBasedModuleComputeService.js"></script>
+  <script src="/app/userManagement/services/UserManagementDataService.js"></script>
+  <script src="/app/userManagement/services/UserManagementService.js"></script>
+  <script src="/app/userManagement/services/UserRoleGridConfig.js"></script>
+  <script src="/app/workflow/controllers/StepAssociationController.js"></script>
+  <script src="/app/workflow/controllers/StepFormController.js"></script>
+  <script src="/app/workflow/controllers/StepViewController.js"></script>
+  <script src="/app/workflow/controllers/StepsListController.js"></script>
+  <script src="/app/workflow/controllers/WorkFlowFormController.js"></script>
+  <script src="/app/workflow/controllers/WorkflowListController.js"></script>
+  <script src="/app/workflow/controllers/WorkflowViewController.js"></script>
+  <script src="/app/workflow/routes/routes.js"></script>
+  <script src="/app/workflow/services/StepsGridConfig.js"></script>
+  <script src="/app/workflow/services/WorkflowDataService.js"></script>
+  <script src="/app/workflow/services/WorkflowGridConfig.js"></script>
+  <script src="/app/workflow/services/WorkflowService.js"></script>
+  <script src="/app/lawfirm/controllers/LawfirmController.js"></script>
+  <script src="/app/lawfirm/controllers/LawfirmFormController.js"></script>
+  <script src="/app/lawfirm/controllers/LawfirmListController.js"></script>
+  <script src="/app/lawfirm/controllers/LawfirmViewController.js"></script>
+  <script src="/app/lawfirm/routes/routes.js"></script>
+  <script src="/app/lawfirm/services/LawfirmDataService.js"></script>
+  <script src="/app/lawfirm/services/LawfirmGridConfig.js"></script>
+  <script src="/app/lawfirm/services/LawfirmService.js"></script>
+  <script src="/app/party/controllers/PartyController.js"></script>
+  <script src="/app/party/controllers/PartyFormController.js"></script>
+  <script src="/app/party/controllers/PartyListController.js"></script>
+  <script src="/app/party/controllers/PartyRelationController.js"></script>
+  <script src="/app/party/controllers/PartyViewController.js"></script>
+  <script src="/app/party/routes/routes.js"></script>
+  <script src="/app/party/services/PartyDataService.js"></script>
+  <script src="/app/party/services/PartyGridConfig.js"></script>
+  <script src="/app/party/services/PartyService.js"></script>
+  <script src="/app/intakeform/controllers/attorney-family/AttorneyFamilyFormController.js"></script>
+  <script src="/app/intakeform/controllers/attorney-family/AttorneyFamilyGeneralController.js"></script>
+  <script src="/app/intakeform/controllers/attorney-family/AttorneyFamilyQuestionnaireController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyAddressController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyDocumentController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyEmploymentController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyFormController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyGeneralController.js"></script>
+  <script src="/app/intakeform/controllers/beneficiary-family/BeneficiaryFamilyHistoryController.js"></script>
+  <script src="/app/intakeform/controllers/derivative-beneficiary-family/DerivativeFamilyFormController.js"></script>
+  <script src="/app/intakeform/controllers/employer-intakeform/EmployerEmploymentController.js"></script>
+  <script src="/app/intakeform/controllers/employer-intakeform/EmployerIntakeformController.js"></script>
+  <script src="/app/intakeform/controllers/employer-intakeform/I129hFormController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerAddressController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerDocumentController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerEmploymentController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerGeneralController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerHistoryController.js"></script>
+  <script src="/app/intakeform/controllers/petitioner-family/PetitionerQuestionController.js"></script>
+  <script src="/app/report/controllers/BeneficiaryReportController.js"></script>
+  <script src="/app/report/controllers/CaseReportController.js"></script>
+  <script src="/app/report/controllers/PartyReportController.js"></script>
+  <script src="/app/report/controllers/PassportReportController.js"></script>
+  <script src="/app/report/routes/routes.js"></script>
+  <script src="/app/report/services/BeneficiaryReportDataService.js"></script>
+  <script src="/app/report/services/BeneficiaryReportGridConfig.js"></script>
+  <script src="/app/report/services/BeneficiaryReportService.js"></script>
+  <script src="/app/report/services/CaseReportDataService.js"></script>
+  <script src="/app/report/services/CaseReportGridConfig.js"></script>
+  <script src="/app/report/services/CaseReportService.js"></script>
+  <script src="/app/report/services/PartyReportDataService.js"></script>
+  <script src="/app/report/services/PartyReportGridConfig.js"></script>
+  <script src="/app/report/services/PartyReportService.js"></script>
+  <script src="/app/report/services/PassportReportDataService.js"></script>
+  <script src="/app/report/services/PassportReportGridConfig.js"></script>
+  <script src="/app/report/services/PassportReportService.js"></script>
+  <script src="/app/app.js"></script>
+  <!-- endinject -->
+  </body>
+</html>

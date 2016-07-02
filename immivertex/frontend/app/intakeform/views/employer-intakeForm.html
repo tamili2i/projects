@@ -1,0 +1,22 @@
+<div class="container-fluid employer-intake-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Employer">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat = "tab in emplIntCtrl.tabs" role="presentation" ui-sref-active="active">
+              <a ui-sref="{{tab.state}}" aria-controls="{{refName}}" role="tab">{{tab.name}}</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <ui-view></ui-view>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

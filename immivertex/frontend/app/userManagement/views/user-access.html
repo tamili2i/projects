@@ -1,0 +1,88 @@
+<div class="container-fluid user-access">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="User Access Rights">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-elements" name="accessForm" ng-submit="accessForm.$valid && uAccCtrl.save()" novalidate>
+                  <fieldset>
+                    <!-- <legend>User Access Rights</legend> -->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':accessForm.roleName.$error.required
+                         && (accessForm.roleName.$dirty||accessForm.roleName.$touched ||
+                         accessForm.$submitted)}">
+                          <label class="col-xs-3 col-sm-3 col-md-3 control-label">Roles</label>
+                          <div class="col-xs-8 col-sm-5 col-md-8">
+                            <ui-select ng-change="uAccCtrl.loadAccessRightsByRole(uAccCtrl.role)" ng-model="uAccCtrl.role" name="roleName" theme="select2" class="form-control" required>
+                              <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                              <ui-select-choices repeat="role in uAccCtrl.roles | filter: $select.search">
+                                <div ng-bind-html="role.name | highlight: $select.search"></div>
+                              </ui-select-choices>
+                            </ui-select>
+                            <ng-messages for="accessForm.roleName.$error"
+                             ng-if='accessForm.roleName.$dirty||accessForm.roleName.$touched ||
+                             accessForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Select Role</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-12 col-md-6" ng-show="uAccCtrl.accessRights.length">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Modules</th>
+                          <th class="text-center">View</th>
+                          <th class="text-center">Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="accesRight in uAccCtrl.accessRights">
+                          <td>
+                            {{accesRight.modeuledet.module_name}}
+                          </td>
+                          <td class="text-center">
+                            <input iCheck class="view" ng-true-value="1" ng-false-value="0" ng-model="accesRight.access_view"
+                            type="checkbox">
+                          </td>
+                          <td class="text-center">
+                            <input checked-edit class="edit" iCheck ng-true-value="1" ng-false-value="0" ng-model="accesRight.access_edit" type="checkbox">
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <div class="col-sm-12 col-md-6" ng-hide="uAccCtrl.accessRights.length">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Choose the role to change access rights</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+                  </fieldset>
+                  <div class="row m-t-20">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <button class="btn btn-primary m-r-10">Save</button>
+                      <a class="btn btn-default">Cancel</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

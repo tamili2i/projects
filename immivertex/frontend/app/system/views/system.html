@@ -1,0 +1,43 @@
+<ng-include src="'app/system/views/partials/header.html'"></ng-include>
+<div id="wrapper" ng-controller="SystemController">
+	<div id="layout-static">
+
+
+		<div class="static-sidebar-wrapper">
+			<nav class="static-sidebar" role="navigation">
+				<ul ng-controller="NavigationController" id="sidebar">
+				  <li ng-repeat="item in menu"
+					  ng-class="{ hasChild: (item.children!==undefined),
+									active: item.selected,
+									  open: (item.children!==undefined) && item.open,
+						   'nav-separator': item.separator==true,
+		        			'search-focus': (searchQuery.length>0 && item.selected) }"
+		        		ng-show="!(searchQuery.length && !item.selected)"
+					  ng-include="'app/system/views/partials/nav_renderer.html'"
+					></li>
+				</ul>
+			</nav> <!-- #sidebar-->
+		</div>
+
+
+		<div class="static-content-wrapper">
+			<div class="static-content">
+				<div id="page-heading">
+				    <ol class="breadcrumb">
+				        <li ncy-breadcrumb></li>
+				    </ol>
+				</div>
+				<div id="wrap" ng-animate="'view'" ui-view class="mainview-animation">
+				</div> <!--wrap -->
+			</div>
+			<footer role="contentinfo" ng-show="!layoutLoading" ng-cloak>
+				<div class="clearfix">
+					<ul class="list-unstyled list-inline pull-left">
+						<li>IMMIVERTEX &copy; 2016</li>
+					</ul>
+					<button class="pull-right btn btn-default btn-sm hidden-print" back-to-top style="padding: 1px 10px;"><i class="fa fa-angle-up"></i></button>
+				</div>
+			</footer>
+		</div>
+	</div>
+</div>

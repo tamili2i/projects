@@ -1,0 +1,127 @@
+<div class="container-fluid dependent-intake-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Intake Form">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="dependentForm">
+                  <fieldset>
+                    <legend>Dependent Derivative</legend>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Title <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Miss</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.FirstName.$error.required || dependentForm.FirstName.$error.minlength||dependentForm.FirstName.$error.maxlength) && (dependentForm.FirstName.$touched|| dependentForm.FirstName.$dirty || dependentForm.$submitted)}">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">First Name <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Sadhana</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Middle Name <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Dev</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.LastName.$error.required || dependentForm.LastName.$error.minlength||dependentForm.LastName.$error.maxlength) && (dependentForm.LastName.$touched || dependentForm.LastName.$dirty || dependentForm.$submitted)}">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Last Name <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">devv</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Gender <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Female</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(dependentForm.date.$error.required ) && (dependentForm.$submitted)}">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">DOB <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">09/11/1990</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">City of Birth <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Chennai</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">State/Province of Birth <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Tamilnadu</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':dependentForm.countryName.$error.required && (dependentForm.countryName.$dirty||dependentForm.countryName.$touched || dependentForm.$submitted)}">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Country of Birth <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">India</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Nationality/ Citizenship <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">India</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-6 col-md-6 control-label font-bold">Relationship to Beneficiary <span class="p-l-8"> : </span></label>
+                          <div class="col-sm-6 col-md-6">
+                            <label class="control-label">Sister</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <a type="button" ui-sref="home.hrView" class="btn btn-default">Next</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

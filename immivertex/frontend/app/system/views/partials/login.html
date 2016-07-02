@@ -1,0 +1,56 @@
+<div class="login-form">
+	<div class="text-center immi-logo">
+		<span>IMMIVERTEX</span>
+	</div>
+	<div class="panel panel-primary">
+		<form name="login" novalidate class="form-horizontal" ng-submit="login.$valid && loginCtrl.login($event, login)" style="margin-bottom: 0px !important;">
+		<div class="panel-body">
+			<h3 class="text-center" style="margin-bottom: 25px;">Log in </h3>
+				<div class="form-group" ng-class="{'has-error':(login.email.$error.required || login.email.$error.pattern || login.email.$error.notmatch) && (login.email.$touched|| login.email.$dirty || login.$submitted)}">
+					<div class="col-sm-12">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input ng-model="loginCtrl.user.email" ng-model-options="{ 'updateOn': 'blur'}" type="email" name="email" ng-change="loginCtrl.setFieldValidity(login)" class="form-control" placeholder="Email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+						</div>
+						<ng-messages for="login.email.$error" ng-if='login.email.$touched || login.email.$dirty || login.$submitted' class="help-block" role="alert">
+						 <ng-message when="required">Email is required</ng-message>
+						 <ng-message when="pattern">Invalid email address</ng-message>
+						</ng-messages>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{'has-error':(login.password.$error.required || login.password.$error.notmatch) && (login.password.$touched|| login.password.$dirty || login.$submitted)}">
+					<div class="col-sm-12">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input ng-model="loginCtrl.user.password" type="password" name="password" ng-change="loginCtrl.setFieldValidity(login)" class="form-control" placeholder="Password" required>
+						</div>
+						<ng-messages for="login.password.$error" ng-if='login.password.$touched || login.password.$dirty || login.$submitted' class="help-block" role="alert">
+						 <ng-message when="required">Password is required</ng-message>
+						 <ng-message when="notmatch">Invalid login credential</ng-message>
+						</ng-messages>
+					</div>
+				</div>
+				<!-- <div class="clearfix">
+					<div class="pull-right"><label><input iCheck type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
+				</div> -->
+
+				<!-- <div class="form-group">
+					<div class="text-center">
+						<p class="block">Or</p>
+						<button class="btn btn-social btn-label btn-twitter" style="margin-bottom: 10px;"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
+						<button class="btn btn-social btn-label btn-facebook"><i class="fa fa-facebook"></i> Connect with Facebook</button>
+					</div>
+				</div> -->
+
+		</div>
+		<div class="panel-footer">
+			<a href="#/forgot-password" class="pull-left btn btn-link" style="padding-left:0">Forgot password?</a>
+
+			<div class="pull-right">
+				<a href="#/register" class="btn btn-default">Sign Up</a>
+				<input type="submit" value="Log In" class="btn btn-primary"/>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>

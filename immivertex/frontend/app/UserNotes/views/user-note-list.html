@@ -1,0 +1,46 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<fieldset>
+				<legend>User Notes</legend>
+				<div class="user-note-empty-msg" ng-show="userNoteCtrl.user_note_list.length === 0">No Records Found
+				</div>
+				<div compute-height param-height="350" id="infinite-scroll" class="userNotelist">
+					<ul ng-model="tasks" class="panel-tasks">
+						<li ng-repeat="usernote in userNoteCtrl.user_note_list" ng-style="{'border-left': item.color? '2px solid '+item.color:''}">
+							<div class="col-md-1 comment-icon-container">
+								<div class="user-id-container">
+									<span class="user-icon">
+											<img src='assets/img/comment-icon.png' width='30px' height='30px'></img>
+										</span>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="user-note-timestamp">
+									<span class="user-id" ng-show="userNoteCtrl.userName">{{userNoteCtrl.userName}}</span>
+	                <span class="user-id" ng-hide="userNoteCtrl.userName">Anonymous Name</span>
+									<div class="user-note-date-timestamp">
+										<div class="time-stamp-container"> {{usernote.created_at | date : 'MMM dd, yyyy'}} <span> {{usernote.created_at | date : 'hh:mm a'}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="task-container user-note-description">
+									<span class="task-description">{{usernote.note}}</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="text-center show-more-link"><a ng-show ="userNoteCtrl.total_record > 20" ng-click = "userNoteCtrl.showMoreUserNotes();"> Show More
+				</a></div>
+			</fieldset>
+			<div class="col-md-12 text-center">
+				<a type="button" ng-if="bcCtrl.access_type" ui-sref="home.beneficiary.changeHistory" class="btn btn-default">Next</a>
+				<a type="button" ng-if="!bcCtrl.access_type" ui-sref="home.viewBeneficiary.changeHistory" class="btn btn-default">Next</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- container-fluid -->

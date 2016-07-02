@@ -1,0 +1,14 @@
+<div class="static-sidebar-wrapper" ng-show="!layoutLoading">
+	<nav class="static-sidebar" role="navigation">
+		<ul ng-controller="NavigationController" id="sidebar" sticky-scroll="50">
+			<li ng-repeat="item in menu"
+				ng-class="{ hasChild: (item.children!==undefined),
+							active: item.selected,
+								open: (item.children!==undefined) && item.open,
+					 'nav-separator': item.separator==true"
+							ng-show="item.selected"
+				ng-include="'app/system/views/partials/nav_renderer.html'"
+			></li>
+		</ul>
+	</nav> <!-- #sidebar-->
+</div>

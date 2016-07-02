@@ -1,0 +1,395 @@
+<div role="tabpanel" class="tab-pane" id="address">
+  <div class="row">
+    <div class="col-md-12">
+      <!--Address Details-->
+      <form class="form-horizontal" role="form" name="addressForms" ng-submit="addressForms.$valid && bfAddrCtrl.save($event)" novalidate>
+        <div class="am-border">
+          <fieldset>
+            <legend>US Residence/Foreign Address</legend>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="usAddressCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">US Residence Address</label>
+                  <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                    <input type="checkbox" ng-model="bfAddrCtrl.usAddressCheck" iCheck value="us" name="usAddressCheck" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="abroadAddressCheck" class="col-xs-6 col-sm-3 col-md-3 control-label">Foreign/Abroad Address</label>
+                  <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                    <input type="checkbox" ng-model="bfAddrCtrl.abroadAddressCheck" iCheck value="abroad" name="abroadAddressCheck" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="am-border" ng-repeat="mailAddress in bfAddrCtrl.mailingAddresses track by $index">
+          <ng-form name="addressForm">
+            <fieldset>
+              <!-- <div class="addmore">
+                <button type="button" class="add-btn btn btn-social btn-apple-alt" ng-if="$index ==(bfAddrCtrl.mailingAddresses.length-1) " ng-click="bfAddrCtrl.addMailing(addressForms)"><i class="fa fa-plus"></i> Add</button>
+                <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-if="bfAddrCtrl.mailingAddresses.length > 1" ng-click="bfAddrCtrl.removeMailing($index)"><i class="fa fa-trash-o"></i></button>
+              </div> -->
+              <legend>Mailing Address</legend>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Applicable" class="col-xs-6 col-sm-3 col-md-3 control-label">US Residence Address same as Mailing Address</label>
+                    <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                      <input type="checkbox" class="default-address-checkbox" ng-disabled="bfAddrCtrl.usAddresses.length > 1" ng-model="mailAddress.is_primary" ng-change="bfAddrCtrl.showResidenceAsMailing(mailAddress.is_primary);" iCheck value="1" name="defaultAddress" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':addressForm.mailAdd_unit.$error.required && (addressForm.mailAdd_unit.$touched || addressForm.mailAdd_unit.$dirty || addressForms.$submitted)}">
+                    <label for="unit" class="col-sm-3 col-md-3 control-label">Unit/ Apt. No</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="mailAddress.unit" ng-change="bfAddrCtrl.showResidenceAsMailing(mailAddress.is_primary);" name="mailAdd_unit" class="form-control" required/>
+                      <ng-messages for="addressForm.mailAdd_unit.$error" ng-if='addressForm.mailAdd_unit.$dirty || addressForm.mailAdd_unit.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Unit is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':addressForm.mailAdd_street.$error.required && (addressForm.mailAdd_street.$touched || addressForm.mailAdd_street.$dirty || addressForms.$submitted)}">
+                    <label for="Street" class="col-sm-3 col-md-3 control-label">Street</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="mailAddress.street" ng-change="bfAddrCtrl.showResidenceAsMailing(mailAddress.is_primary);" name="mailAdd_street" class="form-control" required/>
+                      <ng-messages for="addressForm.mailAdd_street.$error" ng-if='addressForm.mailAdd_street.$dirty || addressForm.mailAdd_street.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Street is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(addressForm.city.$error.required ) && (addressForm.city.$dirty || addressForm.city.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">City</label>
+                    <div class="col-sm-7 col-md-8">
+                    <div class="input-group">
+                      <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="bfAddrCtrl.locationCallback" ng-model="bfAddrCtrl.mailingPlaces[$index].metaLocation.city" class="form-control" required/>
+                      <span class="input-group-btn">
+                        <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                      </span>
+                    </div>
+                    <ng-messages for="addressForm.city.$error" ng-if='addressForm.city.$dirty || addressForm.city.$touched || addressForms.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">City is required</ng-message>
+                    </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(addressForm.state.$error.required ) && (addressForm.state.$dirty || addressForm.state.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="state" ng-model="bfAddrCtrl.mailingPlaces[$index].metaLocation.state" class="form-control" required/>
+                      <city-required city="bfAddrCtrl.mailingPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the state, fillup the city.
+                      </city-required>
+                      <ng-messages for="addressForm.state.$error" ng-if='addressForm.state.$dirty || addressForm.state.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">State is required</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':addressForm.countryName.$error.required && (addressForm.countryName.$dirty || addressForm.countryName.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Country</label>
+                    <div class="col-sm-7 col-md-8 p-t-8">
+                      <input type="text" name="countryName" ng-model="bfAddrCtrl.mailingPlaces[$index].metaLocation.country" class="form-control" readonly="true" required/>
+                      <ng-messages for="addressForm.countryName.$error" ng-if='addressForm.countryName.$dirty || addressForm.countryName.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Select Country</ng-message>
+                      </ng-messages>
+                      <city-required city="bfAddrCtrl.mailingPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the country, fillup the city.
+                      </city-required>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(addressForm.mailAdd_zipCode.$error.required || addressForm.mailAdd_zipCode.$error.minlength ) && (addressForm.mailAdd_zipCode.$touched || addressForm.mailAdd_zipCode.$dirty || addressForms.$submitted )}">
+                    <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-minlength="6" ng-model="mailAddress.zip_code" ng-change="bfAddrCtrl.showResidenceAsMailing(mailAddress.is_primary);" name="mailAdd_zipCode" class="form-control" required />
+                      <ng-messages for="addressForm.mailAdd_zipCode.$error" ng-if='addressForm.mailAdd_zipCode.$dirty || addressForm.mailAdd_zipCode.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Zip Code is requried</ng-message>
+                        <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border residence-form" ng-repeat="residence in bfAddrCtrl.usAddresses track by $index" ng-if="bfAddrCtrl.usAddressCheck">
+          <ng-form name="residenceForm">
+            <fieldset>
+              <div class="addmore">
+                <button type="button" class="add-btn btn btn-social btn-apple-alt" ng-if="$index ==(bfAddrCtrl.usAddresses.length-1)" ng-click="bfAddrCtrl.addUsAddress(addressForms)"><i class="fa fa-plus"></i> Add</button>
+                <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-click="bfAddrCtrl.removeUsAddress($index, residence.id)"><i class="fa fa-trash-o"></i></button>
+              </div>
+              <legend>{{$index+1}}.US Residence Address</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':residenceForm.us_unit.$error.required && (residenceForm.us_unit.$touched || residenceForm.us_unit.$dirty || addressForms.$submitted)}">
+                    <label for="unit" class="col-sm-3 col-md-3 control-label">Unit/ Apt. No</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="residence.unit" ng-disabled="$index === 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" name="us_unit" class="form-control" required/>
+                      <ng-messages for="residenceForm.us_unit.$error" ng-if='residenceForm.us_unit.$dirty || residenceForm.us_unit.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Unit is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':residenceForm.us_street.$error.required && (residenceForm.us_street.$touched || residenceForm.us_street.$dirty || addressForms.$submitted)}">
+                    <label for="Street" class="col-sm-3 col-md-3 control-label">Street</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="residence.street" ng-disabled="$index == 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" name="us_street" class="form-control" required/>
+                      <ng-messages for="residenceForm.us_street.$error" ng-if='residenceForm.us_street.$dirty || residenceForm.us_street.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Street is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(residenceForm.city.$error.required ) && (residenceForm.city.$dirty || residenceForm.city.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">City</label>
+                    <div class="col-sm-7 col-md-8">
+                    <div class="input-group">
+                      <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="bfAddrCtrl.locationCallbackUs" ng-model="bfAddrCtrl.usPlaces[$index].metaLocation.city" ng-disabled="$index == 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" class="form-control" required/>
+                      <span class="input-group-btn">
+                        <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                      </span>
+                    </div>
+                    <ng-messages for="residenceForm.city.$error" ng-if='residenceForm.city.$dirty || residenceForm.city.$touched || addressForms.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">City is required</ng-message>
+                    </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(residenceForm.state.$error.required ) && (residenceForm.state.$dirty || residenceForm.state.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="state" ng-model="bfAddrCtrl.usPlaces[$index].metaLocation.state" ng-disabled="$index == 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" class="form-control" required/>
+                      <city-required city="bfAddrCtrl.usPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the state, fillup the city.
+                      </city-required>
+                      <ng-messages for="residenceForm.state.$error" ng-if='residenceForm.state.$dirty || residenceForm.state.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">State is required</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':residenceForm.countryName.$error.required && (residenceForm.countryName.$dirty || residenceForm.countryName.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Country</label>
+                    <div class="col-sm-7 col-md-8 p-t-8">
+                      <input type="text" name="countryName" ng-model="bfAddrCtrl.usPlaces[$index].metaLocation.country" ng-disabled="$index == 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" class="form-control" readonly="true" required/>
+                      <ng-messages for="residenceForm.countryName.$error" ng-if='residenceForm.countryName.$dirty || residenceForm.countryName.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Select Country</ng-message>
+                      </ng-messages>
+                      <city-required city="bfAddrCtrl.usPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the country, fillup the city.
+                      </city-required>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error': ( residenceForm.us_zipCode.$error.required || residenceForm.us_zipCode.$error.minlength ) && ( residenceForm.us_zipCode.$dirty || residenceForm.us_zipCode.$touched || addressForms.$submitted )}">
+                    <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-minlength="6" ng-model="residence.zip_code" ng-disabled="$index == 0 && bfAddrCtrl.mailingAddresses[0].is_primary == true" name="us_zipCode" class="form-control" required/>
+                      <ng-messages for="residenceForm.us_zipCode.$error" ng-if='residenceForm.us_zipCode.$dirty || residenceForm.us_zipCode.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Zip Code is requried</ng-message>
+                        <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border" ng-repeat="abroadAddress in bfAddrCtrl.abroadAddresses track by $index" ng-if="bfAddrCtrl.abroadAddressCheck">
+          <ng-form name="abroadForm">
+            <fieldset>
+              <div class="addmore">
+                <button type="button" class="add-btn btn btn-social btn-apple-alt" ng-if="$index ==(bfAddrCtrl.abroadAddresses.length-1) " ng-click="bfAddrCtrl.addAbroad(addressForms)"><i class="fa fa-plus"></i> Add</button>
+                <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-click="bfAddrCtrl.removeAbroad($index, abroadAddress.id)"><i class="fa fa-trash-o"></i></button>
+              </div>
+              <legend>{{$index+1}}.Foreign/Abroad Address</legend>
+              <!-- <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Applicable" class="col-xs-6 col-sm-3 col-md-3 control-label">Default Mailing Address</label>
+                    <div class="col-xs-6 col-sm-7 col-md-8 p-t-8">
+                      <input type="radio" ng-model="abroadAddress.is_primary" iCheck value="1" name="defaultAddress" />
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':abroadForm.foreign_unit.$error.required && (abroadForm.foreign_unit.$touched || abroadForm.foreign_unit.$dirty || addressForms.$submitted)}">
+                    <label for="unit" class="col-sm-3 col-md-3 control-label">Unit/ Apt. No</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="abroadAddress.unit" name="foreign_unit" class="form-control" required/>
+                      <ng-messages for="abroadForm.foreign_unit.$error" ng-if='abroadForm.foreign_unit.$dirty || abroadForm.foreign_unit.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Unit is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':abroadForm.foreign_street.$error.required && (abroadForm.foreign_street.$touched || abroadForm.foreign_street.$dirty || addressForms.$submitted)}">
+                    <label for="Street" class="col-sm-3 col-md-3 control-label">Street</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="abroadAddress.street" name="foreign_street" class="form-control" required/>
+                      <ng-messages for="abroadForm.foreign_street.$error" ng-if='abroadForm.foreign_street.$dirty || abroadForm.foreign_street.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Street is requried</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(abroadForm.city.$error.required ) && (abroadForm.city.$dirty || abroadForm.city.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">City</label>
+                    <div class="col-sm-7 col-md-8">
+                    <div class="input-group">
+                      <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="bfAddrCtrl.locationCallbackAbroad" ng-model="bfAddrCtrl.abroadPlaces[$index].metaLocation.city" class="form-control" required/>
+                      <span class="input-group-btn">
+                        <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                      </span>
+                    </div>
+                    <ng-messages for="abroadForm.city.$error" ng-if='abroadForm.city.$dirty || abroadForm.city.$touched || addressForms.$submitted' class="help-block" role="alert">
+                      <ng-message when="required">City is required</ng-message>
+                    </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(abroadForm.state.$error.required ) && (abroadForm.state.$dirty || abroadForm.state.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="state" ng-model="bfAddrCtrl.abroadPlaces[$index].metaLocation.state" class="form-control" required/>
+                      <city-required city="bfAddrCtrl.abroadPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the state, fillup the city.
+                      </city-required>
+                      <ng-messages for="abroadForm.state.$error" ng-if='abroadForm.state.$dirty || abroadForm.state.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">State is required</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':abroadForm.countryName.$error.required && (abroadForm.countryName.$dirty || abroadForm.countryName.$touched || addressForms.$submitted)}">
+                    <label class="col-sm-3 col-md-3 control-label">Country</label>
+                    <div class="col-sm-7 col-md-8 p-t-8">
+                      <input type="text" name="countryName" ng-model="bfAddrCtrl.abroadPlaces[$index].metaLocation.country" class="form-control" readonly="true" required/>
+                      <ng-messages for="abroadForm.countryName.$error" ng-if='abroadForm.countryName.$dirty || abroadForm.countryName.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Select Country</ng-message>
+                      </ng-messages>
+                      <city-required city="bfAddrCtrl.abroadPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the country, fillup the city.
+                      </city-required>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group" ng-class="{'has-error':(abroadForm.foreign_zipCode.$error.required || abroadForm.foreign_zipCode.$error.minlength) && (abroadForm.foreign_zipCode.$touched || abroadForm.foreign_zipCode.$dirty || addressForms.$submitted)}">
+                    <label for="zipCode" class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input type="text" ng-model="abroadAddress.zip_code" ng-minlength="6" name="foreign_zipCode" class="form-control" required/>
+                      <ng-messages for="abroadForm.foreign_zipCode.$error" ng-if='abroadForm.foreign_zipCode.$dirty || abroadForm.foreign_zipCode.$touched || addressForms.$submitted' class="help-block" role="alert">
+                        <ng-message when="required">Zip Code is requried</ng-message>
+                        <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                      </ng-messages>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                      <i class="fa fa-circle mandatory"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary m-r-10">Save</button>
+          <a type="button" ui-sref="home.beneficiaryFamily.documents" class="btn btn-default">Next</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

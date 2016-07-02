@@ -1,0 +1,141 @@
+<div role="tabpanel" class="tab-pane" id="employment">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" name="employmenrForms">
+        <fieldset>
+          <div class="am-border" ng-repeat="employment in pEmpCtrl.employments track by $index">
+            <ng-form name="employmentForm">
+              <legend>{{$index+1}}.  Employment Details</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Current</label>
+                    <div class="col-sm-6 col-md-6 p-t-8">
+                      <input type="radio" name="iscurrent" ng-value="true" iCheck ng-model="employment.is_current"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Employeer Name <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Jhonsen</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Job Title <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Development</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">From Date <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                       <label class="control-label">12/12/2012</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">To Date <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                       <label class="control-label">12/12/20116</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label word-break">43RRRR</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label word-break">Renga Street</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                        <label class="control-label">Chennai</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Tamilnadu</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">India</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">621211</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-form>
+          </div>
+          <fieldset>
+            <legend>Foreign Employment Details</legend>
+            <div class="row">
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-6 col-md-6 control-label font-bold">From Date <span class="p-l-8"> : </span></label>
+                  <div class="col-sm-6 col-md-6">
+                     <label class="control-label">12/12/2013</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12  col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-6 col-md-6 control-label font-bold">To Date <span class="p-l-8"> : </span></label>
+                  <div class="col-sm-6 col-md-6">
+                     <label class="control-label">12/9/2015</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 text-center">
+              <a ui-sref="home.viewPetitioner.history" class="btn btn-default">Next</a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

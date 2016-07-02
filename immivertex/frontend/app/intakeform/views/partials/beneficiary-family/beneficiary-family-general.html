@@ -1,0 +1,330 @@
+<div role="tabpanel" class="tab-pane">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" ng-submit="generalForm.$valid && bfGenCtrl.save($event)" name="generalForm" novalidate>
+        <fieldset>
+          <legend>General Info</legend>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.select_id.$error.required && (generalForm.select_id.$dirty||generalForm.select_id.$touched || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Title</label>
+                <div class="col-sm-7 col-md-8">
+                  <ui-select ng-model="bfGenCtrl.general.title" name="select_id" theme="select2" class="form-control" required>
+                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="title.id as title in bffCtrl.titles | filter: $select.search">
+                      <div ng-bind-html="title.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                  <ng-messages for="generalForm.select_id.$error" ng-if='generalForm.select_id.$dirty|| generalForm.select_id.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Title is required</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.FirstName.$error.required || generalForm.FirstName.$error.minlength||generalForm.FirstName.$error.maxlength) && (generalForm.FirstName.$touched|| generalForm.FirstName.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">First Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" name="FirstName" ng-model="bfGenCtrl.general.first_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+
+                  <ng-messages for="generalForm.FirstName.$error" ng-if='generalForm.FirstName.$touched||generalForm.FirstName.$error.minlength||generalForm.FirstName.$error.maxlength ||generalForm.FirstName.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">First Name is required</ng-message>
+                    <ng-message when="minlength">First Name must contain atleast 3 characters</ng-message>
+                    <ng-message when="maxlength">First Name can not contain more than 16 characters</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group ">
+                <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" ng-model="bfGenCtrl.general.middle_name"/>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.LastName.$error.required || generalForm.LastName.$error.minlength||generalForm.LastName.$error.maxlength) && (generalForm.LastName.$touched || generalForm.LastName.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" name="LastName" ng-model="bfGenCtrl.general.last_name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+                  <ng-messages for="generalForm.LastName.$error" ng-if='generalForm.LastName.$touched || form.validateDemo.LastName.$dirty || generalForm.LastName.$error.minlength||generalForm.LastName.$error.maxlength || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Last Name is required</ng-message>
+                    <ng-message when="minlength">Last Name must contain atleast 3 characters</ng-message>
+                    <ng-message when="maxlength">Last Name can not contain more than 16 characters</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.gender.$error.required && (generalForm.gender.$dirty ||generalForm.gender.$touched|| generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Gender</label>
+                <div class="col-sm-7 col-md-8 p-t-8">
+                  <label class="radio-inline control-label" ng-repeat="gender in bffCtrl.genders | orderBy: 'id'">
+                    <input iCheck type="radio" name="gender" ng-model="bfGenCtrl.general.gender" id="inlineradio1" ng-value="gender.id" ng-required="!bfGenCtrl.general.gender"/>
+                    {{gender.name}}
+                  </label>
+                  <ng-messages for="generalForm.gender.$error" ng-if='generalForm.gender.$dirty ||generalForm.gender.$touched|| generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Select Gender</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.date.$error.required ) && (generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">DOB</label>
+                <div class="col-sm-7 col-md-8">
+                  <input custom-datepicker type="text" name="date" class="form-control" format="yyyy-mm-dd" end-date="0y" ng-model="bfGenCtrl.general.date_of_birth" required readonly/>
+                  <ng-messages for="generalForm.date.$error" ng-if='generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">DOB is required</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.marital_status.$error.required ) && (generalForm.marital_status.$dirty || generalForm.marital_status.$touched || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Marital Status</label>
+                <div class="col-sm-7 col-md-8 p-t-8">
+                  <ui-select ng-model="bfGenCtrl.general.marital_status" theme="select2" name="marital_status" class="form-control" required>
+                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices data-id="$index" value="status.id" repeat="status.id as status in bffCtrl.maritalStatus | filter: $select.search">
+                      <div ng-bind-html="status.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                  <ng-messages for="generalForm.marital_status.$error" ng-if='generalForm.marital_status.$dirty || generalForm.marital_status.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Marital Status is required</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.city.$error.required ) && (generalForm.city.$dirty || generalForm.city.$touched || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">City of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="bfGenCtrl.locationCallback" ng-model="bfGenCtrl.places.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                </div>
+                <ng-messages for="generalForm.city.$error" ng-if='generalForm.city.$dirty || generalForm.city.$touched || generalForm.$submitted' class="help-block" role="alert">
+                  <ng-message when="required">City is required</ng-message>
+                </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':(generalForm.state.$error.required ) && (generalForm.state.$dirty || generalForm.state.$touched || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">State/Province of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="state" ng-model="bfGenCtrl.places.metaLocation.state" class="form-control" required/>
+                  <city-required city="bfGenCtrl.places.metaLocation.city" class="help-block">
+                    To fill the state, fillup the city.
+                  </city-required>
+                  <ng-messages for="generalForm.state.$error" ng-if='generalForm.state.$dirty || generalForm.state.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">State is required</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.countryName.$error.required && (generalForm.countryName.$dirty||generalForm.countryName.$touched || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Country of Birth</label>
+                <div class="col-sm-7 col-md-8 p-t-8">
+                  <input type="text" name="countryName" ng-model="bfGenCtrl.places.metaLocation.country" class="form-control" readonly="true" required/>
+                  <ng-messages for="generalForm.countryName.$error" ng-if='generalForm.countryName.$dirty||generalForm.countryName.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Select Country</ng-message>
+                  </ng-messages>
+                  <city-required city="bfGenCtrl.places.metaLocation.city" class="help-block">
+                    To fill the country, fillup the city.
+                  </city-required>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.citizen.$error.required && (generalForm.citizen.$dirty|| generalForm.citizen.$touched|| generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Nationality/ Citizenship</label>
+                <div class="col-sm-7 col-md-8 p-t-8">
+                  <select ng-model="bfGenCtrl.general.nationality" ng-options="citizenship.id as citizenship.name for citizenship in bffCtrl.citizenship_countries"
+                   name="citizen" class="form-control" required></select>
+                  <!-- <ui-select ng-model="bfGenCtrl.general.nationality" name="citizen" theme="select2" class="form-control" required>
+                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="citizenship.id as citizenship in bffCtrl.citizenship_countries | filter: $select.search">
+                      <div ng-bind-html="citizenship.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select> -->
+                  <ng-messages for="generalForm.citizen.$error" ng-if='generalForm.citizen.$dirty||generalForm.citizen.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Select Nationality</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (generalForm.email.$error.required || generalForm.email.$error.pattern) && (generalForm.email.$touched || generalForm.email.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Email</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="email" name="email" ng-disabled="true" ng-model-options="{ 'updateOn': 'blur'}" ng-model="bfGenCtrl.general.email.email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
+                  <ng-messages for="generalForm.email.$error" ng-if='generalForm.email.$touched || generalForm.email.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Email is required</ng-message>
+                    <ng-message when="pattern">Invalid Email</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (generalForm.day_phone.$error.pattern) &&
+  						(generalForm.day_phone.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Day phone</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" maxlength="12" ng-pattern="/^[0-9]*$/" name="day_phone" ng-model="bfGenCtrl.general.day_phone.number"/>
+                  <ng-messages for="generalForm.day_phone.$error" ng-if='generalForm.day_phone.$error.pattern || generalForm.day_phone.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">Day Phone must be a number</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (generalForm.evening_phone.$error.pattern) &&
+  						(generalForm.evening_phone.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Evening phone</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" maxlength="12" ng-pattern="/^[0-9]*$/" name="evening_phone" ng-model="bfGenCtrl.general.evening_phone.number"/>
+                  <ng-messages for="generalForm.evening_phone.$error" ng-if='generalForm.evening_phone.$error.pattern || generalForm.evening_phone.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">Evening Number must be a number</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (generalForm.cell_phone.$error.pattern) &&
+  						(generalForm.cell_phone.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Cell phone</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" maxlength="12" name="cell_phone" ng-pattern="/^[0-9]*$/" ng-model="bfGenCtrl.general.cell_phone.number"/>
+                  <ng-messages for="generalForm.cell_phone.$error" ng-if='generalForm.cell_phone.$error.pattern || generalForm.cell_phone.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">Cell Phone must be a number</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error': (generalForm.ssn.$error.pattern) &&
+  						(generalForm.ssn.$dirty || generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">SSN(if any)</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" ng-pattern="/^[0-9]*$/" name="ssn" ng-model="bfGenCtrl.general.social_security_number"/>
+                  <ng-messages for="generalForm.ssn.$error" ng-if='generalForm.ssn.$error.pattern || generalForm.ssn.$dirty || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="pattern">SSN must be a number</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">Major field of study</label>
+                <div class="col-sm-7 col-md-8">
+                  <input type="text" class="form-control" ng-model="bfGenCtrl.general.specialization"/>
+                </div>
+                <div class="col-sm-1 col-md-1"></div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.immigrationStatus.$error.required && (generalForm.immigrationStatus.$dirty|| generalForm.immigrationStatus.$touched|| generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Non-Immigrant Status</label>
+                <div class="col-sm-7 col-md-8">
+                  <ui-select ng-model="bfGenCtrl.general.immigration.non_immigrant_status" name="immigrationStatus" theme="select2" class="form-control" required>
+                    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="immigrationStatus.id as immigrationStatus in bffCtrl.immigrationStatuses | filter: $select.search">
+                      <div ng-bind-html="immigrationStatus.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                  <ng-messages for="generalForm.immigrationStatus.$error" ng-if='generalForm.immigrationStatus.$dirty||generalForm.immigrationStatus.$touched || generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Select Non-Immigrant status</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group" ng-class="{'has-error':generalForm.expDate.$error.required && (generalForm.$submitted)}">
+                <label class="col-sm-3 col-md-3 control-label">Non-Immigrant Status Exp.Date</label>
+                <div class="col-sm-7 col-md-8">
+                  <input custom-datepicker type="text" name="expDate" class="form-control" format="yyyy-mm-dd" ng-model="bfGenCtrl.general.immigration.non_immigrant_status_expiry_date" readonly required/>
+                  <ng-messages for="generalForm.expDate.$error" ng-if='generalForm.$submitted' class="help-block" role="alert">
+                    <ng-message when="required">Select Non-Immigrant Expiry Date</ng-message>
+                  </ng-messages>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                  <i class="fa fa-circle mandatory"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center col-md-12">
+            <input type="submit" value="Save" class="btn btn-primary m-r-10"/>
+            <!-- ng-if="bffCtrl.beneficiary.id" -->
+            <a ui-sref="home.beneficiaryFamily.address" class="btn btn-default">Next</a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

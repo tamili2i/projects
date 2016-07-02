@@ -1,0 +1,22 @@
+<div class="container-fluid beneficiary-family-form beneficiary-family-container">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Create Beneficiary Family">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat = "tab in bffCtrl.tabs" role="presentation" ui-sref-active="active">
+              <a ui-sref="{{tab.state}}" aria-controls="{{refName}}" role="tab">{{tab.name}}</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <ui-view></ui-view>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div> <!-- container-fluid -->

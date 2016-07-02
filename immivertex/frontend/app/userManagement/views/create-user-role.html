@@ -1,0 +1,38 @@
+<div class="create-container">
+  <i class="fa fa-close c-r" ui-sref="home.roles"></i>
+  <legend>{{cRoleCtrl.title}} User Role</legend>
+  <form role="form" class="form-horizontal" ng-submit="roleForm.$valid && cRoleCtrl.saveUserRole($event)" name="roleForm" novalidate>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(roleForm.name.$error.required || roleForm.name.$error.minlength||roleForm.name.$error.maxlength) && (roleForm.name.$touched|| roleForm.name.$dirty || roleForm.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Name</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" name="name" ng-model="cRoleCtrl.userRole.name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+            <ng-messages for="roleForm.name.$error" ng-if='roleForm.name.$touched||roleForm.name.$error.minlength||roleForm.name.$error.maxlength ||roleForm.name.$dirty || roleForm.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Name is required</ng-message>
+              <ng-message when="minlength">Name is too short</ng-message>
+              <ng-message when="maxlength">Name is too big</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group">
+          <label class="col-sm-3 col-md-4 control-label">Description</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" ng-model="cRoleCtrl.userRole.description" class="form-control"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary m-r-10" value="Save">Save</button>
+      <a class="btn btn-default" ui-sref="home.roles">Cancel</a>
+        </div>
+      </div>
+  </form>
+ </div>

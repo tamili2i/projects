@@ -1,0 +1,32 @@
+<div role="tabpanel" class="tab-pane change-history">
+ <div class="row">
+   <div class="col-md-12">
+     <form role="form" class="form-horizontal form-elements" name="">
+       <fieldset>
+         <legend>Change History</legend>
+         <div compute-height param-height="350" id="infinite-scroll">
+         <ul
+         infinite-scroll="chHistCtrl.nextPage()"
+         infinite-scroll-container="'#infinite-scroll'"
+         infinite-scroll-disabled='chHistCtrl.scroll.busy'
+         infinite-scroll-distance='0'
+          class="timeline">
+						<li class="timeline-primary" ng-repeat = "history in chHistCtrl.histories">
+							<div class="timeline-icon"><i class="fa fa-pencil"></i></div>
+							<div class="timeline-body">
+                <h3>{{history.change_desc}}</h3>
+                <p> by {{history.created_by.person.first_name +" "+history.created_by.person.last_name}}
+                  <span class="pull-right">{{chHistCtrl.getParsedDate(history.created_at) | date: 'hh:mm a EEEE, d MMM y'}}</span>
+                </p>
+							</div>
+						</li>
+            <li class="timeline-primary" ng-show = "chHistCtrl.histories.length < 1">
+							<h3>No History content</h3>
+						</li>
+					</ul>
+        </div>
+       </fieldset>
+     </form>
+   </div>
+ </div>
+</div>

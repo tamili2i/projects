@@ -1,0 +1,429 @@
+<div class="row">
+  <div class="col-md-12">
+    <form role="form" class="form-horizontal form-elements i129h-form" name="EmployerForm" novalidate>
+      <fieldset>
+        <legend>I129H Data</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Number of Beneficiaries</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Classification Sought</label>
+              <div class="col-sm-6 col-md-6">
+                <ui-select ng-model="i129Ctrl.classification" theme="select2" class="form-control">
+                  <ui-select-match>{{$select.selected}}</ui-select-match>
+                  <ui-select-choices repeat="classification in i129Ctrl.classifications | filter: $select.search">
+                    <div ng-bind-html="classification | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label ">Are you filing this petition on behalf of a beneficiary subject to
+              the Guam-CNMI cap exemption under Public Law 110-229</label>
+            <div class="col-sm-6 col-md-6 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="law" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="law" value=""> No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label "> Are you requesting a change of employer and was the beneficiary
+             previously subject to the Guam-CNMI cap exemption under Public Law 110-229?</label>
+            <div class="col-sm-6 col-md-6 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="interest" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="interest" value=""> No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label class="col-sm-6 col-md-6 control-label ">Does any beneficiary in this petition have ownership interest in
+              the petitioning organization?</label>
+            <div class="col-sm-2 col-md-2 p-t-8">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="ownership" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" ng-model="ownership" value=""> No
+              </label>
+            </div>
+            <div class="col-sm-4 col-md-4 p-t-8">
+              <input type="text" ng-show="ownership" class="form-control"/>
+            </div>
+          </div>
+        </div>
+        <legend>Describe the proposed duties.</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Describe the beneficiary' s present occupation and summary of prior work experience</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Signatory to The Petition</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-show="i129Ctrl.classification == 'H1B2'">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Signatory to The Petition (only applicable for H1B2 case)</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-show="i129Ctrl.classification == 'H1B2'">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Signatory DoD Project Manager (only applicable for H1B2 case)</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <legend>Only for H2A/H2B</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Explain temporary need for workers service</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">List the countries of citizenship for the H-2A or H-2B workers you plan to hire</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-12 col-md-12 control-label justify">Did any of the H-2MI-2B workers that you are requesting pay you, or an
+                agent, a job placement fee or other form of compensation (either direct or indirect) as a condition of the employment,
+                 or do they have an agreement to pay you or the service such fees at a later date? The phrase "fees or other compensation"
+                 includes, but is not limited to, petition fees, attorney fees, recruitment costs, andany other feesthat are a condition of a
+                 beneficiary's employment that the employer is prohibited from passing to the H-2A or H-2B worker under law under U.S.
+                 Department of Labor rules. This phrase does not include reasonable travel expenses andcertain government-mandated fees
+                 (such aspassport fees) that are not prolnbited from being passed to the H-2A or H-2B worlrer by statute,regulations, or any
+                 laws.</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="form-group col-md-12">
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" name="fee" value="Yes"> Yes
+              </label>
+              <label class="radio-inline control-label">
+                <input iCheck type="radio" name="fee" value=""> No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Ifyes, list the types and amounts of fees that the worker(s) paid or
+                will pay</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">If the workers paid any fee or compensation, were they reimbursed?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="paid" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="paid" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div><div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">If the workers agreed to pay a fee that they have not yet been paid, has
+                their agreement been terminated before the workers paid the fee? (Submit evidence of termination or reimbursement with
+                this petition.)</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="agreed_to_pay" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="agreed_to_pay" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Have you made reasonable inquiries to determine that to the best of your
+                knowledge the recruiter, facilitator, or similar employment service that you used has not collected, and will not collect,
+                 directly or indirectly, any fees or other compensation from the H-2 workers of this petition as a condition of the H-2
+                 workers' employment?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="inquiries" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="inquiries" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Have you ever had an H-2A or H-2B petition denied or revoked because
+                 an employee paid ajob  placement fee or other similar compensation as a condition of thejob offer or employment?</label>
+              <div class="col-sm-2 col-md-2 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" ng-model="denied" name="denied" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" ng-model="denied" name="denied" value="" /> No
+                </label>
+              </div>
+              <div class="col-sm-4 col-md-4 p-t-8">
+                <input type="text" ng-show="denied" palceholder="Enter Receipt Number" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Have any of the workers you are requesting experienced an interrupted
+                stay associated with their entry as an H-2A or H-2B? (See form instructions for more information on interrupted stays.)</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="interrupted" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="interrupted" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">If you are an H-2A petitioner, are you a participant in the E-Verify program?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="Verify" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="Verify" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">If yes, provide the E-Verify Company ID or Client Company ID.</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <legend>Only for H2A/H2B</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Name of The Signatory Petitioner</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Name of Employer Who is not a Petitioner</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Name of Joint Employer (if applicable)</label>
+              <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <legend>Only for H3</legend>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Is the training you intend to provide, or similar training,
+                available in the beneficiary's country?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="training" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="training" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Will the training benefit the beneficiary in pursuing a career abroad?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="career" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="career" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Does the training involve productive employment incidental to the
+                training?  If yes, explain the amount of compensation employment versus the classroom in Part 9.of Form 1-129</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="compensation" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="compensation" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Does the beneficiary already have skills related to the training?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="skills" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="skills" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Is this training an effort to overcome a labor shortage?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="labor" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="labor" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">Do you intend to employ the beneficiary abroad at the end of this training?</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="abroad" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="abroad" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-sm-12 col-md-12">
+            <div class="form-group">
+              <label class="col-sm-6 col-md-6 control-label">If you do not intend to employ the beneficiary abroad at the end of
+                this training, explain why you wish to incur the cost of providing this training and your expected return from this training.</label>
+              <div class="col-sm-6 col-md-6 p-t-8">
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="return" value="yes"/> Yes
+                </label>
+                <label class="radio-inline control-label">
+                  <input iCheck type="radio" name="return" value="no" /> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary m-r-10">Save</button>
+          <a type="button" class="btn btn-default">Next</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

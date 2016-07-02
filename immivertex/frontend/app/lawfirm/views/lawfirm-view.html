@@ -1,0 +1,150 @@
+<div class="container-fluid lawfirm-view">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="View Law firm">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="lawFirmForm" novalidate>
+                  <fieldset>
+                    <!-- <legend>Create Law firm</legend> -->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Title</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.attorney.person.title}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Attorney Bar ID</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.attorney.bar_id}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">First Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.attorney.person.first_name}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Last Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.attorney.person.last_name}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Law Firm Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.name}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Bar/ID (State & Number)</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.federal_employer_id}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">City</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.places.metaLocation.city}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">State</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.places.metaLocation.state}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Country</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.places.metaLocation.country}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Zip Code</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.address.zip_code}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 1</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.address.address_one}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 2</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.address.address_two}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Telephone Number</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.phone.number}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Fax Number</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.fax.number}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12  col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Email</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{lawViCtrl.lawfirm.email.email}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="text-center col-md-12">
+                        <a class="btn btn-default" ui-sref="home.lawfirms">Cancel</a>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

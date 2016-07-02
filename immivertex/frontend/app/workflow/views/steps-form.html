@@ -1,0 +1,60 @@
+<div class="create-container">
+  <i class="fa fa-close c-r" ui-sref="home.steps"></i>
+  <legend>Create Step</legend>
+  <form role="form" class="form-horizontal" ng-submit="stepForm.$valid && stepfCtrl.saveSteps(stepForm)" name="stepForm" novalidate>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(stepForm.name.$error.required || stepForm.name.$error.availability) && (stepForm.name.$touched|| stepForm.name.$dirty || stepForm.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Name</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" name="name" ng-model="stepfCtrl.step.workflow_step_name" class="form-control" required/>
+            <ng-messages for="stepForm.name.$error" ng-if='stepForm.name.$touched ||stepForm.name.$dirty || stepForm.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Name is required</ng-message>
+              <ng-message when="availability">Name already taken</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(stepForm.discription.$error.required) && (stepForm.discription.$touched|| stepForm.discription.$dirty || stepForm.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Description</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" ng-model="stepfCtrl.step.description" name="discription" class="form-control" required/>
+            <ng-messages for="stepForm.discription.$error" ng-if='stepForm.discription.$touched ||stepForm.discription.$dirty || stepForm.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Description is required</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(stepForm.execution_order.$error.required || stepForm.execution_order.$error.pattern) && (stepForm.execution_order.$touched|| stepForm.execution_order.$dirty || stepForm.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Execution Order</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" ng-model="stepfCtrl.step.execution_order" ng-pattern="/^[0-9]*$/" name="execution_order" class="form-control" required/>
+            <ng-messages for="stepForm.execution_order.$error" ng-if='stepForm.execution_order.$touched ||stepForm.execution_order.$dirty || stepForm.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Execution Order is required</ng-message>
+              <ng-message when="pattern">Execution Order must be number</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary m-r-10" value="Save">Save</button>
+        <a class="btn btn-default" ui-sref="home.steps">Cancel</a>
+      </div>
+    </div>
+  </form>
+ </div>

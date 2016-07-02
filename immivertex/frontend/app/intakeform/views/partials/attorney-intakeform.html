@@ -1,0 +1,161 @@
+<div class="container-fluid attorney-intake-form">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="Attorney Intake Form">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-sky">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" ng-submit="attorneyForm.$vaild" name="attorneyForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Firm Name</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Address</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">City</label>
+                          <div class="col-sm-7 col-md-8">
+                            <div class="input-group">
+                              <input type="text" name="city" location-finder location-callback="atrnyCtrl.locationCallback" ng-model="atrnyCtrl.places.metaLocation.city" class="form-control" required/>
+                              <span class="input-group-btn">
+                                <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">State/Province</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input readonly="true" type="text" name="state" ng-model="atrnyCtrl.places.metaLocation.state" class="form-control"/>
+                            <city-required city="atrnyCtrl.attorney.metaLocation.city" class="help-block">
+                              To fill the state, fillup the city.
+                            </city-required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Country</label>
+                          <div class="col-sm-7 col-md-8 p-t-8">
+                            <input type="text" name="countryName" ng-model="atrnyCtrl.places.metaLocation.country" class="form-control" readonly="true"/>
+                            <city-required city="atrnyCtrl.attorney.metaLocation.city" class="help-block">
+                              To fill the country, fillup the city.
+                            </city-required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':(attorneyForm.zipCode.$error.required || attorneyForm.zipCode.$error.minlength ) && (attorneyForm.zipCode.$touched || attorneyForm.zipCode.$dirty || attorneyForm.$submitted )}">
+                          <label class="col-sm-3 col-md-3 control-label">Zip Code</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text"  ng-minlength="6" ng-model="atrnyCtrl.attorney.address.zip_code" name="zipCode" class="form-control"/>
+                            <ng-messages for="attorneyForm.zipCode.$error" ng-if='attorneyForm.zipCode.$dirty || attorneyForm.zipCode.$touched || attorneyForm.$submitted' class="help-block" role="alert">
+                              <ng-message when="required">Zip Code is requried</ng-message>
+                              <ng-message when="minlength">Zip Code must contain at least 6 digits</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (attorneyForm.bar_number.$error.pattern) &&
+            						(attorneyForm.bar_number.$dirty || attorneyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Bar Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" name="bar_number" ng-pattern="/^[0-9]*$/"
+                              ng-model="atrnyCtrl.attorney.bar.number"/>
+                            <ng-messages for="attorneyForm.bar_number.$error" ng-if='attorneyForm.bar_number.$error.pattern
+                            || attorneyForm.bar_number.$dirty || attorneyForm.$submitted' class="help-block" role="alert">
+            									<ng-message when="pattern">Bar Number must be a number</ng-message>
+            								</ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (attorneyForm.phone.$error.pattern) &&
+            						(attorneyForm.phone.$dirty || attorneyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Phone Number</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" maxlength="12" name="phone" ng-pattern="/^[0-9]*$/" ng-model="atrnyCtrl.attorney.phone.number"/>
+                            <ng-messages for="attorneyForm.phone.$error" ng-if='attorneyForm.phone.$error.pattern || attorneyForm.phone.$dirty || attorneyForm.$submitted'
+            								class="help-block" role="alert">
+            									<ng-message when="pattern">Phone Number must be a number</ng-message>
+            								</ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error': (attorneyForm.fax.$error.pattern) &&
+            						(attorneyForm.fax.$dirty || attorneyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Fax</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" class="form-control" maxlength="12" name="fax" ng-pattern="/^[0-9]*$/" ng-model="atrnyCtrl.attorney.fax.number"/>
+                            <ng-messages for="attorneyForm.fax.$error" ng-if='attorneyForm.fax.$error.pattern || attorneyForm.fax.$dirty || attorneyForm.$submitted'
+                            class="help-block" role="alert">
+                              <ng-message when="pattern">Fax Number must be a number</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group" ng-class="{'has-error':attorneyForm.email.$error.pattern  && (attorneyForm.email.$dirty || attorneyForm.$submitted)}">
+                          <label class="col-sm-3 col-md-3 control-label">Email</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input type="text" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model-options="{ 'updateOn': 'blur'}" ng-model="atrnyCtrl.email.email" class="form-control"/>
+                            <ng-messages for="attorneyForm.email.$error" ng-if='attorneyForm.email.$dirty' class="help-block" role="alert">
+                              <ng-message when="pattern">Invalid Email</ng-message>
+                            </ng-messages>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <button class="btn btn-primary m-r-10">Save</button>
+                      <a class="btn btn-default">Cancel</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </panel>
+    </div>
+  </div>
+</div>

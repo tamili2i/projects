@@ -1,0 +1,31 @@
+<div class="container-fluid case-list">
+    <div class="row">
+        <div class="col-sm-12">
+            <panel panel-class="panel-sky" heading="Case List">
+                <panel-controls>
+                    <panel-control-collapse></panel-control-collapse>
+                </panel-controls>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class=" actions text-right">
+                          <a ui-sref="home.cases.search" class="btn btn-default m-r-10" ui-sref-active="hide">
+                            <i class="glyphicon glyphicon-search"></i>
+                            Search
+                          </a>
+                          <a ui-sref="home.cases.createCase" ui-sref-active="hide" ng-if="caselCtrl.access_type" class="btn btn-primary m-r-10">
+                            <i class="icon fa fa-plus"></i> Create
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <ui-view></ui-view>
+                    <table table-id="caselCtrl.gridName" class="table table-striped" datatable-grid>
+                    </table>
+                </div>
+                <div class="panel-loading" ng-show="caselCtrl.isLoading">
+                    <div class="panel-loader-dots"></div>
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>

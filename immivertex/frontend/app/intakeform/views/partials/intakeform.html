@@ -1,0 +1,75 @@
+<div class="create-container" ng-init="intakeformCtrl.loadingIntakeform()">
+  <i class="fa fa-close c-r" ui-sref="home.intakeform"></i>
+  <legend>{{intakeformCtrl.intakeForm.title}} Intake form</legend>
+  <form role="form" class="form-horizontal" name="intakeform" novalidate>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group" ng-class="{'has-error':(intakeform.name.$error.required || intakeform.name.$error.minlength||intakeform.name.$error.maxlength) && (intakeform.name.$touched|| intakeform.name.$dirty || intakeform.$submitted)}">
+          <label class="col-sm-3 col-md-4 control-label">Name</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" name="name" ng-model="intakeformCtrl.intakeForm.name" class="form-control" ng-minlength="3" ng-maxlength="16" required/>
+            <ng-messages for="intakeform.name.$error" ng-if='intakeform.name.$touched||intakeform.name.$error.minlength||intakeform.name.$error.maxlength ||intakeform.name.$dirty || intakeform.$submitted' class="help-block" role="alert">
+              <ng-message when="required">Name is required</ng-message>
+              <ng-message when="minlength">Name is too short</ng-message>
+              <ng-message when="maxlength">Name is too big</ng-message>
+            </ng-messages>
+          </div>
+          <div class="col-sm-1 col-md-1">
+            <i class="fa fa-circle mandatory"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group">
+          <label class="col-sm-3 col-md-4 control-label">Description</label>
+          <div class="col-sm-7 col-md-7">
+            <input type="text" ng-model="intakeformCtrl.intakeForm.description" class="form-control"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group">
+          <label class="col-sm-3 col-md-4 control-label">Assigned To</label>
+          <div class="col-sm-7 col-md-7">
+            <ui-select ng-model="programCase" multiple="multiple" theme="select2" class="form-control">
+              <ui-select-match>{{$item.name}}</ui-select-match>
+              <ui-select-choices repeat="programCase.name as programCase in intakeformCtrl.programCases | filter: $select.search">
+                <div ng-bind-html="programCase.name | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6" >
+        <div class="form-group">
+          <div class="col-sm-3 col-md-4 control-label" ng-show ="!intakeformCtrl.f.name" >
+            <a type="file" class="btn btn-default" ng-click="showDiv=true"  ng-model="file" name="file" ngf-select="intakeformCtrl.uploadFiles($file, $invalidFiles)"
+          accept="application/pdf" ngf-max-height="1000" ngf-max-size="3MB" ng-show ="!intakeformCtrl.f.name">
+      Select File</a>
+          </div>
+          <div ng-show ="intakeformCtrl.f.name">
+            <label class="col-sm-3 col-md-4 control-label">File </label>
+            <div class="col-sm-7 col-md-7 p-t-8 truncating" data-tooltip="{{intakeformCtrl.f.name}}">
+            {{intakeformCtrl.f.name}} {{intakeformCtrl.errFile.name}} {{intakeformCtrl.errFile.$error}} {{intakeformCtrl.errFile.$errorParam}}
+            </div>
+            <a type="button"  ng-click="intakeformCtrl.removePdf(intakeformCtrl.f.name)">
+              <i class="glyphicon glyphicon-trash text-danger p-t-8"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary m-r-10" value="Save">
+             Save
+      </button>
+      <a class="btn btn-default" ui-sref="home.intakeform">
+             Cancel
+          </a>
+        </div>
+      </div>
+  </form>
+ </div>

@@ -1,0 +1,27 @@
+<div class="create-container">
+  <i class="fa fa-close c-r" ui-sref="home.documentChecklist"></i>
+  <legend>View Document Checklist</legend>
+  <form role="form" class="form-horizontal" name="documentChecklistForm" novalidate>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="form-group">
+          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Name</label>
+          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{docChecklistViewCtrl.documentChecklist.name}}</label>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-md-6">
+        <div class="form-group">
+          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Description</label>
+          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{docChecklistViewCtrl.documentChecklist.description}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center">
+        <a class="btn btn-default" ui-sref="home.documentChecklist">Cancel</a>
+      </div>
+    </div>
+  </form>
+ </div>

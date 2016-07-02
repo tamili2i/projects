@@ -1,0 +1,37 @@
+ <div role="tabpanel" class="tab-pane" id="cases">
+  <div class="row">
+    <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements" name="">
+        <fieldset>
+          <legend>Cases List</legend>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+  	            <th class="text-center">Case Number</th>
+  	            <th class="text-center">Status</th>
+  	            <th class="text-center">Process</th>
+                <th class="text-center">Premium Type</th>
+                <th class="text-center">Created By</th>
+                <th class="text-center">Updated By</th>
+  	          </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center" ng-repeat="case in bcCtrl.caseList">
+                <td>{{case.id}}</td>
+                <td>{{case.statusdet.name}}</td>
+                <td>{{case.typedet.name}}</td>
+                <td>{{case.is_premium}}</td>
+                <td>{{case.created_by}}</td>
+                <td>{{case.updated_by}}</td>
+              </tr>
+            </tbody>
+           </table>
+        </fieldset>
+        <div class="col-md-12 text-center">
+          <a type="button" ng-if="bcCtrl.access_type" ui-sref="home.beneficiary.userNotes" class="btn btn-default">Next</a>
+          <a type="button" ng-if="!bcCtrl.access_type" ui-sref="home.viewBeneficiary.userNotes" class="btn btn-default">Next</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

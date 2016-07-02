@@ -1,0 +1,242 @@
+<div role="tabpanel" class="tab-pane" id="address">
+  <div class="row">
+    <div class="col-md-12">
+      <!--Address Details-->
+      <form class="form-horizontal" role="form" name="addressForms">
+        <!-- <div class="am-border">
+          <fieldset>
+            <legend>US Residence/Foreign Address</legend>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="usAddressCheck" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">US Residence Address</label>
+                  <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                    <input type="checkbox" ng-model="addrCtrl.usAddressCheck" iCheck value="us" name="usAddressCheck" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="abroadAddressCheck" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">Foreign/Abroad Address</label>
+                  <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                    <input type="checkbox" ng-model="addrCtrl.abroadAddressCheck" iCheck value="abroad" name="abroadAddressCheck" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div> -->
+        <div class="am-border">
+          <ng-form name="addressForm">
+            <fieldset>
+              <legend>Mailing Address</legend>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Applicable" class="col-xs-6 col-sm-6 col-md-6 control-label font-bold">US Residence Address same as Mailing Address</label>
+                    <div class="col-xs-6 col-sm-6 col-md-6 p-t-8">
+                      <input type="checkbox" class="default-address-checkbox" ng-model="mailAddress.is_primary" iCheck value="1" name="defaultAddress" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">27Dff</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Kanna Street</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                        <label class="control-label">Chennai</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Tamilnadu</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">India</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">600001</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border residence-form">
+          <ng-form name="residenceForm">
+            <fieldset>
+              <legend>US Residence Address</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">27DDDD</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Kanna Street</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Chennai</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Tamilnadu</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">India</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">6555222</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Have you ever lived outside United States
+                      for a period of 12 months or more?<span class="p-l-8"> : </span>
+                    </label>
+                    <div class="col-sm-6 col-md-6 p-t-40">
+                      <label class="control-label">Yes</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="am-border">
+          <ng-form name="abroadForm">
+            <fieldset>
+              <legend>Foreign/Abroad Address</legend>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="unit" class="col-sm-6 col-md-6 control-label font-bold">Unit/ Apt. No <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">45New one</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="Street" class="col-sm-6 col-md-6 control-label font-bold">Street <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Dhurai Street</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">City <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                    <div class="input-group">
+                      <label class="control-label">Chennai</label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">State/Province <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">Tamilnadu</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-6 col-md-6 control-label font-bold">Country <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">India</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="zipCode" class="col-sm-6 col-md-6 control-label font-bold">Zip Code <span class="p-l-8"> : </span></label>
+                    <div class="col-sm-6 col-md-6">
+                      <label class="control-label">6222222</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </ng-form>
+        </div>
+        <div class="col-md-12 text-center">
+          <a ui-sref="home.beneficiaryFamilyView.documents" class="btn btn-default">Next</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

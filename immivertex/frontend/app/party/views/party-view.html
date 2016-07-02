@@ -1,0 +1,132 @@
+<div class="container-fluid view-party-container">
+  <div class="row">
+    <div class="col-md-12">
+      <panel panel-class="panel-sky" heading="View Party">
+        <panel-controls>
+          <panel-control-collapse></panel-control-collapse>
+        </panel-controls>
+        <div class="tab-container tab-left tab-sky">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12">
+                <form role="form" class="form-horizontal form-elements" name="partyForm" novalidate>
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">First Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.person.first_name}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Last Name</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.person.last_name}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Position</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.role_id}}</label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Bar/ID Number (State & Number)</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.person.bar_id}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                          <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Federal Employer Id Number (FEIN)</label>
+                          <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                          <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.person.federal_employer_id}}</label>
+                        </div>
+                      </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Work phone</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.phone.number}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Email</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.email.email}}</label>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Designation</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.person.designation}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 1</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.address.address_one}}</label>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group ">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Address Line 2</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.party.address.address_two}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">City</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.places.metaLocation.city}}</label>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">State</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.places.metaLocation.state}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                          <div class="form-group">
+                            <label class="col-xs-6 col-sm-6 col-md-6 field-label control-label">Country</label>
+                            <label class="col-xs-1 col-sm-1 col-md-1 text-center p-t-8 font-bold">:</label>
+                            <label class="col-xs-5 col-sm-5 col-md-5 p-t-8">{{pViCtrl.places.metaLocation.country}}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center col-md-12">
+                        <a class="btn btn-default" ui-sref="home.parties">Cancel</a>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </panel>
+      </div>
+    </div>
+</div> <!-- container-fluid -->

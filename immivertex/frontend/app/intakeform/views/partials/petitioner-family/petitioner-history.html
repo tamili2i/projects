@@ -1,0 +1,430 @@
+<!-- History Tab-->
+<div role="tabpanel" class="tab-pane history-form" id="history">
+  <div class="row">
+	  <div class="col-md-12">
+      <form role="form" class="form-horizontal form-elements"  name="historyForms" ng-submit="historyForms.$valid && pHisCtrl.save($event)" novalidate>
+        <div class="am-border">
+          <fieldset>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="marriageCheck" class="col-xs-6 col-sm-5 col-md-5 control-label">Are you married?</label>
+                  <div class="col-xs-6 col-sm-5 col-md-5 p-t-8">
+                    <input type="checkbox" ng-model="pHisCtrl.marriageCheck" iCheck value="us" name="marriageCheck" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="am-border" ng-if="pHisCtrl.marriageCheck" ng-repeat="marriagehistory in pHisCtrl.marriageHistories track by $index">
+          <ng-form name="marriageForm">
+            <fieldset>
+              <legend>{{$index+1}}.  Marriage</legend>
+              <div class="addmore">
+                <button type="button" ng-click="pHisCtrl.addMarriage(historyForms)" class="add-btn btn btn-social btn-apple-alt" ng-if="$index == (pHisCtrl.marriageHistories.length-1)">
+                  <i class="fa fa-plus"></i>  Add
+                </button>
+                <button type="button" class="delete-btn btn btn-social btn-apple-alt" ng-if="$index>0" ng-click="pHisCtrl.removeMarriage($index, marriagehistory.id)">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </div>
+              <div class="row">
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                      <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Date of Marriage</label>
+                          <div class="col-sm-7 col-md-8">
+                              <input custom-datepicker type="text" name="fromDate" ng-change="pHisCtrl.checkDate(marriagehistory)" end-date="0d" class="form-control" format="yyyy-mm-dd" ng-model="marriagehistory.from_date" readonly required/>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">City</label>
+                      <div class="col-sm-7 col-md-8">
+                        <div class="input-group">
+                        <input type="text" name="city" location-finder is-in-repeat = "$index" location-callback="pHisCtrl.locationCallbackMarriage" ng-model="pHisCtrl.marriagePlaces[$index].metaLocation.city" class="form-control" required/>
+                        <span class="input-group-btn">
+                          <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                        </span>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">State</label>
+                      <div class="col-sm-7 col-md-8">
+                        <input readonly="true" type="text" name="state" ng-model="pHisCtrl.marriagePlaces[$index].metaLocation.state" class="form-control" required/>
+                        <city-required city="pHisCtrl.marriagePlaces[$index].metaLocation.city" class="help-block">
+                          To fill the state, fillup the city
+                        </city-required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">Country</label>
+                      <div class="col-sm-7 col-md-8">
+                        <input readonly="true" type="text" name="country" ng-model="pHisCtrl.marriagePlaces[$index].metaLocation.country" class="form-control" required/>
+                        <city-required city="pHisCtrl.marriagePlaces[$index].metaLocation.city" class="help-block">
+                          To fill the country, fillup the city
+                        </city-required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                      <div class="form-group">
+                          <label class="col-sm-3 col-md-3 control-label">Date of Termination</label>
+                          <div class="col-sm-7 col-md-8">
+                            <input custom-datepicker type="text" start-date="marriagehistory.from_date" ng-disabled="!marriagehistory.from_date" name="endDate" class="form-control" format="yyyy-mm-dd" ng-model="marriagehistory.to_date" readonly/>
+                            <from-date-requried from-date="marriagehistory.from_date" ng-if="!marriagehistory.from_date" class="help-block">
+                              Select date of marriage first
+                            </from-date-requried>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">Type of Termination</label>
+                      <div class="col-sm-7 col-md-8">
+                        <ui-select ng-model="marriagehistory.marriage.type_of_termination" name="terminationType" theme="select2" class="form-control">
+                          <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                          <ui-select-choices repeat="type.id as type in pHisCtrl.terminationTypes | filter: $select.search">
+                            <div ng-bind-html="type.name | highlight: $select.search"></div>
+                          </ui-select-choices>
+                        </ui-select>
+                      </div>
+                      <div class="col-sm-1 col-md-1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">Termination City</label>
+                      <div class="col-sm-7 col-md-8">
+                        <div class="input-group">
+                        <input type="text" name="terCity" location-finder is-in-repeat = "$index" location-callback="pHisCtrl.locationCallbackTermination" ng-model="pHisCtrl.terminationPlaces[$index].metaLocation.city" class="form-control"/>
+                        <span class="input-group-btn">
+                          <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                        </span>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12  col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label class="col-sm-3 col-md-3 control-label">Termination State</label>
+                      <div class="col-sm-7 col-md-8">
+                        <input readonly="true" type="text" name="terState" ng-model="pHisCtrl.terminationPlaces[$index].metaLocation.state" class="form-control"/>
+                        <city-required city="pHisCtrl.terminationPlaces[$index].metaLocation.city" class="help-block">
+                          To fill the state, fillup the city
+                        </city-required>
+                      </div>
+                      <div class="col-sm-1 col-md-1"></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12  col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-md-3 control-label">Termination Country</label>
+                    <div class="col-sm-7 col-md-8">
+                      <input readonly="true" type="text" name="terCountry" ng-model="pHisCtrl.terminationPlaces[$index].metaLocation.country" class="form-control"/>
+                      <city-required city="pHisCtrl.terminationPlaces[$index].metaLocation.city" class="help-block">
+                        To fill the country, fillup the city
+                      </city-required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <legend>Spouse Information</legend>
+	        <div class="row">
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">First Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Middle Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="row">
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Last Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Maiden Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="row">
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">DOB</label>
+	              <div class="col-sm-7 col-md-8">
+	                 <input custom-datepicker type="text" name="date" class="form-control" format="mm/dd/yyyy" readonly/>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Gender</label>
+	              <div class="col-sm-7 col-md-8 p-t-8">
+	                <label class="radio-inline control-label">
+	                  <input iCheck type="radio" name="gender"  value="Yes"> Male
+	                </label>
+	                <label class="radio-inline control-label">
+	                  <input iCheck type="radio" name="gender" value="No"> Female
+	                </label>
+	              </div>
+	            </div>
+	          </div>
+		      </div>
+        </ng-form>
+      </div>
+       <legend>Parents Information</legend>
+          <h5>Father</h5>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Family Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" name="" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">First Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" name="" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">DOB</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input custom-datepicker type="text" name="" class="form-control" format="mm/dd/yyyy" readonly/>
+	              </div>
+	            </div>
+	          </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">City of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="pHisCtrl.locationCallbackFatherBirth" ng-model="pHisCtrl.fatherBirthPlaces.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">State of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="state" ng-model="pHisCtrl.fatherBirthPlaces.metaLocation.state" class="form-control" required/>
+                  <city-required city="pHisCtrl.fatherBirthPlaces.metaLocation.city" class="help-block">
+                    To fill the state, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">Country of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="country" ng-model="pHisCtrl.fatherBirthPlaces.metaLocation.country" class="form-control" required/>
+                  <city-required city="pHisCtrl.fatherBirthPlaces.metaLocation.city" class="help-block">
+                    To fill the country, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">City of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="pHisCtrl.locationCallbackFatherResidance" ng-model="pHisCtrl.fatherResidancePlaces.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">State of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="state" ng-model="pHisCtrl.fatherResidancePlaces.metaLocation.state" class="form-control" required/>
+                  <city-required city="pHisCtrl.fatherResidancePlaces.metaLocation.city" class="help-block">
+                    To fill the state, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">Country of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="country" ng-model="pHisCtrl.fatherResidancePlaces.metaLocation.country" class="form-control" required/>
+                  <city-required city="pHisCtrl.fatherResidancePlaces.metaLocation.city" class="help-block">
+                    To fill the country, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5>Mother</h5>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">Family Name (Maiden Name)</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" name="" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">First Name</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input type="text" name="" class="form-control"/>
+	              </div>
+	            </div>
+	          </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+	            <div class="form-group">
+	              <label class="col-sm-3 col-md-3 control-label">DOB</label>
+	              <div class="col-sm-7 col-md-8">
+	                <input custom-datepicker type="text" name="" class="form-control" format="mm/dd/yyyy" readonly/>
+	              </div>
+	            </div>
+	          </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">City of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="pHisCtrl.locationCallbackMotherBirth" ng-model="pHisCtrl.motherBirthPlaces.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">State of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="state" ng-model="pHisCtrl.motherBirthPlaces.metaLocation.state" class="form-control" required/>
+                  <city-required city="pHisCtrl.motherBirthPlaces.metaLocation.city" class="help-block">
+                    To fill the state, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">Country of Birth</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="country" ng-model="pHisCtrl.motherBirthPlaces.metaLocation.country" class="form-control" required/>
+                  <city-required city="pHisCtrl.motherBirthPlaces.metaLocation.city" class="help-block">
+                    To fill the country, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">City of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <div class="input-group">
+                  <input type="text" name="city" location-finder location-callback="pHisCtrl.locationCallbackMotherResidance" ng-model="pHisCtrl.motherResidancePlaces.metaLocation.city" class="form-control" required/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" custom-tooltip="Choose your city to populate state and country"><i class="glyphicon glyphicon-question-sign"></i></a>
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">State of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="state" ng-model="pHisCtrl.motherResidancePlaces.metaLocation.state" class="form-control" required/>
+                  <city-required city="pHisCtrl.motherResidancePlaces.metaLocation.city" class="help-block">
+                    To fill the state, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-6">
+              <div class="form-group">
+                <label class="col-sm-3 col-md-3 control-label">Country of Residence</label>
+                <div class="col-sm-7 col-md-8">
+                  <input readonly="true" type="text" name="country" ng-model="pHisCtrl.motherResidancePlaces.metaLocation.country" class="form-control" required/>
+                  <city-required city="pHisCtrl.motherResidancePlaces.metaLocation.city" class="help-block">
+                    To fill the country, fillup the city
+                  </city-required>
+                </div>
+              </div>
+            </div>
+          </div>
+	        <div class="row">
+	          <div class="text-center col-md-12">
+	            <button class="btn btn-primary m-r-10">Save</button>
+	            <a class="btn btn-default">Next</a>
+	          </div>
+	        </div>
+	      </fieldset>
+	    </form>
+	  </div>
+  </div>
+</div>
