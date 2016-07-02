@@ -1,0 +1,901 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <title>UI SDK Demo Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="container/resources/container/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="customCss/basicSetup.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/navigator.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/ericssonSetup.css" />
+</head>
+
+<body>
+  <div class="eaContainer-SystemBarHolder">
+      <div class="eaContainer-SystemBar">
+          <div class="eaContainer-SystemBar-logo"></div>
+          <div class="eaContainer-SystemBar-components">
+              <div class="eaContainer-SystemBar-right">
+                  <div class="nav-menu" style="display: inline-block;">
+                    <ul>
+                      <li class="eaLogoutButton">
+                        <a class="eaUserButton-link">Ken Holmes
+                            <i class="ebIcon ebIcon_downArrow"></i>
+                        </a>
+                        <ul id="userMenu" class="eaHelpButton-list eaSystemBarMenu">
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="eaPreferenceButton" style="display: block;">
+                                    <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                                </a>
+                            </li>
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                            </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+              <!-- Visible below 400px -->
+              <div class="eaContainer-SystemBar-right-xs">
+                <div class="nav-menu" style="display: inline-block;">
+                  <ul>
+                    <li class="eaLogoutButton">
+                      <a class="eaUserButton-link-sm">
+                          <i class="ebIcon ebIcon_downArrow h-42"></i>
+                      </a>
+                      <ul id="userMenu-xs" class="eaHelpButton-list eaSystemBarMenu">
+                          <li class="direcrtoryButton-lineItem crPointer">
+                              <a class="eaPreferenceButton" style="display: block;">
+                                  <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                              </a>
+                          </li>
+                          <li class="direcrtoryButton-lineItem crPointer">
+                              <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                          </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="eaContainer-SystemBar-left">
+                  <div class="eaContainer-SystemBar-name">ERICSSON TV3HUB</div>
+                  <div class="eaContainer-SystemBar-menu nav-menu">
+                    <ul>
+                      <li class="directoryButton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Directory</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="scMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('alarmConsole.html');">Alarm Console</div>
+                                  </div>
+                              </li>
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('manageIncident.html');">Incident Console</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Access Request Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Jira Bug Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">KB Pages</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">TV3 Subscriber Account</div>
+
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuBUtton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">My Favorites</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="mfMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Request Access</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Incident</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">My Request</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Work Board</div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuBUtton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Team Favorites</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="cmMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Change Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Change</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Ask Mode Req</div>
+
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuButton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Search</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="searchMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Saved Search</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Advance Search</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Solar Search</div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuButton">
+                          <a class="menuBUtton-link" href="Users.html">
+                              <span class="eaHelpButton-span">Admin</span>
+                          </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Customize Menu Part visible below 800px -->
+                  <div class="eaContainer-SystemBar-menu-sm nav-menu-sm">
+                    <ul id="nav">
+                      <li class="menuButton">
+                          <a class="menuBUtton-link">
+                              <i class="ebIcon ebIcon_menu h-42"></i>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="menuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="Users.html">Admin</a>
+                                  </div>
+                              </li>
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Directory <span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="directoryList" class="sub-menu-List">
+                                          <li>
+                                              <a href="alarmConsole.html">Alarm Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="manageIncident.html">Incident Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Access Request Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Jira Bug Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">KB Pages</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">TV3 Subscriber Account</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">My Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="myFavList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Request Access</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Incident</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">My Request</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Work Board</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Team Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="favList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Change Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Change</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Ask Mode Req</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem search-sub-menu">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Search<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="searchList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Saved Search</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Advanced Search</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Solar Search</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+                          </ul>
+                        </li>
+                      <ul>
+                  </div>
+              </div>
+          </div>
+          <div class="eaContainer-SystemBar-below"></div>
+      </div>
+  </div>
+      <div class="eaNavigation">
+        <div class="eaNavigation-panel">
+            <div class="eaNavigation-panelContents">
+                <div class="eaNavigation-panel-header">
+                    <a class="eaNavigation-panel-homeLink" href="#home">
+                        <i class="eaNavigation-panel-homeIcon ebIcon"></i>
+                        <span class="eaNavigation-panel-homeText">UISDK System Demo</span>
+                    </a>
+                    <div class="eaNavigation-panel-separator"></div>
+                </div>
+                <div class="eaNavigation-panel-page eaNavigation-panel-page-main">
+                    <div class="eaNavigation-panel-page-content">
+                        <div class="eaNavigation-List">
+                            <p class="eaNavigation-List-header eaNavigation-List-header_selected">
+                                <a class="eaNavigation-List-item-link" href="#home">UI SDK Demo Home</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="eaNavigation-panel-separator"></div>
+                    <div class="eaNavigation-panel-footer">
+                        <div class="eaNavigation-panel-switch" style="display: block;">
+                            <i class="eaNavigation-panel-switchIcon ebIcon ebIcon_circleArrowRight_white"></i>
+                            <span class="eaNavigation-panel-switchText">All Applications</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="eaNavigation-panel-page eaNavigation-panel-page-side">
+                    <div class="eaNavigation-panel-page-content">
+                        <div class="eaNavigation-panel-page-title">All Applications</div>
+                        <div class="eaNavigationAppList">
+                            <ul class="eaNavigationAppList-groups">
+                                <li class="eaNavigationAppList-Group" style="border-left-color:#f9ab5d;">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-icon eaNavigationAppList-Group-icon_eye"></div>
+                                        <div class="eaNavigationAppList-Group-title">Monitoring</div>
+                                        <div class="eaNavigationAppList-Group-expander">
+                                            <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="eaNavigationAppList-Group-appList">
+                                        <div class="eaNavigationAppList-Group-spinnerContainer">
+                                            <div class="eaNavigationAppList-Group-spinner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="eaNavigationAppList-Group" style="border-left-color:#47c1e0;">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-icon eaNavigationAppList-Group-icon_lock"></div>
+                                        <div class="eaNavigationAppList-Group-title">Security</div>
+                                        <div class="eaNavigationAppList-Group-expander">
+                                            <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="eaNavigationAppList-Group-appList">
+                                        <div class="eaNavigationAppList-Group-spinnerContainer">
+                                            <div class="eaNavigationAppList-Group-spinner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="eaNavigationAppList-Group" style="border-left-color:#a9cd57;">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-icon eaNavigationAppList-Group-icon_spanner"></div>
+                                        <div class="eaNavigationAppList-Group-title">Administration</div>
+                                        <div class="eaNavigationAppList-Group-expander">
+                                            <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="eaNavigationAppList-Group-appList">
+                                        <div class="eaNavigationAppList-Group-spinnerContainer">
+                                            <div class="eaNavigationAppList-Group-spinner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="eaNavigation-panel-footer">
+                        <div class="eaNavigation-panel-separator"></div>
+                        <div class="eaNavigation-panel-switch">
+                            <i class="eaNavigation-panel-switchIcon ebIcon ebIcon_circleArrowLeft_white"></i>
+                            <span class="eaNavigation-panel-switchText">Back</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eaNavigation-button-holder eaNavigation-button-holder_showing">
+            <i class="eaNavigation-button ebIcon ebIcon_leftArrowLarge_white"></i>
+            <i class="eaNavigation-button ebIcon ebIcon_menu_white"></i>
+        </div>
+    </div>
+    <div class="eaContainer-applicationHolder">
+        <div style="position: relative; width: 100%; height: 100%;">
+            <div class="elLayouts-Wrapper">
+                <div class="elLayouts-TopSection">
+                    <div class="elLayouts-TopSection-breadcrumb">
+                        <div class="ebBreadcrumbs">
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#home" class="ebBreadcrumbs-link" title="">UISDK System Demo</a>
+                            </div>
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#home" class="ebBreadcrumbs-link" title="">UI SDK Demo Home</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="elLayouts-TopSection-title">UI SDK Demo Home</h1>
+                    <div class="elLayouts-QuickActionBarWrapper" style="height: 32px;">
+                        <div class="elLayouts-QuickActionBar elLayouts-QuickActionBar_position_relative" style="width: calc(100% - 0px);">
+                            <div class="elLayouts-QuickActionBar-contents">
+                                <div class="elLayouts-QuickActionBar-breadcrumb">
+                                    <div class="elLayouts-ActionBarBreadcrumb elLayouts-ActionBarBreadcrumb_show_false">
+                                        <div class="elLayouts-ActionBarBreadcrumb-button"></div>
+                                    </div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-left"></div>
+                                <div class="elLayouts-QuickActionBar-leftSeparator">
+                                    <div class="elLayouts-actionBarSeparator"></div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-right"></div>
+                                <div class="elLayouts-QuickActionBar-rightSeparator">
+                                    <div class="elLayouts-actionBarSeparator"></div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-center">
+                                    <div class="elLayouts-QuickActionBar-commands elLayouts-QuickActionBar-defaultCommands" style="display: block;">
+                                        <div class="elLayouts-QuickActionBar-commandsBlock"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompactMedium"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompact"></div>
+                                    </div>
+                                    <div class="elLayouts-QuickActionBar-commands elLayouts-QuickActionBar-contextCommands" style="display: none;">
+                                        <div class="elLayouts-QuickActionBar-commandsBlock"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompactMedium"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompact"></div>
+                                    </div>
+                                </div>
+                                <div class="elLayouts-clearFix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elLayouts-TopSection-placeholder">
+                        <div class="eaHome-ContentRegion">
+                            <div class="eaHome-ContentRegion-info">
+                                <div class="eaHome-ContentRegion-infoLeft">
+                                    <p class="eaHome-ContentRegion-infoTitle">UI SDK System Demo</p>
+                                    <p class="eaHome-ContentRegion-infoDesc">Play around with this demo, everything is interactive and the idea is to teach the YMER UI patterns and development skills. Take a copy and start extending.</p>
+                                </div>
+                                <div class="eaHome-ContentRegion-infoRight">
+                                    <a href="#help/app/home/getthecode" target="_blank">
+                                        <div class="eaHome-ContentRegion-infoDownload">
+                                            <div class="eaHome-ContentRegion-infoDownloadLeft">
+                                                <p class="eaHome-ContentRegion-infoWantDemo">Want to copy this demo?</p>
+                                                <p class="eaHome-ContentRegion-infoGetCode">Get the Code now...</p>
+                                            </div>
+                                            <div class="eaHome-ContentRegion-infoDownloadRight">
+                                                <i class="ebIcon eaHome-ContentRegion-infoDownloadIcon"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="eaHome-ContentRegion-body" e-id="body">
+                                <div class="elLayouts-Dashboard">
+                                    <div class="elLayouts-Dashboard-top"></div>
+                                    <div class="elLayouts-Dashboard-content elLayouts-Dashboard-content_three-columns">
+                                        <div class="elLayouts-Dashboard-column">
+                                            <div class="elLayouts-Dashboard-column-content">
+                                                <div class="elLayouts-Dashboard-item">
+                                                    <div class="ebLayout-SectionSubHeading elLayouts-Dashboard-item-top">
+                                                        <h3 class="elLayouts-Dashboard-item-header elLayouts-Dashboard-item-header_draggable" style="width: calc(100% - 17px);">All Applications</h3>
+                                                        <div class="ebLayout-HeadingCommands elLayouts-Dashboard-item-Commands">
+                                                            <div class="elLayouts-Dashboard-item-top-actions ebLayout-HeadingCommands-block">
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <div class="elLayouts-Dashboard-item-menu">
+                                                                        <div class="ebContextMenu ebContextMenu_disabled">
+                                                                            <div class="ebContextMenu-expandBtn">
+                                                                                <i class="ebIcon ebIcon_medium ebIcon_menu ebIcon_disabled" tabindex="0"></i>
+                                                                            </div>
+                                                                            <div class="ebContextMenu-body ebContextMenu-body_corner_default"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="elLayouts-Dashboard-item-separator ebLayout-HeadingCommands-separator"></div>
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <i class="elLayouts-Dashboard-item-settings ebIcon ebIcon_settings ebIcon_interactive" tabindex="0" title="Settings"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ebLayout-clearFix"></div>
+                                                    </div>
+                                                    <div class="elLayouts-Dashboard-item-content">
+                                                        <div class="eaHome-AppList">
+                                                            <div class="eaHome-AppList-group" style="border-left-color: #f9ab5d">
+                                                                <p class="eaHome-AppList-groupHeader">
+                                                                    <i class="ebIcon eaHome-AppList-groupIcon eaHome-AppList-groupIcon_eye"></i>
+                                                                    <span class="eaHome-AppList-groupCaption">Monitoring</span>
+                                                                </p>
+                                                                <ul class="eaHome-AppList-apps">
+                                                                    <li class="eaHome-AppList-app">
+                                                                        <a class="eaHome-AppList-appLink" href="#alarmmonitor">Alarm Monitor</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="eaHome-AppList-group" style="border-left-color: #47c1e0">
+                                                                <p class="eaHome-AppList-groupHeader">
+                                                                    <i class="ebIcon eaHome-AppList-groupIcon eaHome-AppList-groupIcon_lock"></i>
+                                                                    <span class="eaHome-AppList-groupCaption">Security</span>
+                                                                </p>
+                                                                <ul class="eaHome-AppList-apps">
+                                                                    <li class="eaHome-AppList-app">
+                                                                        <a class="eaHome-AppList-appLink" href="#usermanagement">User Management</a>
+                                                                    </li>
+                                                                    <li class="eaHome-AppList-app">
+                                                                        <a class="eaHome-AppList-appLink" href="#rolemanagement">Role Management</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="eaHome-AppList-group" style="border-left-color: #a9cd57">
+                                                                <p class="eaHome-AppList-groupHeader">
+                                                                    <i class="ebIcon eaHome-AppList-groupIcon eaHome-AppList-groupIcon_spanner"></i>
+                                                                    <span class="eaHome-AppList-groupCaption">Administration</span>
+                                                                </p>
+                                                                <ul class="eaHome-AppList-apps">
+                                                                    <li class="eaHome-AppList-app">
+                                                                        <a class="eaHome-AppList-appLink" href="#logviewer">Log Viewer</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elLayouts-Dashboard-column-footer"></div>
+                                        </div>
+                                        <div class="elLayouts-Dashboard-column">
+                                            <div class="elLayouts-Dashboard-column-content">
+                                                <div class="elLayouts-Dashboard-item">
+                                                    <div class="ebLayout-SectionSubHeading elLayouts-Dashboard-item-top">
+                                                        <h3 class="elLayouts-Dashboard-item-header elLayouts-Dashboard-item-header_draggable" style="width: calc(100% - 17px);">Alarm Summary</h3>
+                                                        <div class="ebLayout-HeadingCommands elLayouts-Dashboard-item-Commands">
+                                                            <div class="elLayouts-Dashboard-item-top-actions ebLayout-HeadingCommands-block">
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <div class="elLayouts-Dashboard-item-menu">
+                                                                        <div class="ebContextMenu ebContextMenu_disabled">
+                                                                            <div class="ebContextMenu-expandBtn">
+                                                                                <i class="ebIcon ebIcon_medium ebIcon_menu ebIcon_disabled" tabindex="0"></i>
+                                                                            </div>
+                                                                            <div class="ebContextMenu-body ebContextMenu-body_corner_default"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="elLayouts-Dashboard-item-separator ebLayout-HeadingCommands-separator"></div>
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <i class="elLayouts-Dashboard-item-settings ebIcon ebIcon_settings ebIcon_interactive" tabindex="0" title="Settings"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ebLayout-clearFix"></div>
+                                                    </div>
+                                                    <div class="elLayouts-Dashboard-item-content">
+                                                        <div style="height: 250px;">
+                                                            <div style="position: relative; width: 100%; height: 100%;">
+                                                                <svg width="100%" height="100%" style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial, sans-serif;">
+                                                                    <defs>
+                                                                        <clipPath id="entriesAxisClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a">
+                                                                            <rect x="-48" y="0" width="48" height="225"></rect>
+                                                                        </clipPath>
+                                                                        <clipPath id="valuesAxisClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a">
+                                                                            <rect x="-6" y="-6" width="518" height="40"></rect>
+                                                                        </clipPath>
+                                                                        <clipPath id="lineWrapperClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a">
+                                                                            <rect width="478" height="184"></rect>
+                                                                        </clipPath>
+                                                                        <clipPath id="barWrapperClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a">
+                                                                            <rect x="0" y="-20" width="503" height="205"></rect>
+                                                                        </clipPath>
+                                                                        <clipPath class="stackedClip" id="stackedClip-0-11d6d697-aeee-4925-8a4f-2ab86a88629a"></clipPath>
+                                                                        <clipPath class="stackedClip" id="stackedClip-1-11d6d697-aeee-4925-8a4f-2ab86a88629a"></clipPath>
+                                                                        <clipPath class="stackedClip" id="stackedClip-2-11d6d697-aeee-4925-8a4f-2ab86a88629a"></clipPath>
+                                                                        <clipPath class="stackedClip" id="stackedClip-3-11d6d697-aeee-4925-8a4f-2ab86a88629a"></clipPath>
+                                                                    </defs>
+                                                                    <rect id="backgroundWrapper-11d6d697-aeee-4925-8a4f-2ab86a88629a" width="100%" height="100%" fill="#fff" fill-opacity="1" stroke="#fff" stroke-width="0"></rect>
+                                                                    <g id="gridWrapper-11d6d697-aeee-4925-8a4f-2ab86a88629a">
+                                                                        <g fill="#b0b2b3" shape-rendering="crispEdges" class="entriesAxisG" clip-path="url(#entriesAxisClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a)" transform="translate(68,20)">
+                                                                            <g class="tick" transform="translate(0,24)" style="opacity: 1;">
+                                                                                <line x2="-1" y2="0"></line>
+                                                                                <text dy=".32em" x="-9" style="text-anchor: end; opacity: 0;" y="0">Critical</text>
+                                                                                <foreignObject class="wrappingFobj" width="48" height="20" x="-48" y="-10">
+                                                                                    <p class="wrappedText" title="Critical" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left; color: rgb(88, 88, 91);">Critical</p>
+                                                                                </foreignObject>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(0,70)" style="opacity: 1;">
+                                                                                <line x2="-1" y2="0"></line>
+                                                                                <text dy=".32em" x="-9" style="text-anchor: end; opacity: 0;" y="0">Major</text>
+                                                                                <foreignObject class="wrappingFobj" width="48" height="20" x="-48" y="-10">
+                                                                                    <p class="wrappedText" title="Major" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left; color: rgb(88, 88, 91);">Major</p>
+                                                                                </foreignObject>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(0,116)" style="opacity: 1;">
+                                                                                <line x2="-1" y2="0"></line>
+                                                                                <text dy=".32em" x="-9" style="text-anchor: end; opacity: 0;" y="0">Minor</text>
+                                                                                <foreignObject class="wrappingFobj" width="48" height="20" x="-48" y="-10">
+                                                                                    <p class="wrappedText" title="Minor" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left; color: rgb(88, 88, 91);">Minor</p>
+                                                                                </foreignObject>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(0,162)" style="opacity: 1;">
+                                                                                <line x2="-1" y2="0"></line>
+                                                                                <text dy=".32em" x="-9" style="text-anchor: end; opacity: 0;" y="0">Cleared</text>
+                                                                                <foreignObject class="wrappingFobj" width="48" height="20" x="-48" y="-10">
+                                                                                    <p class="wrappedText" title="Cleared" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left; color: rgb(88, 88, 91);">Cleared</p>
+                                                                                </foreignObject>
+                                                                            </g>
+                                                                            <path class="domain" d="M-1,0H0V185H-1"></path>
+                                                                        </g>
+                                                                        <g fill="#b0b2b3" class="valuesAxisG" clip-path="url(#valuesAxisClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a)" transform="translate(68,205)">
+                                                                            <g class="tick" transform="translate(0,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">0</text>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(79.91172790527344,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">5,000</text>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(159.82345581054688,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">10,000</text>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(239.7351837158203,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">15,000</text>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(319.64691162109375,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">20,000</text>
+                                                                            </g>
+                                                                            <g class="tick" transform="translate(399.55865478515625,0)" style="opacity: 1;">
+                                                                                <line y2="1" x2="0"></line>
+                                                                                <text dy=".71em" y="9" fill="#58585b" style="text-anchor: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px; font-weight: normal; word-wrap: break-word; text-align: left;" x="0">25,000</text>
+                                                                            </g>
+                                                                            <path class="domain" d="M0,1V0H478V1"></path>
+                                                                        </g>
+                                                                        <g transform="translate(546,203.5)">
+                                                                            <polygon points="0.331,-0.331 4.654,2.163 0.331,4.654" fill="#b0b2b3"></polygon>
+                                                                        </g>
+                                                                        <g transform="translate(65,17)">
+                                                                            <polygon points="0,4.323 2.494,0 4.985,4.323" fill="#b0b2b3"></polygon>
+                                                                        </g>
+                                                                        <g clip-path="url(#lineWrapperClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a)" transform="translate(68,20)">
+                                                                            <line class="enter gridline" x1="0" x2="0" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                            <line class="enter gridline" x1="79.91172930319647" x2="79.91172930319647" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                            <line class="enter gridline" x1="159.82345860639293" x2="159.82345860639293" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                            <line class="enter gridline" x1="239.73518790958943" x2="239.73518790958943" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                            <line class="enter gridline" x1="319.64691721278587" x2="319.64691721278587" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                            <line class="enter gridline" x1="399.55864651598233" x2="399.55864651598233" y1="0" y2="185" shape-rendring="crispEdges" opacity="1" stroke="#b0b2b3" stroke-dasharray="1,3"></line>
+                                                                        </g>
+                                                                    </g>
+                                                                    <g id="columnWrapper-11d6d697-aeee-4925-8a4f-2ab86a88629a" clip-path="url(#barWrapperClipPath-11d6d697-aeee-4925-8a4f-2ab86a88629a)" transform="translate(68,20)">
+                                                                        <path class="update bar clickable hoverable datapoint" stroke="none" fill="#E32219" d="M0,12.5a0,0 0 0 1 0,0h157.3636351477865a2.3000000000000003,2.3000000000000003 0 0 1 2.3000000000000003,2.3000000000000003v18.4a2.3000000000000003,2.3000000000000003 0 0 1 -2.3000000000000003,2.3000000000000003h-157.3636351477865a0,0 0 0 1 0,0z"></path>
+                                                                        <path class="update bar clickable hoverable datapoint" stroke="none" fill="#FF7300" d="M0,58.5a0,0 0 0 1 0,0h475.7a2.3000000000000003,2.3000000000000003 0 0 1 2.3000000000000003,2.3000000000000003v18.4a2.3000000000000003,2.3000000000000003 0 0 1 -2.3000000000000003,2.3000000000000003h-475.7a0,0 0 0 1 0,0z"></path>
+                                                                        <path class="update bar clickable hoverable datapoint" stroke="none" fill="#FABB00" d="M0,104.5a0,0 0 0 1 0,0h319.3127457536445a2.3000000000000003,2.3000000000000003 0 0 1 2.3000000000000003,2.3000000000000003v18.4a2.3000000000000003,2.3000000000000003 0 0 1 -2.3000000000000003,2.3000000000000003h-319.3127457536445a0,0 0 0 1 0,0z"></path>
+                                                                        <path class="update bar clickable hoverable datapoint" stroke="none" fill="#89BA17" d="M0,150.5a0,0 0 0 1 0,0h156.38871205028752a2.3000000000000003,2.3000000000000003 0 0 1 2.3000000000000003,2.3000000000000003v18.4a2.3000000000000003,2.3000000000000003 0 0 1 -2.3000000000000003,2.3000000000000003h-156.38871205028752a0,0 0 0 1 0,0z"></path>
+                                                                    </g>
+                                                                </svg>
+                                                                <div class="tooltip" style="position: absolute; display: none; z-index: 1; max-width: 50%; overflow-x: hidden; opacity: 0; margin: 0px; padding: 6px; color: rgb(102, 102, 102); border: 1px solid rgb(153, 153, 153); border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px; text-align: center; pointer-events: none; background: rgb(255, 255, 255);">
+                                                                    <div class="tooltipContent"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="elLayouts-Dashboard-item">
+                                                    <div class="ebLayout-SectionSubHeading elLayouts-Dashboard-item-top">
+                                                        <h3 class="elLayouts-Dashboard-item-header elLayouts-Dashboard-item-header_draggable" style="width: calc(100% - 33px);">Recent Notifications</h3>
+                                                        <div class="ebLayout-HeadingCommands elLayouts-Dashboard-item-Commands">
+                                                            <div class="elLayouts-Dashboard-item-top-actions ebLayout-HeadingCommands-block">
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <div class="elLayouts-Dashboard-item-menu elLayouts-Dashboard-item-menu_show">
+                                                                        <div class="ebContextMenu">
+                                                                            <div class="ebContextMenu-expandBtn">
+                                                                                <i class="ebIcon ebIcon_medium ebIcon_menu ebIcon_interactive" tabindex="0"></i>
+                                                                            </div>
+                                                                            <div class="ebContextMenu-body ebContextMenu-body_corner_default"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="elLayouts-Dashboard-item-separator ebLayout-HeadingCommands-separator"></div>
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <i class="elLayouts-Dashboard-item-settings ebIcon ebIcon_settings ebIcon_interactive" tabindex="0" title="Settings"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ebLayout-clearFix"></div>
+                                                    </div>
+                                                    <div class="elLayouts-Dashboard-item-content">
+                                                        <div class="eaHome-Notifications">
+                                                            <div class="eaHome-Notifications-body">
+                                                                <div class="eaHome-Notifications-notification">
+                                                                    <p class="eaHome-Notifications-link">
+                                                                        <a class="eaHome-Notifications-anchor" href="#">Software Backup - Banagher</a>
+                                                                    </p>
+                                                                    <p class="eaHome-Notifications-description">Backup Complete</p>
+                                                                    <p class="eaHome-Notifications-timestamp">25th March 2015 - 03:00</p>
+                                                                    <i class="ebIcon ebIcon_interactive ebIcon_close eaHome-Notifications-notificationClose"></i>
+                                                                </div>
+                                                                <div class="eaHome-Notifications-notification">
+                                                                    <p class="eaHome-Notifications-link">
+                                                                        <i class="ebIcon ebIcon_error eaHome-Notifications-icon"></i>
+                                                                        <a class="eaHome-Notifications-anchor" href="#">Software Upgrade - New York</a>
+                                                                    </p>
+                                                                    <p class="eaHome-Notifications-description">Upgrade Failed - Collection 'New_York' no longer exists</p>
+                                                                    <p class="eaHome-Notifications-timestamp">25th March 2015 - 03:00</p>
+                                                                    <i class="ebIcon ebIcon_interactive ebIcon_close eaHome-Notifications-notificationClose"></i>
+                                                                </div>
+                                                                <div class="eaHome-Notifications-notification">
+                                                                    <p class="eaHome-Notifications-link">
+                                                                        <i class="ebIcon ebIcon_alarmMajor eaHome-Notifications-icon"></i>
+                                                                        <a class="eaHome-Notifications-anchor" href="#">Major Alarm</a>
+                                                                    </p>
+                                                                    <p class="eaHome-Notifications-description">LMI_eRBS_0010</p>
+                                                                    <p class="eaHome-Notifications-timestamp">25th March 2015 - 03:00</p>
+                                                                    <i class="ebIcon ebIcon_interactive ebIcon_close eaHome-Notifications-notificationClose"></i>
+                                                                </div>
+                                                                <div class="eaHome-Notifications-notification">
+                                                                    <p class="eaHome-Notifications-link">
+                                                                        <i class="ebIcon ebIcon_alarmMajor eaHome-Notifications-icon"></i>
+                                                                        <a class="eaHome-Notifications-anchor" href="#">Major Alarm</a>
+                                                                    </p>
+                                                                    <p class="eaHome-Notifications-description">LMI_eRBS_1032</p>
+                                                                    <p class="eaHome-Notifications-timestamp">25th March 2015 - 03:00</p>
+                                                                    <i class="ebIcon ebIcon_interactive ebIcon_close eaHome-Notifications-notificationClose"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eaHome-Notifications-none ebText_alternative">
+                                                                <p style="font-size: 16px;">
+                                                                    <i class="ebIcon ebIcon_acknowledgeAlarm"></i> You have no notifications.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elLayouts-Dashboard-column-footer"></div>
+                                        </div>
+                                        <div class="elLayouts-Dashboard-column">
+                                            <div class="elLayouts-Dashboard-column-content">
+                                                <div class="elLayouts-Dashboard-item">
+                                                    <div class="ebLayout-SectionSubHeading elLayouts-Dashboard-item-top">
+                                                        <h3 class="elLayouts-Dashboard-item-header elLayouts-Dashboard-item-header_draggable" style="width: calc(100% - 17px);">UI SDK Information</h3>
+                                                        <div class="ebLayout-HeadingCommands elLayouts-Dashboard-item-Commands">
+                                                            <div class="elLayouts-Dashboard-item-top-actions ebLayout-HeadingCommands-block">
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <div class="elLayouts-Dashboard-item-menu">
+                                                                        <div class="ebContextMenu ebContextMenu_disabled">
+                                                                            <div class="ebContextMenu-expandBtn">
+                                                                                <i class="ebIcon ebIcon_medium ebIcon_menu ebIcon_disabled" tabindex="0"></i>
+                                                                            </div>
+                                                                            <div class="ebContextMenu-body ebContextMenu-body_corner_default"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="elLayouts-Dashboard-item-separator ebLayout-HeadingCommands-separator"></div>
+                                                                <div class="ebLayout-HeadingCommands-iconHolder">
+                                                                    <i class="elLayouts-Dashboard-item-settings ebIcon ebIcon_settings ebIcon_interactive" tabindex="0" title="Settings"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ebLayout-clearFix"></div>
+                                                    </div>
+                                                    <div class="elLayouts-Dashboard-item-content">
+                                                        <div class="eaHome-InformationLinks">
+                                                            <div class="eaHome-InformationLinks-item">
+                                                                <div class="eaHome-InformationLinks-itemLeft">
+                                                                    <p class="eaHome-InformationLinks-title">App Navigation Flow</p>
+                                                                    <p class="eaHome-InformationLinks-description">Using the 'goto' URL you can control the flow of apps.</p>
+                                                                    <p class="eaHome-InformationLinks-link">
+                                                                        <a href="#help/app/home/developerinformation/appnavigationflow">Learn more...</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="eaHome-InformationLinks-itemRight">
+                                                                    <div class="eaHome-InformationLinks-icon">
+                                                                        <a href="#help/app/home/developerinformation/appnavigationflow">
+                                                                            <i class="ebIcon ebIcon_rightArrow_white eaHome-InformationLinks-arrow"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eaHome-InformationLinks-item">
+                                                                <div class="eaHome-InformationLinks-itemLeft">
+                                                                    <p class="eaHome-InformationLinks-title">Context Actions</p>
+                                                                    <p class="eaHome-InformationLinks-description">Showing actions after a user has done something on the screen.</p>
+                                                                    <p class="eaHome-InformationLinks-link">
+                                                                        <a href="#help/app/home/developerinformation/contextactions">Learn more...</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="eaHome-InformationLinks-itemRight">
+                                                                    <div class="eaHome-InformationLinks-icon">
+                                                                        <a href="#help/app/home/developerinformation/contextactions">
+                                                                            <i class="ebIcon ebIcon_rightArrow_white eaHome-InformationLinks-arrow"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eaHome-InformationLinks-item">
+                                                                <div class="eaHome-InformationLinks-itemLeft">
+                                                                    <p class="eaHome-InformationLinks-title">Sharing Code</p>
+                                                                    <p class="eaHome-InformationLinks-description">Create modules that can be shared in more than one app.</p>
+                                                                    <p class="eaHome-InformationLinks-link">
+                                                                        <a href="#help/app/home/developerinformation/sharingcode">Learn more...</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="eaHome-InformationLinks-itemRight">
+                                                                    <div class="eaHome-InformationLinks-icon">
+                                                                        <a href="#help/app/home/developerinformation/sharingcode">
+                                                                            <i class="ebIcon ebIcon_rightArrow_white eaHome-InformationLinks-arrow"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eaHome-InformationLinks-item">
+                                                                <div class="eaHome-InformationLinks-itemLeft">
+                                                                    <p class="eaHome-InformationLinks-title">Create/Edit Apps</p>
+                                                                    <p class="eaHome-InformationLinks-description">How to create an app that can be used for creating and editing a resource.</p>
+                                                                    <p class="eaHome-InformationLinks-link">
+                                                                        <a href="#help/app/home/developerinformation/createeditapps">Learn more...</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="eaHome-InformationLinks-itemRight">
+                                                                    <div class="eaHome-InformationLinks-icon">
+                                                                        <a href="#help/app/home/developerinformation/createeditapps">
+                                                                            <i class="ebIcon ebIcon_rightArrow_white eaHome-InformationLinks-arrow"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eaHome-InformationLinks-item">
+                                                                <div class="eaHome-InformationLinks-itemLeft">
+                                                                    <p class="eaHome-InformationLinks-title">Blank State for Apps</p>
+                                                                    <p class="eaHome-InformationLinks-description">What happens if the user types an invalid resource id for your app?</p>
+                                                                    <p class="eaHome-InformationLinks-link">
+                                                                        <a href="#help/app/home/developerinformation/blankstates">Learn more...</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="eaHome-InformationLinks-itemRight">
+                                                                    <div class="eaHome-InformationLinks-icon">
+                                                                        <a href="#help/app/home/developerinformation/blankstates">
+                                                                            <i class="ebIcon ebIcon_rightArrow_white eaHome-InformationLinks-arrow"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elLayouts-Dashboard-column-footer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elLayouts-Wrapper-backToTop elLayouts-Wrapper-backToTop_show_false">
+                    <i class="ebIcon ebIcon_upArrowLarge"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eaContainer-Spinner">
+        <img src="container/resources/container/loader.svg">
+    </div>
+    <!--
+			Custom index.html to inject the fake REST API.
+			Do not do this in a normal deployment. This is for demonstration purposes only.
+		-->
+
+    <!--<script src="js/mockrest/MockRest.js"></script>
+		<script src="js/require.config.js"></script>
+		<script src="js/container/require.js"></script>
+		<script src="js/container/main.js"></script>-->
+</body>
+<script type="text/javascript">
+    function showOrHideMenu(id) {
+        if (document.getElementById(id).style.display == 'none') {
+            document.getElementById(id).style.display = 'block';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+</script>
+
+</html>

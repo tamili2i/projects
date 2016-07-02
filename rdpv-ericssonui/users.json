@@ -1,0 +1,58 @@
+{"total":3623,"data":[{"Status":true,"Navigation Style":false,"E-mail":"","Lastname":"admin account"
+,"Firstname":"admesaiqua","Id":"admesaiqua","Primary Group":null,"Notification":false,"Tenant Id":null
+},{"Status":true,"Navigation Style":false,"E-mail":"admin123@radaptive.com","Lastname":"User","Firstname"
+:"Admin","Id":"admin","Primary Group":"RAD","Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"ajay@radaptive.com","Lastname":"A","Firstname":"Ajay","Id":"ajaytest","Primary Group":"RAD","Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail"
+:"testatt@gmail.com","Lastname":"Guest","Firstname":"Att","Id":"attguest","Primary Group":"","Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"narayanan.ideas2it@gmail.com"
+,"Lastname":"User","Firstname":"ATT","Id":"attuser","Primary Group":"","Notification":true,"Tenant Id"
+:null},{"Status":true,"Navigation Style":false,"E-mail":"Guillermo.Saavedra@ericsson.com","Lastname"
+:"Saavedra","Firstname":"Guillermo","Id":"CEVGUSA","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"kenneth.holmes@ericsson.com","Lastname"
+:"User","Firstname":"Confluence","Id":"confapi","Primary Group":"RAD","Notification":false,"Tenant Id"
+:null},{"Status":true,"Navigation Style":false,"E-mail":"veera@radaptive.com","Lastname":"Admin","Firstname"
+:"CRM","Id":"crmadmin","Primary Group":"","Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"veer@radaptive.com","Lastname":"User","Firstname":"CRM","Id":"crmuser","Primary Group":"","Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"kenneth.holmes@ericsson.com","Lastname":"dynatrace","Firstname":"compuware","Id":"dynaReadOnly","Primary Group"
+:"RAD","Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"ahmad.ali@ericsson.com","Lastname":"Ali","Firstname":"Ahmad","Id":"eaadali","Primary Group":null,"Notification"
+:false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"abhishek.a.das@ericsson.com"
+,"Lastname":"Das","Firstname":"Abhishek","Id":"eaakdds","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"aarthi.kumar@ericsson.com","Lastname":"Kumar"
+,"Firstname":"Aarthi","Id":"eaarkum","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status"
+:true,"Navigation Style":false,"E-mail":"abdelmoughit.nahed@ericsson.com","Lastname":"Nahed","Firstname"
+:"Abdelmoughit","Id":"eabdnah","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status"
+:true,"Navigation Style":false,"E-mail":"abdoul.karim.diallo@ericsson.com","Lastname":"Diallo","Firstname"
+:"Abdoul Karim","Id":"eabdodi","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status"
+:true,"Navigation Style":false,"E-mail":"abdullah.polat@ericsson.com","Lastname":"Polat","Firstname"
+:"Abdullah","Id":"eabdpol","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true
+,"Navigation Style":false,"E-mail":"abdellah.slimani@ericsson.com","Lastname":"Slimani","Firstname":"Abdellah"
+,"Id":"eabdsli","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"hao.b.jiang@ericsson.com","Lastname":"Jiang","Firstname":"Hao","Id":"eabeefq"
+,"Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail"
+:"abdullah.al.mamun@ericsson.com","Lastname":"MAMUN","Firstname":"Abdullah AL","Id":"eabhaln","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail"
+:"abhishek.a.banerjee@ericsson.com","Lastname":"Banerjee","Firstname":"Abhishek","Id":"eabkbae","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail"
+:"abelardo.martinez@ericsson.com","Lastname":"Martinez","Firstname":"Abelardo","Id":"eabomaz","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"albert.burbea@ericsson.com","Lastname":"Burbea","Firstname":"Albert","Id":"eabrbur","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"zhen.l.liu@ericsson.com","Lastname"
+:"Liu","Firstname":"Zhen","Id":"eacdghn","Primary Group":null,"Notification":true,"Tenant Id":null},
+{"Status":true,"Navigation Style":false,"E-mail":"kriss.lu@ericsson.com","Lastname":"Lu","Firstname"
+:"Kriss","Id":"eacffhj","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"achira.trakansutleart@ericsson.com","Lastname":"Trakansutleart","Firstname":"Achira"
+,"Id":"eachtra","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adam.cathersides@ericsson.com","Lastname":"Cathersides","Firstname":"Adam","Id"
+:"eadacat","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style"
+:false,"E-mail":"adam.cleary@ericsson.com","Lastname":"Cleary","Firstname":"Adam","Id":"eadacle","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail"
+:"adam.homann@ericsson.com","Lastname":"Homann","Firstname":"Adam","Id":"eadahom","Primary Group":null
+,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adam.lambourn@ericsson.com","Lastname":"Lambourn","Firstname":"Adam","Id":"eadalam","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adam.juszt@ericsson.com","Lastname":"Juszt","Firstname":"Adam","Id":"eadamju","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"jianlong.zhao@ericsson.com","Lastname":"Zhao","Firstname":"Jianlong","Id":"eadeeio","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adela.franklin@ericsson.com","Lastname":"Franklin","Firstname":"Adela"
+,"Id":"eadefra","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"alice.z.liu@ericsson.com","Lastname":"Liu","Firstname":"Alice","Id":"eadeghi"
+,"Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false
+,"E-mail":"jun.a.liu@ericsson.com","Lastname":"Liu","Firstname":"Jun","Id":"eadegjo","Primary Group"
+:null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"jenny.x.yang@ericsson.com","Lastname":"Yang","Firstname":"Jenny","Id":"eadehhj","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"mohamed.adel@ericsson.com"
+,"Lastname":"Ahmed Adel","Firstname":"Mohamed","Id":"eademoh","Primary Group":null,"Notification":false
+,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adel.tayeb-cherif@ericsson.com"
+,"Lastname":"Tayeb-Cherif","Firstname":"Adel","Id":"eadetay","Primary Group":null,"Notification":false
+,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adirek.chaichankanchang@ericsson.com","Lastname":"Chaichankanchang","Firstname":"Adirek","Id":"eadicha","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adi.hayat@ericsson.com","Lastname"
+:"Hayat","Firstname":"Adi","Id":"eadihay","Primary Group":null,"Notification":false,"Tenant Id":null
+},{"Status":true,"Navigation Style":false,"E-mail":"adil.mouhssine@ericsson.com","Lastname":"Mouhssine"
+,"Firstname":"Adil","Id":"eadimou","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status"
+:true,"Navigation Style":false,"E-mail":"adi.netanel@ericsson.com","Lastname":"Netanel","Firstname":"Adi","Id":"eadinet","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adam.robins@ericsson.com","Lastname":"Robins","Firstname":"Adam","Id":"eadmros"
+,"Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false
+,"E-mail":"adolfo.fabella@ericsson.com","Lastname":"Fabella","Firstname":"Adolfo","Id":"eadofab","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adrian.p.davis@ericsson.com","Lastname":"Davis","Firstname":"Adrian","Id":"eadrida","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adrian.ihly@ericsson.com"
+,"Lastname":"Ihly","Firstname":"Adrian","Id":"eadrihl","Primary Group":null,"Notification":true,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"adrian.schofield@ericsson.com","Lastname"
+:"Schofield","Firstname":"Adrian","Id":"eadrisc","Primary Group":null,"Notification":true,"Tenant Id"
+:null},{"Status":true,"Navigation Style":false,"E-mail":"adrian.miller@ericsson.com","Lastname":"Miller"
+,"Firstname":"Adrian","Id":"eadrmil","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status"
+:true,"Navigation Style":false,"E-mail":"adrian.turner@ericsson.com","Lastname":"Turner","Firstname"
+:"Adrian","Id":"eadrtur","Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false,"E-mail":"andrew.x.adams@ericsson.com","Lastname":"Adams","Firstname":"Andrew","Id":"eadsanw"
+,"Primary Group":null,"Notification":false,"Tenant Id":null},{"Status":true,"Navigation Style":false
+,"E-mail":"liying.zhou@ericsson.com","Lastname":"Zhou","Firstname":"Liying","Id":"eaeefin","Primary Group"
+:null,"Notification":false,"Tenant Id":null}],"refreshTime":" 5:12:16 AM"}

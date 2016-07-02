@@ -1,0 +1,843 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <title>Incident View</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="container/resources/container/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="customCss/basicSetup.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/navigator.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/ericssonSetup.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/jquery.mCustomScrollbar.css" />
+
+</head>
+
+<body id="scrollPage">
+    <div class="eaContainer-SystemBarHolder">
+        <div class="eaContainer-SystemBar">
+            <div class="eaContainer-SystemBar-logo"></div>
+            <div class="eaContainer-SystemBar-components">
+                <div class="eaContainer-SystemBar-right">
+                    <div class="nav-menu" style="display: inline-block;">
+                      <ul>
+                        <li class="eaLogoutButton">
+                          <a class="eaUserButton-link">Ken Holmes
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="userMenu" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem crPointer">
+                                  <a class="eaPreferenceButton" style="display: block;">
+                                      <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                                  </a>
+                              </li>
+                              <li class="direcrtoryButton-lineItem crPointer">
+                                  <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                              </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+                <!-- Visible below 400px -->
+                <div class="eaContainer-SystemBar-right-xs">
+                  <div class="nav-menu" style="display: inline-block;">
+                    <ul>
+                      <li class="eaLogoutButton">
+                        <a class="eaUserButton-link-sm">
+                            <i class="ebIcon ebIcon_downArrow h-42"></i>
+                        </a>
+                        <ul id="userMenu-xs" class="eaHelpButton-list eaSystemBarMenu">
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="eaPreferenceButton" style="display: block;">
+                                    <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                                </a>
+                            </li>
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                            </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="eaContainer-SystemBar-left">
+                    <div class="eaContainer-SystemBar-name">ERICSSON TV3HUB</div>
+                    <div class="eaContainer-SystemBar-menu nav-menu">
+                      <ul>
+                        <li class="directoryButton">
+                            <a class="menuBUtton-link">
+                                <span class="eaHelpButton-span">Directory</span>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul id="scMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('alarmConsole.html');">Alarm Console</div>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('manageIncident.html');">Incident Console</div>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Access Request Console</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Jira Bug Console</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">KB Pages</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">TV3 Subscriber Account</div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menuBUtton">
+                            <a class="menuBUtton-link">
+                                <span class="eaHelpButton-span">My Favorites</span>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul id="mfMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Request Access</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Incident</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">My Request</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Work Board</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menuBUtton">
+                            <a class="menuBUtton-link">
+                                <span class="eaHelpButton-span">Team Favorites</span>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul id="cmMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Change Console</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Change</div>
+
+                                    </div>
+                                </li>
+
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Ask Mode Req</div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menuButton">
+                            <a class="menuBUtton-link">
+                                <span class="eaHelpButton-span">Search</span>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul id="searchMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Saved Search</div>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Advance Search</div>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <!-- <div class="directoryList-Group-icon "></div> -->
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Solar Search</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menuButton">
+                            <a class="menuBUtton-link" href="Users.html">
+                                <span class="eaHelpButton-span">Admin</span>
+                            </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Customize Menu Part visible below 800px -->
+                    <div class="eaContainer-SystemBar-menu-sm nav-menu-sm">
+                      <ul id="nav">
+                        <li class="menuButton">
+                            <a class="menuBUtton-link">
+                                <i class="ebIcon ebIcon_menu h-42"></i>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul id="menuList" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="Users.html">Admin</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Directory <span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                        <ul id="directoryList" class="sub-menu-List">
+                                            <li>
+                                                <a href="alarmConsole.html">Alarm Console</a>
+                                            </li>
+                                            <li>
+                                                <a href="manageIncident.html">Incident Console</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Access Request Console</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Jira Bug Console</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">KB Pages</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">TV3 Subscriber Account</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">My Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                        <ul id="myFavList" class="sub-menu-List">
+                                            <li>
+                                                <a href="#">Request Access</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Create Incident</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">My Request</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Work Board</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <!-- <div class="directoryList-Group-icon "></div> -->
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Team Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                        <ul id="favList" class="sub-menu-List">
+                                            <li>
+                                                <a href="#">Change Console</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Create Change</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Create Ask Mode Req</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="direcrtoryButton-lineItem search-sub-menu">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <!-- <div class="directoryList-Group-icon "></div> -->
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Search<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                        <ul id="searchList" class="sub-menu-List">
+                                            <li>
+                                                <a href="#">Saved Search</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Advanced Search</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Solar Search</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                          </li>
+                        <ul>
+                    </div>
+                </div>
+            </div>
+            <div class="eaContainer-SystemBar-below"></div>
+        </div>
+    </div>
+
+    <div class="eaContainer-applicationHolder incident-view-page">
+        <div class="ericRdpv-col-12">
+            <div class="elLayouts-TopSection-breadcrumb">
+                <div class="ebBreadcrumbs">
+                    <div class="ebBreadcrumbs-item">
+                        <a href="#home" class="ebBreadcrumbs-link" title="">TV3HUB</a>
+                    </div>
+                    <div class="ebBreadcrumbs-item">
+                        <a href="alarmConsole.html" class="ebBreadcrumbs-link" title="">Directory</a>
+                    </div>
+                    <div class="ebBreadcrumbs-item">
+                        <a href="#" class="ebBreadcrumbs-link" title="">Incident</a>
+                    </div>
+                </div>
+            </div>
+            <h1 class="elLayouts-TopSection-title">Incident</h1>
+            <div class="elLayouts-QuickActionBarWrapper">
+              <div class="elLayouts-QuickActionBar-search desktop-searchbar">
+                <div class="ericRdpv-row">
+                  <div style="display:inline-block;border-radius: 3px;" e-id="content">
+                      <span class="ebLabel-textSearch" e-id="caption">Search</span>
+                      <div style="display:inline-block;border-radius: 3px;position:relative" e-id="content">
+                        <span class="ebIcon ebIcon_downArrow dropdown-arrow"></span>
+                          <select class="ebComponentList">
+                              <option class="ebComponentList-item" value="">Select Saved Search</option>
+                              <option class="ebComponentList-item" value="">Incident</option>
+                              <option class="ebComponentList-item" value="">Incident_Closed</option>
+                              <option class="ebComponentList-item" value="">Alarm</option>
+                              <option class="ebComponentList-item" value="">Alarm_Closed</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div style="display:inline-block;border-radius: 3px;" e-id="content">
+                      <span class="ebLabel-textSearch" e-id="caption">for</span>
+                      <input type="text" class="ebInputSearch">
+                  </div>
+                  <div style="display: inline-block;"><button title="Search" class="er-primary-btn"><i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></button></div>
+                  <div style="display: inline-block;"><button class="er-primary-btn"><a href="#">Advanced Search</a></button ></div>
+              </div>
+            </div>
+                <!-- Search icon below 520px-->
+                <div class="elLayouts-QuickActionBar-search mobile-searchbar" style="padding-right:10px;">
+                  <div style="display:inline-block;"><button title="Search" ericRdpv-popup-open="popup-search" class="er-primary-btn"><i  e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></button></div>
+                  <div style="display: inline-block;"><button class="er-primary-btn"><a href="#">Advanced Search</a></button></div>
+                </div>
+                <!--Popup search window-->
+                <div class="ericRdpv-popup search-popup" ericRdpv-popup="popup-search">
+                    <div class="ericRdpv-popup-inner">
+                      <div class="ericRdpv-row">
+                        <div class="ericRdpv-col-12">
+                          <span class="ebLabel-textSearch ericRdpv-col-3" e-id="caption">Search</span>
+                          <span class="ericRdpv-col-7" style="position:relative" e-id="content">
+                            <span class="ebIcon ebIcon_downArrow dropdown-arrow"></span>
+                              <select class="ebComponentList">
+                                  <option class="ebComponentList-item" value="">Select Saved Search</option>
+                                  <option class="ebComponentList-item" value="">Incident</option>
+                                  <option class="ebComponentList-item" value="">Incident_Closed</option>
+                                  <option class="ebComponentList-item" value="">Alarm</option>
+                                  <option class="ebComponentList-item" value="">Alarm_Closed</option>
+                              </select>
+                          </span>
+                        </div>
+                        <div class="ericRdpv-col-12">
+                          <div class="ericRdpv-form">
+                            <span class="ebLabel-textSearch ericRdpv-col-3" e-id="caption">for</span>
+                            <div style="float:left" class="ericRdpv-col-7"> <input type="text" class="ebInputSearch"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ericRdpv-row action-button">
+                        <span title="Search" class="alarmSearchIconBar crPointer"><i ericRdpv-popup-open="popup-search" e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></span>
+                        <button ericRdpv-popup-close="popup-search" class="er-primary-btn crPointer">Close</button>
+                      </div>
+                        <i class="ericRdpv-popup-close" ericRdpv-popup-close="popup-search" href="#">x</i>
+                    </div>
+                </div>
+            </div>
+            <div class="ericRdpv-col-12">
+                <div class="lineBreaker" style="height: 100%;">
+                  <div title="Overview"> <a href="incidentView.html"><i class="ebIcon kbPageIcon kbPageSample1IconImage"></i></a></div>
+                  <div title="Related"> <a href="incidentRelated.html"><i class="ebIcon kbPageIcon kbPageSample2IconImage"></i></a></div>
+                  <div title="Audit Log"> <a href="incidentAuditlog.html"><i class="ebIcon kbPageIcon kbPageSample3IconImage"></i></a></div>
+                  <div class="kbPageDivActive" title="Recovery"> <a href="incidentRecovery.html"><i class="ebIcon kbPageIcon kbPageSample4IconImage"></i></a></div>
+                  <div title="Contacts"> <a href="incidentContact.html"><i class="ebIcon kbPageIcon kbPageSample5IconImage"></i></a></div>
+                </div>
+                <div class="ebLayout-SectionSubheading" style="border-bottom: 0px !important;display: inline-block;width: calc(100% - 37px);padding-left:5px;">
+                  <div class="ebLayout-SectionSubHeader">
+                    <div class="ericRdpv-row">
+                      <div style="display:inline-block;width: calc(100% - 151px);">
+                          <h3 style="padding-left:0px;padding-bottom:0px;">Incident [TT-4198216] - Alcatel-Lucent - NAR Mediaroom HIGH Errors Observed...</h3>
+                      </div>
+                      <div class="dropdown" style="float:right;display:inline-block">
+                          <span style="margin-top: 0px;" class="ebLayout-HeadingCommands">
+                            <button style="min-width:0px;" e-id="addcomment" class="ebBtn ebBtn_color_paleBlue elLayouts-ActionBarButton">...</button>
+                          </span>
+                          <ul id="options" class="eaHelpButton-list eaHelpButton-list-menu eaSystemBarMenu dropdown-menu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="incidentEdit.html">Edit</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Tag</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Create Jira Bug</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Create Task</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Broadcast Notifications</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Create Slack Channel</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Refresh</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">Execute</a>
+                                    </div>
+                                </li>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="#">More</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                  <div id="incident-div">
+                    <div class="ericRdpv-col-8 ericRdpv-col-m-12 ericRdpv-col-s-12 ericRdpv-col-xs-12 ericRdpv-customScroll" id="incident-left">
+                        <div style="padding-top:10px;">
+                          <div class="ericRdpv-col-12">
+                            <div class="content-head">
+                              <span class="content-text">Communications</span>
+                              <span class="content-line"> <hr class="e-hr"></span>
+                            </div>
+                          </div>
+                          <div class="ericRdpv-row">
+                              <div class="ericRdpv-col-6 ericRdpv-col-m-6 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-4 ericRdpv-col-m-4 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Recovery Status</div>
+                                  </div>
+                                  <div class="ericRdpv-col-8 ericRdpv-col-m-8 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="ericRdpv-col-6 ericRdpv-col-m-6 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-4 ericRdpv-col-m-4 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Recovery Time</div>
+                                  </div>
+                                  <div class="ericRdpv-col-8 ericRdpv-col-m-8 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="ericRdpv-row">
+                              <div class="ericRdpv-col-6 ericRdpv-col-m-6 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-4 ericRdpv-col-m-4 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Executive Summary (External)</div>
+                                  </div>
+                                  <div class="ericRdpv-col-8 ericRdpv-col-m-8 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="ericRdpv-row">
+                              <div class="ericRdpv-col-12 ericRdpv-col-m-12 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-2 ericRdpv-col-m-2 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Current Status</div>
+                                  </div>
+                                  <div class="ericRdpv-col-10 ericRdpv-col-m-10 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="ericRdpv-row">
+                              <div class="ericRdpv-col-12 ericRdpv-col-m-12 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-2 ericRdpv-col-m-2 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Previous Updates</div>
+                                  </div>
+                                  <div class="ericRdpv-col-10 ericRdpv-col-m-10 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="ericRdpv-row">
+                              <div class="ericRdpv-col-12 ericRdpv-col-m-12 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                <div class="ericRdpv-form">
+                                  <div class="ericRdpv-col-2 ericRdpv-col-m-2 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="ebText_alternative">Recovery Leader Signature</div>
+                                  </div>
+                                  <div class="ericRdpv-col-10 ericRdpv-col-m-10 ericRdpv-col-s-12 ericRdpv-col-xs-12">
+                                      <div class="eaAlarmDetails-AlarmInformation-value"><a href="#" class="editContent"><i class="ebIcon contentEdit"></i></a></div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                            <div class="ericRdpv-col-12">&nbsp;</div>
+                            <div class="ericRdpv-col-12">
+                                <div class="content-head">
+                                  <span class="content-text">Timeline</span>
+                                  <span class="content-line"> <hr class="e-hr"></span>
+                                </div>
+                            </div>
+                            <div class="ericRdpv-col-12">&nbsp;</div>
+                            <div class="ericRdpv-row">
+                              <div class="elTablelib-Table">
+                                  <div class="elTablelib-Table-wrapper eb_scrollbar" style="max-width: 100%; width: 100%; padding-bottom:20px !important">
+                                      <div id="sampleTable_wrapper" class="dataTables_wrapper no-footer">
+                                          <table id="sampleTable" class="ebTable elTablelib-Table-table ebTable_striped ebTable_hoverActive_none dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="sampleTable_info">
+                                              <thead class="elTablelib-Table-header">
+                                                  <tr class="ebTableRow" role="row">
+                                                      <th style="box-sizing: border-box;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Time</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                      <th style="box-sizing: border-box;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Timestamp: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Event</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                      <th style="box-sizing: border-box" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Problem: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Required</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                      <th style="box-sizing: border-box" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label=" Specific Problem: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Action</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                    </tr>
+                                              </thead>
+                                              <tbody class="elTablelib-Table-body">
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                      <div class="elTablelib-Table-posttable"></div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="ericRdpv-col-12">&nbsp;</div>
+                            <div class="ericRdpv-col-12">
+                                <div class="content-head">
+                                  <span class="content-text">Repair Items</span>
+                                  <span class="content-line"> <hr class="e-hr"></span>
+                                </div>
+                            </div>
+                            <div class="ericRdpv-col-12">&nbsp;</div>
+                            <div class="ericRdpv-row">
+                              <div class="elTablelib-Table">
+                                  <div class="elTablelib-Table-wrapper eb_scrollbar" style="max-width: 100%; width: 100%; padding-bottom:20px !important">
+                                      <div id="sampleTable_wrapper" class="dataTables_wrapper no-footer">
+                                          <table id="repairItem" class="ebTable elTablelib-Table-table ebTable_striped ebTable_hoverActive_none dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="sampleTable_info">
+                                              <thead class="elTablelib-Table-header">
+                                                  <tr class="ebTableRow" role="row">
+                                                      <th style="box-sizing: border-box;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Repair Item</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                      <th style="box-sizing: border-box;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Timestamp: activate to sort column ascending">
+                                                          <div class="ebTable-header">
+                                                              <span class="ebTable-headerText">Action</span>
+                                                              <div class="ebTable-headerResize"></div>
+                                                          </div>
+                                                      </th>
+                                                    </tr>
+                                              </thead>
+                                              <tbody class="elTablelib-Table-body">
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                      <div class="elTablelib-Table-posttable"></div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ericRdpv-col-4 ericRdpv-col-m-12 ericRdpv-col-s-12 ericRdpv-col-xs-12" id="incident-right">
+                        <!-- <div class="lineVertical" style="margin-top: 28px;"></div> -->
+                        <div class="incident-description">
+                          <div class="ericRdpv-row">
+                            <div class="ericRdpv-col-12 section-header">
+                                <div class="content-head">
+                                  <span class="content-text">Description</span>
+                                  <span class="content-line"> <hr class="e-hr"></span>
+                                </div>
+                            </div>
+                            <div class="ericRdpv-col-12">
+                                <div class="eaAlarmDetails-AlarmInformation-value">
+                                    Hello Tv3 Help,
+                                    <br>
+                                    <br>I noticed that you still have not added configuration for Ingest to use mongo in RCS Prod. When are you going to do this?
+                                    <br>This is causing bug MF-24016
+                                    <https: browse="" jira-fe-p01.mr.ericsson.se:8443="" mf-24016="">, because ingestworker.xml does not have StorageConversionTaskExecutionPeriodInMs value and ingest self-test manager is not happy about it. In addition to this, we would like to enable mongo in production at least a
+                                        week before release to make sure mongo is working fine and that all the data from Azure is moved to Mongo database. Tls Prod A environment has 20k + jobs and it will take some time to move all that data across.
+                                        <br>Mauricio mentioned he is going to do this at some point in S60, but just wanted to get an update on this.
+                                        <br>
+                                        <br>Thanks,
+                                        <br>Giedrius.</https:>
+                                </div>
+                            </div>
+                            <div class="ericRdpv-col-12">&nbsp;</div>
+                            <div class="ericRdpv-col-12">
+                              <div class="content-head">
+                                <span class="content-text">Messages</span>
+                                <span class="content-line"> <hr class="e-hr"></span>
+                              </div>
+                              <div class="ericRdpv-col-12">&nbsp;</div>
+                              <div class="ericRdpv-row message-button">
+                              <button class="er-primary-btn" onclick="messageTextToggle()">Add Message</button>
+                            </div>
+                                 <div class="ericRdpv-col-12 message-area">
+                                   <div class="ericRdpv-form">
+                                     <div class="eaAlarmDetails-AlarmInformation-value">
+                                       <textarea class="ebTextArea" rows="2"></textarea>
+                                     </div>
+                                     <span class="ebInput-status" e-id="status" style="display: none">
+                                       <span class="ebInput-statusError">Invalid</span>
+                                     </span>
+                                   </div>
+                                 </div>
+                                 <div class="ericRdpv-col-12">&nbsp;</div>
+                                <div class="eaAlarmDetails-Comments-comment">
+                                    <div style="padding:0.5rem;">
+                                        <div class="eaAlarmDetails-Comments-bodytop">
+                                            <span class="eaAlarmDetails-Comments-name" style="color: #0967b2;text-decoration: none;">TV3 Help Mailbox</span>
+                                            <span class=""> added a comment - </span>
+                                            <span class="eaAlarmDetails-Comments-time"><em>06/02/16 10:12:29</em></span>
+                                        </div>
+                                        <div class="eaAlarmDetails-Comments-bodybottom">
+                                            Appended <a href="javascript:openTicketUsingShortUrl('AE-3399327');" style="margin-left:20px;">[AE-3399327]</a>&nbsp;Ticket [TT-3399310] updated with new message
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <hr class="ecomment-hr">
+                                </div>
+                                <div class="eaAlarmDetails-Comments-comment">
+                                    <div style="padding:0.5rem;">
+                                        <div class="eaAlarmDetails-Comments-bodytop">
+                                            <span class="eaAlarmDetails-Comments-name" style="color: #0967b2;text-decoration: none;">TV3 Help Mailbox</span>
+                                            <span class=""> added a comment - </span>
+                                            <span class="eaAlarmDetails-Comments-time"><em> 06/02/16 10:09:57</em></span>
+                                        </div>
+                                        <div class="eaAlarmDetails-Comments-bodybottom">
+                                            [https://hub.tv3cloud.com/userfiles/file/Ericsson_logo.png]
+                                            <br>
+                                            <br>[https://hub.tv3cloud.com/userfiles/file/inquiry-received.jpg]
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>THANK YOU
+                                            <br>Your inquiry regarding: Enabling mongo db in production environments.
+                                            <br>
+                                            <br>We are tracking this under TT-3399310. The TV3 team will triage the issue and will contact you if additional information is required.
+                                            <br>
+                                            <br>Please let us know if you have any questions.
+                                            <br>Thank you,
+                                            <br>
+                                            <br>tv3.help@ericsson.com
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>This Communication is Confidential.
+                                            <br>We only send and receive email on the basis of the terms set out at www.ericsson.com/email_disclaimer &lt;http://www.ericsson.com/email_disclaimer/&gt;
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <hr class="ecomment-hr">
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="lib/js/jquery-1.12.0.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.js"></script>
+<script src="lib/js/jquery.dataTables.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#sampleTable').DataTable({
+      "bLengthChange": false,
+      "searching": false,
+      "autoWidth": true,
+      "bPaginate":false,
+      "scrollX": "500px",
+      "bInfo": false,
+      "scrollCollapse": true,
+      "ajax": "attachments.json",
+      columns: [
+         {
+            data: "time",
+            "width": "80px",
+          }, {
+              "width": "150px",
+              data: "event"
+          }, {
+              "width": "80px",
+              data: "required"
+          }, {
+              "width": "60px",
+              data: null,
+              "orderable": false,
+              "render": function() {
+                return '<a href="#"><i class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmDelete" e-id="icon"></i></a>';
+              }
+          }]
+  });
+  $('#repairItem').DataTable({
+      "bLengthChange": false,
+      "searching": false,
+      "autoWidth": true,
+      "bPaginate":false,
+      "bInfo": false,
+      "scrollCollapse": true,
+      "ajax": "attachments.json",
+      columns: [
+          {
+              "width": "80px",
+              data: "operator"
+          }, {
+              "orderable": false,
+              "data": null,
+              "width": "50px",
+              "title": "Actions",
+              'render': function(data, type, full, meta) {
+                  return '<a href="#"><i class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmDelete" e-id="icon"></i></a>';
+              }
+            }]
+      });
+  });
+    function showOrHideMenu(id) {
+        if (document.getElementById("" + id + "").style.display == 'none') {
+            document.getElementById("" + id + "").style.display = 'block';
+        } else {
+            document.getElementById("" + id + "").style.display = 'none';
+        }
+    }
+
+    function showSubMenu(id) {
+        if (document.getElementById(id).style.display == 'none') {
+            document.getElementById(id).style.display = 'block';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+
+    function moveTo(location) {
+        window.location.href = "" + location + "";
+    }
+    /* var element = document.getElementById("scrollPage");
+     //onload = function () {
+        console.log("Element Scrol Height ", element.scrollHeight);
+        console.log("Element Scroll Top ",element.scrollTop);
+        console.log("Element client Height",element.clientHeight);
+        if (element.scrollHeight - element.scrollTop === element.clientHeight)
+        {
+            console.log('scrolled');
+        }
+     //}*/
+     function addScroll() {
+       var height = calculateHeight();
+       $("#incident-div").height(height);
+       if($(window).width()<721) {
+         $("#incident-left, #incident-right").mCustomScrollbar("destroy");
+         $("#incident-div").mCustomScrollbar({
+           theme:"minimal-dark"
+         });
+       } else {
+         $("#incident-left, #incident-right").mCustomScrollbar({
+           theme:"minimal-dark"
+         });
+         $("#incident-div").mCustomScrollbar("destroy");
+       }
+       addBodyScroll();
+     };
+     addScroll();
+     $(window).resize(function(){
+       addScroll();
+     });
+
+</script>
+
+</html>

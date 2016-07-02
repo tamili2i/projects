@@ -1,0 +1,419 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/systemBar.css" />
+    <title>Alarm Monitor</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="container/resources/container/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="customCss/basicSetup.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/navigator.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/ericssonSetup.css" />
+    <script src="lib/js/jquery-1.12.0.min.js"></script>
+    <script src="lib/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+    <div class="">
+        <div style="position: relative; width: 100%; height: 100%;">
+            <div class="elLayouts-Wrapper">
+                <div class="elLayouts-TopSection">
+
+                    <h1 class="elLayouts-TopSection-title">Service Center Triage</h1>
+                    <div class="elLayouts-QuickActionBarWrapper">
+                      <div class="elLayouts-QuickActionBar-search desktop-searchbar">
+                        <div class="ericRdpv-row">
+                          <div style="display:inline-block;border-radius: 3px;" e-id="content">
+                              <span class="ebLabel-textSearch" e-id="caption">Search</span>
+                              <div style="display:inline-block;border-radius: 3px;position:relative" e-id="content">
+                                <span class="ebIcon ebIcon_downArrow dropdown-arrow"></span>
+                                  <select class="ebComponentList">
+                                      <option class="ebComponentList-item" value="">Select Saved Search</option>
+                                      <option class="ebComponentList-item" value="">Incident</option>
+                                      <option class="ebComponentList-item" value="">Incident_Closed</option>
+                                      <option class="ebComponentList-item" value="">Alarm</option>
+                                      <option class="ebComponentList-item" value="">Alarm_Closed</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div style="display:inline-block;border-radius: 3px;" e-id="content">
+                              <span class="ebLabel-textSearch" e-id="caption">for</span>
+                              <input type="text" class="ebInputSearch">
+                          </div>
+                          <div style="display: inline-block;"><button title="Search" class="er-primary-btn"><i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></button></div>
+                          <div style="display: inline-block;"><button class="er-primary-btn"><a href="#">Advanced Search</a></button ></div>
+                      </div>
+                    </div>
+                        <!-- Search icon below 520px-->
+                        <div class="elLayouts-QuickActionBar-search mobile-searchbar" style="padding-right:10px;">
+                          <div style="display:inline-block;"><button title="Search" ericRdpv-popup-open="popup-search" class="er-primary-btn"><i  e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></button></div>
+                          <div style="display: inline-block;"><button class="er-primary-btn"><a href="#">Advanced Search</a></button></div>
+                        </div>
+                        <!--Popup search window-->
+                        <div class="ericRdpv-popup search-popup" ericRdpv-popup="popup-search">
+                            <div class="ericRdpv-popup-inner">
+                              <div class="ericRdpv-row">
+                                <div class="ericRdpv-col-12">
+                                  <span class="ebLabel-textSearch ericRdpv-col-3" e-id="caption">Search</span>
+                                  <span class="ericRdpv-col-7" style="position:relative" e-id="content">
+                                    <span class="ebIcon ebIcon_downArrow dropdown-arrow"></span>
+                                      <select class="ebComponentList">
+                                          <option class="ebComponentList-item" value="">Select Saved Search</option>
+                                          <option class="ebComponentList-item" value="">Incident</option>
+                                          <option class="ebComponentList-item" value="">Incident_Closed</option>
+                                          <option class="ebComponentList-item" value="">Alarm</option>
+                                          <option class="ebComponentList-item" value="">Alarm_Closed</option>
+                                      </select>
+                                  </span>
+                                </div>
+                                <div class="ericRdpv-col-12">
+                                  <div class="ericRdpv-form">
+                                    <span class="ebLabel-textSearch ericRdpv-col-3" e-id="caption">for</span>
+                                    <div style="float:left" class="ericRdpv-col-7"> <input type="text" class="ebInputSearch"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="ericRdpv-row action-button">
+                                <span title="Search" class="alarmSearchIconBar crPointer"><i ericRdpv-popup-open="popup-search" e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmSearchIcon"></i></span>
+                                <button ericRdpv-popup-close="popup-search" class="er-primary-btn crPointer">Close</button>
+                              </div>
+                                <i class="ericRdpv-popup-close" ericRdpv-popup-close="popup-search" href="#">x</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elLayouts-TopSection-placeholder">
+                        <div>
+                            <!--<div class="eaAlarmMonitor-QuickFilterRegion">
+                                <div class="eaAlarmMonitor-QuickFilterRegion-filters">
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style=""> <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmCritical"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmCritical_white"></i>
+                                        <span e-id="caption" class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Critical</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(10093)</span></div>
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style=""> <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmMajor"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmMajor_white"></i> <span e-id="caption"
+                                            class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Major</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(30253)</span></div>
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style="">
+                                        <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmMinor"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmMinor_white"></i> <span e-id="caption"
+                                            class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Minor</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(19699)</span></div>
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style="">
+                                        <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmWarning"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmWarning_white"></i>
+                                        <span e-id="caption" class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Warning</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(19949)</span></div>
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style="">
+                                        <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmIndeterminate"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmIndeterminate_white"></i>                                        <span e-id="caption" class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Indeterminate</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(9962)</span></div>
+                                    <div class="eaAlarmMonitor-QuickAlarmFilter" style=""> <i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmCleared"></i> <i e-id="whiteicon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon ebIcon_alarmCleared_white"></i> <span e-id="caption"
+                                            class="eaAlarmMonitor-QuickAlarmFilter-filtercaption">Cleared</span> <span e-id="count" class="eaAlarmMonitor-QuickAlarmFilter-filtercount">(10044)</span></div>
+                                </div>
+                            </div>-->
+                            <div class="eaAlarmMonitor-AlarmListRegion">
+                                <div class="alaramlayout-SectionHeading">
+                                    <h2>Search Results</h2>
+                                    <div class="ebLayout-HeadingCommands">
+                                        <div class="ebLayout-HeadingCommands-block">
+                                            <div class="elCommonlib-TableSettingsButton">
+                                                <!--<span class="alaramConsoleUploadIconBar"><i class="ebIcon alaramConsoleExportIcon elCommonlib-TableSettingsButton-icon"></i></span>
+                                                <span style="margin-right:5px" class="alaramConsoleUploadIconBar"><i class="ebIcon alaramConsoleUploadIcon elCommonlib-TableSettingsButton-icon"></i> </span>
+                                                <span style="margin-right:5px" class="alaramConsoleUploadIconBar"><i class="ebIcon alarmSetting ebIcon_settings elCommonlib-TableSettingsButton-icon"></i> </span>-->
+                                                <span> <span class="elCommonlib-TableSettingsButton-text alaramConsoleUploadIconBar" id="setting"><i class="ebIcon alaramTableSettingImageIcon alarmSetting"></i></span>
+                                                <div class="alarmTableSettingDiv">
+                                                    <ul id="settingMenuList" style="display:none;" class="eaHelpButton-list alaramTableSettingList alarmTableSetting">
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-title alarmTableSettingColumn">Columns</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-title">
+                                                                    <input class="alarmTableSettingSearch" type="text"></input>
+                                                                </div>
+
+                                                                <div class="eaNavigationAppList-Group-expander" style="padding-left: 0px ! important">
+                                                                    <span class="alarmTableSettingSearchIconBar"><i e-id="icon" class="ebIcon eaAlarmMonitor-QuickAlarmFilter-filtericon alarmTableSettingSearchIcon"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="1" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Id</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="2" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Title</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="3" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Operator</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="4" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Impacted Service</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="5" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Environment</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="6" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Source Type</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="7" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Count</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="8" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Created Time</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="direcrtoryButton-lineItem">
+                                                            <div class="eaNavigationAppList-Group-header">
+                                                                <div class="directoryList-Group-icon">
+                                                                    <input class="columnDisplay" data-column="9" checked="checked" type="checkbox"></input>
+                                                                </div>
+                                                                <div class="eaNavigationAppList-Group-title directoryButton-subLink">Response Level</div>
+                                                                <div class="eaNavigationAppList-Group-expander right-arrow-align">
+                                                                    <i class="ebIcon ebIcon_rightArrow_white"></i>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div e-id="table" class="eaAlarmMonitor-AlarmListRegion-table" style="height: 120px;">
+                                    <div class="elWidgets-VirtualScrollBar" style="position: relative;">
+                                        <div class="elWidgets-VirtualScrollBar-content" style="width:100%; height: 96px;">
+                                            <div class="elTablelib-Table">
+                                                <div class="elTablelib-Table-wrapper eb_scrollbar" style="max-width: 100%; width: 100%; padding-bottom:20px !important">
+                                                    <div id="sampleTable_wrapper" class="dataTables_wrapper no-footer">
+                                                        <table id="sampleTable" class="ebTable elTablelib-Table-table ebTable_striped ebTable_hoverActive_none dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="sampleTable_info">
+                                                            <thead class="elTablelib-Table-header">
+                                                                <tr class="ebTableRow" role="row">
+                                                                    <th style="box-sizing: border-box; border-right: medium none; padding-left: 0px; padding-right: 0px; width: 3px !important;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="clr: activate to sort column ascending"></th>
+
+                                                                    <th style="box-sizing: border-box; width: 8%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">ID</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 30%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Timestamp: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Title</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 10%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Problem: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Operator</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 12%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label=" Specific Problem: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Impacted Service</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 10%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Cell: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Environment</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 11%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Cell: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Event Source</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 8%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Cell: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Count</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width: 12%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Cell: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Created Time</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th style="box-sizing: border-box; width:7%;" class="elTables-wrappedHeader ebTable-th_sortable ebTable-th_resizable sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Cell: activate to sort column ascending">
+                                                                        <div class="ebTable-header">
+                                                                            <span class="ebTable-headerText">Response Level</span>
+                                                                            <span class="ebTable-headerSort ebSort"><i class="ebSort-arrow_up"></i><i class="ebSort-arrow_down"></i></span>
+                                                                            <div class="ebTable-headerResize"></div>
+                                                                        </div>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="elTablelib-Table-body">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="elTablelib-Table-posttable"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+      var height = ($(window).height()-250)+"px";
+      var table = $('#sampleTable').DataTable({
+          "bLengthChange": false,
+          "searching": false,
+          "scrollX":"956px",
+          "scrollY": height,
+          "scrollCollapse": true,
+          "language": {
+              "paginate": {
+                  "previous": "<i class='ebIcon alaramPaginatePrevious'  e-id='icon'></i>",
+                  "next": "<i class='ebIcon alaramPaginateNext'  e-id='icon'></i>"
+              }
+          },
+          "ajax": "alarams.json",
+          columns: [
+              {
+                "class" : "elTablelib-alarmColor",
+                "orderable": false,
+                "data": null,
+                'render': function(data, type, full, meta) {
+                    return '<div style=""></div>';
+                }
+              },{
+                  data: "ID",
+                  'render': function(data, type, full, meta) {
+                      return '<a href="incidentView.html">' + data + '</a>';
+                  }
+              }, {
+                  data: "TITLE"
+              }, {
+                  data: "OPERATOR"
+              }, {
+                  data: "IMPACTEDSERVICE"
+              },
+              /*		            { data: "Response Level" },
+               */
+              {
+                  data: "ENVIRONMENT"
+              }, {
+                  data: "SOURCESYSTEMTYPE"
+              }, {
+                  data: "COUNT"
+              }, {
+                  data: "CREATEDTIME"
+              },{
+                data: "RESPONSELEVEL"
+              }
+          ]
+      });
+
+	  $("input:checkbox.columnDisplay").on("click", function(e) {
+            var column = table.column($(this).attr('data-column'));
+
+            // Toggle the visibility
+            column.visible(!column.visible());
+        });
+    });
+
+    function showOrHideMenu(id) {
+        if (document.getElementById("" + id + "").style.display == 'none') {
+            document.getElementById("" + id + "").style.display = 'block';
+        } else {
+            document.getElementById("" + id + "").style.display = 'none';
+        }
+    }
+    $('#setting').click(function() {
+        if (document.getElementById("settingMenuList").style.display == 'none') {
+            document.getElementById("settingMenuList").style.display = 'block';
+        } else {
+            document.getElementById("settingMenuList").style.display = 'none';
+        }
+    });
+
+    function moveTo(location) {
+        window.location.href = "" + location + "";
+    }
+</script>
+<script type="text/javascript" src="js/common.js"></script>
+</html>

@@ -1,0 +1,18 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
+  width="56px" height="16px" viewBox="0 0 56 16">
+  <rect x="0" y="0" rx="3" ry="3" width="16" height="16" fill="#ca9bc1">
+      <animate id="rect1anim1" attributeName="fill" from="#ca9bc1" to="#953882" dur="0.3s" begin="0s;rect1anim3.end" />
+      <animate id="rect1anim2" attributeName="fill" from="#953882" to="#ca9bc1" dur="0.15s" begin="rect1anim1.end" />
+      <animate id="rect1anim3" attributeName="fill" from="#ca9bc1" to="#ca9bc1" dur="0.45s" begin="rect1anim2.end" />
+  </rect>
+  <rect x="20" y="0" rx="3" ry="3" width="16" height="16" fill="#ca9bc1">
+      <animate id="rect2anim1" attributeName="fill" from="#ca9bc1" to="#953882" dur="0.3s" begin="0.3s;rect2anim3.end" />
+      <animate id="rect2anim2" attributeName="fill" from="#953882" to="#ca9bc1" dur="0.15s" begin="rect2anim1.end" />
+      <animate id="rect2anim3" attributeName="fill" from="#ca9bc1" to="#ca9bc1" dur="0.45s" begin="rect2anim2.end" />
+  </rect>
+  <rect x="40" y="0" rx="3" ry="3" width="16" height="16" fill="#ca9bc1">
+      <animate id="rect3anim1" attributeName="fill" from="#ca9bc1" to="#953882" dur="0.3s" begin="0.6s;rect3anim3.end" />
+      <animate id="rect3anim2" attributeName="fill" from="#953882" to="#ca9bc1" dur="0.15s" begin="rect3anim1.end" />
+      <animate id="rect3anim3" attributeName="fill" from="#ca9bc1" to="#ca9bc1" dur="0.45s" begin="rect3anim2.end" />
+  </rect>
+</svg>

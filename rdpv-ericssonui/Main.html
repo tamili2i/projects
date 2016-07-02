@@ -1,0 +1,286 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <title>Ericsson TV3Hub</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="container/resources/container/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="customCss/basicSetup.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/navigator.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/ericssonSetup.css" />
+</head>
+
+<body>
+    <div class="eaContainer-SystemBarHolder">
+        <div class="eaContainer-SystemBar">
+            <div class="eaContainer-SystemBar-logo"></div>
+            <div class="eaContainer-SystemBar-components">
+                <div class="eaContainer-SystemBar-right">
+                    <div style="display: inline-block;">
+                        <div class="eaContextMenu"></div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="eaFlyout" style="display: none;">
+                            <div class="eaFlyout-panel">
+                                <span class="eaFlyout-panelCloseIcon ebIcon ebIcon_circleArrowRight"></span>
+                                <h2 class="eaFlyout-panelHeader"></h2>
+                                <div class="eaFlyout-panelContents eb_scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="eaSystemTime">
+                            <i class="eaSystemTime-icon"></i>
+                            <span class="eaSystemTime-time">14:41</span>
+                            <span class="eaSystemTime-timezone"> (GMT)</span>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="eaHelpButton">
+                            <a class="eaHelpButton-link">
+                                <span class="eaHelpButton-span">Help</span>
+                                <i class="ebIcon ebIcon_downArrow"></i>
+                            </a>
+                            <ul class="eaHelpButton-list" style="display: none;">
+                                <li class="eaHelpButton-listItem eaHelpButton-helpmodeLi" style="display: none;">
+                                    <a href="#" class="eaHelpButton-listItem-anchor eaHelpButton-list-helpMode">Help Mode</a>
+                                </li>
+                                <li class="eaHelpButton-listSeparator eaHelpButton-separatorLi" style="display: none;"></li>
+                                <li class="eaHelpButton-listItem">
+                                    <a href="#help/app/home" class="eaHelpButton-listItem-anchor eaHelpButton-list-appHelp">App Help</a>
+                                </li>
+                                <li class="eaHelpButton-listItem">
+                                    <a href="#help" class="eaHelpButton-listItem-anchor eaHelpButton-list-helpCenter">Help Center</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;"></div>
+                    <div style="display: inline-block;">
+                        <div class="eaLogoutButton">
+                            <a class="eaLogoutButton-link" href="#" style="background-image:none;padding:0 18px 0 20px">Ken Holmes</a>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="eaLogoutButton">
+                            <a class="eaLogoutButton-link" href="logout.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="eaContainer-SystemBar-left">
+                    <div class="eaContainer-SystemBar-name">ERICSSON TV3HUB</div>
+                    <!-- Customize Menu Part Here -->
+                    <div class="eaContainer-SystemBar-menu">
+                        <div class="directoryButton">
+                            <a class="menuBUtton-link" onclick="showOrHideMenu('scMenuList')">
+                                <span class="eaHelpButton-span">Directory</span>
+                            </a>
+                            <ul id="scMenuList" style="display: none; padding: 0;" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('alarmConsole.html');">Alarm Console</div>
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('manageIncident.html');">Incident Console</div>
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Access Request Console</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Jira Bug Console</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">KB Pages</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">TV3 Subscriber Account</div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menuBUtton">
+                            <a class="menuBUtton-link" onclick="showOrHideMenu('mfMenuList')">
+                                <span class="eaHelpButton-span">My Favorites</span>
+                            </a>
+                            <ul id="mfMenuList" style="display: none; padding: 0;" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Request Access</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Incident</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">My Request</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Work Board</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menuBUtton">
+                            <a class="menuBUtton-link" onclick="showOrHideMenu('cmMenuList')">
+                                <span class="eaHelpButton-span">Team Favorites</span>
+                            </a>
+                            <ul id="cmMenuList" style="display: none; padding: 0;" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Change Console</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Change</div>
+
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="menuBUtton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Ask Mode Req</div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menuButton">
+                            <a class="menuBUtton-link" onclick="showOrHideMenu('searchMenuList')">
+                                <span class="eaHelpButton-span">Search</span>
+                            </a>
+                            <ul id="searchMenuList" style="display: none; padding: 0;" class="eaHelpButton-list eaSystemBarMenu">
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Saved Search</div>
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Advance Search</div>
+                                    </div>
+                                </li>
+                                <div style="display: block;" class="eaNavigation-panel-separator"></div>
+                                <li class="direcrtoryButton-lineItem">
+                                    <div class="eaNavigationAppList-Group-header">
+                                        <!-- <div class="directoryList-Group-icon "></div> -->
+                                        <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Solar Search</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menuButton">
+                            <a class="menuBUtton-link" href="Users.html">
+                                <span class="eaHelpButton-span">Admin</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eaContainer-SystemBar-below"></div>
+        </div>
+    </div>
+
+    <div class="eaContainer-applicationHolder">
+        <div style="position: relative; width: 100%; height: 100%;">
+            <div class="elLayouts-Wrapper">
+                <div class="elLayouts-TopSection">
+                    <div class="elLayouts-TopSection-breadcrumb">
+                        <div class="ebBreadcrumbs">
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#home" class="ebBreadcrumbs-link" title="">TV3HUB</a>
+                            </div>
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#home" class="ebBreadcrumbs-link" title="">Home</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="elLayouts-TopSection-title">Incident Management</h1>
+                    <div class="elLayouts-QuickActionBarWrapper" style="height: 32px;">
+                        <div class="elLayouts-QuickActionBar elLayouts-QuickActionBar_position_relative" style="width: calc(100% - 0px);">
+                            <div class="elLayouts-QuickActionBar-contents">
+                                <div class="elLayouts-QuickActionBar-breadcrumb">
+                                    <div class="elLayouts-ActionBarBreadcrumb elLayouts-ActionBarBreadcrumb_show_false">
+                                        <div class="elLayouts-ActionBarBreadcrumb-button"></div>
+                                    </div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-left"></div>
+                                <div class="elLayouts-QuickActionBar-leftSeparator">
+                                    <div class="elLayouts-actionBarSeparator"></div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-right"></div>
+                                <div class="elLayouts-QuickActionBar-rightSeparator">
+                                    <div class="elLayouts-actionBarSeparator"></div>
+                                </div>
+                                <div class="elLayouts-QuickActionBar-center">
+                                    <div class="elLayouts-QuickActionBar-commands elLayouts-QuickActionBar-defaultCommands" style="display: block;">
+                                        <div class="elLayouts-QuickActionBar-commandsBlock"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompactMedium"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompact"></div>
+                                    </div>
+                                    <div class="elLayouts-QuickActionBar-commands elLayouts-QuickActionBar-contextCommands" style="display: none;">
+                                        <div class="elLayouts-QuickActionBar-commandsBlock"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompactMedium"></div>
+                                        <div class="elLayouts-QuickActionBar-commandsCompact"></div>
+                                    </div>
+                                </div>
+                                <div class="elLayouts-clearFix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elLayouts-TopSection-placeholder">
+                        <div class="eaHome-ContentRegion-body" e-id="body">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function showOrHideMenu() {
+        if (document.getElementById("menuList").style.display == 'none') {
+            document.getElementById("menuList").style.display = 'block';
+        } else {
+            document.getElementById("menuList").style.display = 'none';
+        }
+    }
+</script>
+
+</html>

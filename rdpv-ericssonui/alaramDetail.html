@@ -1,0 +1,564 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <title>Alarm Detail</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="container/resources/container/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="customCss/basicSetup.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/navigator.css" />
+    <link rel="stylesheet" type="text/css" href="customCss/ericssonSetup.css" />
+</head>
+
+<body id="scrollPage">
+  <div class="eaContainer-SystemBarHolder">
+      <div class="eaContainer-SystemBar">
+          <div class="eaContainer-SystemBar-logo"></div>
+          <div class="eaContainer-SystemBar-components">
+              <div class="eaContainer-SystemBar-right">
+                  <div class="nav-menu" style="display: inline-block;">
+                    <ul>
+                      <li class="eaLogoutButton">
+                        <a class="eaUserButton-link">Ken Holmes
+                            <i class="ebIcon ebIcon_downArrow"></i>
+                        </a>
+                        <ul id="userMenu" class="eaHelpButton-list eaSystemBarMenu">
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="eaPreferenceButton" style="display: block;">
+                                    <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                                </a>
+                            </li>
+                            <li class="direcrtoryButton-lineItem crPointer">
+                                <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                            </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+              <!-- Visible below 400px -->
+              <div class="eaContainer-SystemBar-right-xs">
+                <div class="nav-menu" style="display: inline-block;">
+                  <ul>
+                    <li class="eaLogoutButton">
+                      <a class="eaUserButton-link-sm">
+                          <i class="ebIcon ebIcon_downArrow h-42"></i>
+                      </a>
+                      <ul id="userMenu-xs" class="eaHelpButton-list eaSystemBarMenu">
+                          <li class="direcrtoryButton-lineItem crPointer">
+                              <a class="eaPreferenceButton" style="display: block;">
+                                  <span class="eaHelpButton-span menuHeadingFont">Preferences</span>
+                              </a>
+                          </li>
+                          <li class="direcrtoryButton-lineItem crPointer">
+                              <a class="menuHeadingFont bg-img" href="logout.html">Logout</a>
+                          </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="eaContainer-SystemBar-left">
+                  <div class="eaContainer-SystemBar-name">ERICSSON TV3HUB</div>
+                  <div class="eaContainer-SystemBar-menu nav-menu">
+                    <ul>
+                      <li class="directoryButton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Directory</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="scMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('alarmConsole.html');">Alarm Console</div>
+                                  </div>
+                              </li>
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" onclick="moveTo('manageIncident.html');">Incident Console</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Access Request Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Jira Bug Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">KB Pages</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">TV3 Subscriber Account</div>
+
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuBUtton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">My Favorites</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="mfMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Request Access</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Incident</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">My Request</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Work Board</div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuBUtton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Team Favorites</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="cmMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Change Console</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Change</div>
+
+                                  </div>
+                              </li>
+
+                              <li class="menuBUtton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color menuBUtton-subLink menuHeadingFont">Create Ask Mode Req</div>
+
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuButton">
+                          <a class="menuBUtton-link">
+                              <span class="eaHelpButton-span">Search</span>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="searchMenuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Saved Search</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Advance Search</div>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <div class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Solar Search</div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <li class="menuButton">
+                          <a class="menuBUtton-link" href="Users.html">
+                              <span class="eaHelpButton-span">Admin</span>
+                          </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Customize Menu Part visible below 800px -->
+                  <div class="eaContainer-SystemBar-menu-sm nav-menu-sm">
+                    <ul id="nav">
+                      <li class="menuButton">
+                          <a class="menuBUtton-link">
+                              <i class="ebIcon ebIcon_menu h-42"></i>
+                              <i class="ebIcon ebIcon_downArrow"></i>
+                          </a>
+                          <ul id="menuList" class="eaHelpButton-list eaSystemBarMenu">
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont" href="Users.html">Admin</a>
+                                  </div>
+                              </li>
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Directory <span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="directoryList" class="sub-menu-List">
+                                          <li>
+                                              <a href="alarmConsole.html">Alarm Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="manageIncident.html">Incident Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Access Request Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Jira Bug Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">KB Pages</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">TV3 Subscriber Account</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">My Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="myFavList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Request Access</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Incident</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">My Request</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Work Board</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Team Favorites<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="favList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Change Console</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Change</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Create Ask Mode Req</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="direcrtoryButton-lineItem search-sub-menu">
+                                  <div class="eaNavigationAppList-Group-header">
+                                      <!-- <div class="directoryList-Group-icon "></div> -->
+                                      <a class="eaNavigationAppList-Group-title white-color directoryButton-subLink menuHeadingFont">Search<span class="ebIcon ebIcon_rightArrow_white dropdown-arrow"></span></a>
+                                      <ul id="searchList" class="sub-menu-List">
+                                          <li>
+                                              <a href="#">Saved Search</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Advanced Search</a>
+                                          </li>
+                                          <li>
+                                              <a href="#">Solar Search</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+                          </ul>
+                        </li>
+                      <ul>
+                  </div>
+              </div>
+          </div>
+          <div class="eaContainer-SystemBar-below"></div>
+      </div>
+  </div>
+
+    <div class="eaContainer-applicationHolder">
+        <div style="position: relative; width: 100%; height: 100%;">
+            <div class="elLayouts-Wrapper">
+                <div class="elLayouts-TopSection">
+                    <div class="elLayouts-TopSection-breadcrumb">
+                        <div class="ebBreadcrumbs">
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#home" class="ebBreadcrumbs-link" title="">TV3HUB</a>
+                            </div>
+                            <div class="ebBreadcrumbs-item">
+                                <a href="alarmConsole.html" class="ebBreadcrumbs-link" title="">Service Center</a>
+                            </div>
+                            <div class="ebBreadcrumbs-item">
+                                <a href="alarmConsole.html" class="ebBreadcrumbs-link" title="">Alarm Console</a>
+                            </div>
+                            <div class="ebBreadcrumbs-item">
+                                <a href="#" class="ebBreadcrumbs-link" title="">Alarm Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="elLayouts-TopSection-title">Service Center - Alarm Details</h1>
+                    <div class="elLayouts-QuickActionBarWrapper" style="height: 32px;">
+                        <div class="elLayouts-QuickActionBar elLayouts-QuickActionBar_position_relative" style="width: calc(100% - 0px);">
+                            <div class="elLayouts-QuickActionBar-buttons">
+                                <div class="elLayouts-QuickActionBar-commands elLayouts-QuickActionBar-defaultCommands" style="display: block;">
+                                    <div class="elLayouts-QuickActionBar-commandsBlock">
+                                        <div class="elLayouts-QuickActionBar-items">
+                                            <button class="ebBtn  elLayouts-ActionBarButton" type="button"><span>Acknowledge</span></button>
+                                            <button class="ebBtn  elLayouts-ActionBarButton" onclick="dispalyCleared('severity');" type="button"><span>Clear</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="elLayouts-QuickActionBar-commandsCompactMedium" style="">
+                                        <div class="elLayouts-QuickActionBar-items">
+                                            <div class="elLayouts-ActionBarDropdown">
+                                                <div class="ebDropdown">
+                                                    <button class="ebBtn ebDropdown-button" type="button">
+                                                        <span class="ebDropdown-caption">Actions</span>
+                                                        <span class="elWidgets-Dropdown-iconHolder"><i class="ebIcon ebIcon_small ebIcon_downArrow_10px"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="elLayouts-QuickActionBar-commandsCompact">
+                                        <div class="elLayouts-QuickActionBar-items">
+                                            <div class="elLayouts-ActionBarDropdown">
+                                                <div class="ebDropdown">
+                                                    <button class="ebBtn ebDropdown-button" type="button">
+                                                        <span class="ebDropdown-caption">Actions</span>
+                                                        <span class="elWidgets-Dropdown-iconHolder"><i class="ebIcon ebIcon_small ebIcon_downArrow_10px"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elLayouts-TopSection-placeholder">
+                        <div id="severity" class="eaAlarmDetails-ContentRegion-severity" style="display:none;background-color: rgb(137, 186, 23);"> <i e-id="severityicon" class="ebIcon ebIcon_alarmCleared_white"></i> <span class="eaAlarmDetails-ContentRegion-severitytext">Perceived Severity: <strong e-id="severityvalue">CLEARED</strong></span> </div>
+                        <div id="severity1" class="eaAlarmDetails-ContentRegion-severity" style="background-color: rgb(255, 115, 0);"> <i e-id="severityicon" class="ebIcon ebIcon_alarmMajor_white"></i> <span class="eaAlarmDetails-ContentRegion-severitytext">Perceived Severity: <strong e-id="severityvalue">MAJOR</strong></span> </div>
+
+                        <h2 e-id="header" style=" padding-left: 10px;">LMI_eRBS_6 - HEARTBEAT_FAILURE</h2>
+
+                        <div class="eaHome-ContentRegion-body" e-id="body">
+                            <!-- Content Start here -->
+                            <div class="elLayouts-Dashboard" style=" margin-top: 0px;">
+
+
+                                <div style="margin-right: 0px;">
+
+                                    <div class="elLayouts-Dashboard-content elLayouts-Dashboard-content_two-columns-70-30">
+                                        <!-- <div class="ebLayout-SectionSubheading" ><h3 style="padding-left:10px">Incident [TT-4198216] - Alcatel-Lucent - NAR Mediaroom HIGH Errors Observed, Recent Changes Made, Areas...</h3>
+											<span style="float:right;">
+
+											<span class="formBuilderEditButton"><i class="ebIcon formBuilderEditButtonIcon elCommonlib-TableSettingsButton-icon"></i> Edit</span>
+						    <span  style="margin-right:5px" class="alaramConsoleUploadIconBar"><i class="ebIcon formBuilderCmdImageIcon elCommonlib-TableSettingsButton-icon"></i> <a  href="manageIncident.html"> Cancel</a> </span>
+
+
+						     </div> -->
+                                        <div style="margin-right: 0px; width:75%!important;" class="elLayouts-Dashboard-column">
+
+                                            <div class="lineBreaker" style="height: 95%;margin-left: 5px;">
+
+                                                <div class="kbPageDivActive" title="Detail"> <i class="ebIcon kbPageIcon kbPageSample1IconImage"></i></div>
+
+                                            </div>
+
+                                            <div class="eaAlarmDetails-ContentRegion-column" style="width: 95%;">
+                                                <!-- <h3>Alarm Information</h3>  -->
+
+
+                                                <div class="elLayouts-Dashboard-content elLayouts-Dashboard-content_two-columns">
+
+                                                    <div style="margin-left: 20px;margin-right:0px !important" class="elLayouts-Dashboard-column">
+                                                        <div e-id="information">
+                                                            <div class="eaAlarmDetails-AlarmInformation">
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">id</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value">33333</div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative"> alarm_type</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"> cleared</div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">timestamp</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"> 05/23/2016 20:40</div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">problem</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"> HEARTBEAT_FAILURE</div>
+                                                                </div>
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">node</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value">LMI_eRBS_6</div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-right:0px !important" class="elLayouts-Dashboard-column">
+                                                        <div e-id="information">
+                                                            <div class="eaAlarmDetails-AlarmInformation">
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">cell</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"> cell_2</div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">comment</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value">Mediaroom</div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">comment_time</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"></div>
+                                                                </div>
+
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">alarm_state</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value">acknowledged</div>
+                                                                </div>
+                                                                <div class="eaAlarmDetails-AlarmInformation-entry">
+                                                                    <div class="eaAlarmDetails-AlarmInformation-key ebText_alternative">alarm_state_time</div>
+                                                                    <div class="eaAlarmDetails-AlarmInformation-value"> 05/23/2016 20:40</div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-right: 0px;width:24%" class="elLayouts-Dashboard-column">
+                                            <div class="eaAlarmDetails-ContentRegion-column" style="border-left: 1px solid #666;">
+                                                <h3 style="margin-left: 5px;">Comments</h3>
+                                                <div e-id="comments">
+                                                    <div style="margin-left: 10px">
+                                                        <div class="eaAlarmDetails-Comments-comment">
+                                                            <div class="eaAlarmDetails-Comments-body">
+                                                                <div class="eaAlarmDetails-Comments-bodytop"> <img src="assets/resources/28px/user.png" class="eaAlarmDetails-Comments-image"> <span class="eaAlarmDetails-Comments-name">admin</span> <span class="eaAlarmDetails-Comments-time"><em>05/19/2016 20:06</em></span>                                                                    </div>
+                                                                <div class="eaAlarmDetails-Comments-bodybottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate leo ac nulla ultrices ultricies. Duis tincidunt augue diam, id porta nisi porttitor a.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="eaAlarmDetails-Comments-comment">
+                                                            <div class="eaAlarmDetails-Comments-body">
+                                                                <div class="eaAlarmDetails-Comments-bodytop"> <img src="assets/resources/28px/user.png" class="eaAlarmDetails-Comments-image"> <span class="eaAlarmDetails-Comments-name">admin</span> <span class="eaAlarmDetails-Comments-time"><em>05/19/2016 20:06</em></span>                                                                    </div>
+                                                                <div class="eaAlarmDetails-Comments-bodybottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate leo ac nulla ultrices ultricies. Duis tincidunt augue diam, id porta nisi porttitor a.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="eaAlarmDetails-Comments-comment">
+                                                            <div class="eaAlarmDetails-Comments-body">
+                                                                <div class="eaAlarmDetails-Comments-bodytop"> <img src="assets/resources/28px/user.png" class="eaAlarmDetails-Comments-image"> <span class="eaAlarmDetails-Comments-name">admin</span> <span class="eaAlarmDetails-Comments-time"><em>05/19/2016 20:07</em></span>                                                                    </div>
+                                                                <div class="eaAlarmDetails-Comments-bodybottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate leo ac nulla ultrices ultricies. Duis tincidunt augue diam, id porta nisi porttitor a.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="eaAlarmDetails-Comments-comment">
+                                                            <div class="eaAlarmDetails-Comments-body">
+                                                                <div class="eaAlarmDetails-Comments-bodytop"> <img src="assets/resources/28px/user.png" class="eaAlarmDetails-Comments-image"> <span class="eaAlarmDetails-Comments-name">admin</span> <span class="eaAlarmDetails-Comments-time"><em>05/19/2016 20:07</em></span>                                                                    </div>
+                                                                <div class="eaAlarmDetails-Comments-bodybottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate leo ac nulla ultrices ultricies. Duis tincidunt augue diam, id porta nisi porttitor a.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--   <div class="eaAlarmDetails-ContentRegion-writecomment">                <textarea e-id="commenttext" rows="4" style="width:100%" class="ebTextArea" placeholder="Write Comment..."></textarea>                <button e-id="addcomment" class="ebBtn ebBtn_color_paleBlue" style="margin-top: 10px">Add Comment</button>            </div>   -->
+                                                <div class="eaAlarmDetails-ContentRegion-writecomment">
+                                                    <textarea e-id="commenttext" rows="4" style="width:90%; margin-left: 15px" class="ebTextArea" placeholder="Write Comment..."></textarea>
+                                                    <button e-id="addcomment" class="ebBtn ebBtn_color_paleBlue" style="margin-top: 10px;margin-left: 15px;">Add Comment</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function showSubMenu(id) {
+        if (document.getElementById(id).style.display == 'none') {
+            document.getElementById(id).style.display = 'block';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+
+    function dispalyCleared(id) {
+        if (document.getElementById(id).style.display == 'none') {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById(id + "1").style.display = 'none';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+
+    function moveTo(location) {
+        window.location.href = "" + location + "";
+    }
+
+    function showOrHideMenu(id) {
+        if (document.getElementById("" + id + "").style.display == 'none') {
+            document.getElementById("" + id + "").style.display = 'block';
+        } else {
+            document.getElementById("" + id + "").style.display = 'none';
+        }
+    }
+    /* var element = document.getElementById("scrollPage");
+     //onload = function () {
+        console.log("Element Scrol Height ", element.scrollHeight);
+        console.log("Element Scroll Top ",element.scrollTop);
+        console.log("Element client Height",element.clientHeight);
+        if (element.scrollHeight - element.scrollTop === element.clientHeight)
+        {
+            console.log('scrolled');
+        }
+     //}*/
+</script>
+
+</html>
